@@ -262,7 +262,40 @@ span {
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
   gap: 2rem;
-  margin-top: 4rem;
+  margin: 4rem 0px;
+}
+.beehive-container {
+  background-color: orangered;
+}
+.beehive-row:nth-child(odd) {
+  position: relative;
+  margin-left: 76.5px;
+  margin-bottom: -38px;
+}
+.beehive-row:nth-child(even) {
+  margin-bottom: -38px;
+}
+.hexagon {
+  display: inline-block;
+  box-shadow: 10px 10px 5px var(--text-color);
+  width: 150px;
+  height: 150px;
+  background: var(--main-color);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  -webkit-clip-path: polygon(
+    50% 0%,
+    100% 25%,
+    100% 75%,
+    50% 100%,
+    0% 75%,
+    0% 25%
+  );
+  transition: 1s;
+}
+.hexagon:hover {
+  background: var(--hover);
+  transform: rotateY(-180deg);
+  transition: 1s;
 }
 
 .timeline-box {
@@ -416,9 +449,12 @@ span {
 .footer {
   display: grid;
   place-items: center;
-  padding: 100px 0px; 
-  background: #ebebeb;
-  color: #000;
+  padding: 100px 0px;
+  color: var(--text-color);
+  background: var(--bg-color);
+}
+.footer-name {
+  color: var(--main-color);
 }
 .footer h2 {
   font-size: 1.5rem;
@@ -533,6 +569,12 @@ span {
   }
   .timeline-container {
     grid-template-columns: 1fr;
+  }
+  .timeline-skills {
+    order: 2;
+  }
+  .timeline-box {
+    order: 1;
   }
   .contact-form form {
     width: 300px;
