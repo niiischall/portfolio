@@ -571,7 +571,7 @@ span {
     grid-template-columns: 1fr;
   }
   .timeline-skills {
-    order: 2;
+    display: none;
   }
   .timeline-box {
     order: 1;
