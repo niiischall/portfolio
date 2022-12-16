@@ -574,7 +574,7 @@ span {
     grid-template-columns: 1fr;
   }
   .timeline-box {
-    order: 1;
+    order: -1;
   }
   .contact-form form {
     width: 300px;
