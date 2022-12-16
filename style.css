@@ -264,13 +264,16 @@ span {
   gap: 2rem;
   margin: 4rem 0px;
 }
-.beehive-container {
-  background-color: orangered;
-}
-.beehive-row:nth-child(odd) {
+.beehive-row {
   position: relative;
-  margin-left: 76.5px;
   margin-bottom: -38px;
+  text-align: center;
+}
+.beehive-row:nth-of-type(odd) :last-child {
+  margin-top: -38px;
+}
+.beehive-row:nth-of-type(odd) :nth-child(4) {
+  margin-top: -38px;
 }
 .beehive-row:nth-child(even) {
   margin-bottom: -38px;
@@ -569,9 +572,6 @@ span {
   }
   .timeline-container {
     grid-template-columns: 1fr;
-  }
-  .timeline-skills {
-    display: none;
   }
   .timeline-box {
     order: 1;
