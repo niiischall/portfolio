@@ -219,7 +219,11 @@ header.shadow {
 }
 .information .info-box span {
   font-weight: 400;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
+}
+.information .info-box img {
+  width: 30px;
+  height: 30px;
 }
 
 /*Skills*/
@@ -506,10 +510,90 @@ span {
 
 .contact-container {
   width: 80%;
-  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   margin: 50px auto;
   position: relative;
   overflow: hidden;
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: var(--bg-color);
+
+  transition: all 0.3s ease-in-out;
+}
+
+.contact-card img {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.7rem;
+}
+
+.contact-card a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.contact-form {
+  margin: 1rem 2rem;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-form div {
+  width: 100%;
+  margin: 0.75rem 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.95rem;
+  border: none;
+  border-radius: 7px;
+  background-color: var(--bg-color-dark);
+
+  font-family: "Poppins", sans-serif;
+  color: var(--text-color);
+  outline: none;
+}
+
+.contact-form small {
+  color: var(--main-color);
+}
+
+.contact-form textarea {
+  height: 170px;
+}
+
+.contact-form button {
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--text-color);
+
+  font-weight: 500;
+  color: var(--bg-color);
+  outline: none;
+  margin: 2rem 0 0 0;
+  font-family: var(--font-base);
+  cursor: pointer;
 }
 
 /*Footer*/
@@ -645,11 +729,11 @@ span {
   .timeline-box {
     order: -1;
   }
-  .contact-form form {
-    width: 300px;
+  .contact-container {
+    width: 100%;
   }
-  .contact-button {
-    margin-left: 25%;
+  .contact-form {
+    width: 100%;
   }
 }
 @media (max-width: 340px) {
@@ -669,11 +753,5 @@ span {
   }
   .portfolio-content {
     grid-template-columns: repeat(auto-fit, minmax(200px, auto));
-  }
-  .contact-form form {
-    width: 300px;
-  }
-  .contact-button {
-    margin-left: 25%;
   }
 }
