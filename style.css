@@ -15,6 +15,7 @@
 :root {
   --main-color: rgb(186, 38, 92);
   --bg-color: #fff;
+  --bg-color-dark: #e4e4e4;
   --text-color: #0f0c27;
   --hover: rgb(255, 51, 102);
 
@@ -25,6 +26,7 @@
 
 section {
   padding: 50px 10%;
+  background-color: var(--bg-color);
 }
 body.active {
   --text-color: #fff;
@@ -34,6 +36,14 @@ body {
   background: var(--bg-color);
   color: var(--text-color);
 }
+section:nth-of-type(2n + 1) {
+  background-color: var(--bg-color-dark);
+}
+
+section.active {
+  background-color: #0f0c27;
+}
+
 *::selection {
   color: var(--bg-color);
   background: var(--main-color);
@@ -55,12 +65,17 @@ header {
   width: 100%;
   top: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: var(--bg-color);
   padding: 13px 10%;
+}
+header.shadow {
+  -webkit-box-shadow: 0 3px 5px rgba(186, 38, 92, 0.3);
+  -moz-box-shadow: 0 3px 5px rgba(186, 38, 92, 0.3);
+  box-shadow: 0 3px 5px rgba(186, 38, 92, 0.3);
 }
 
 .logo {
@@ -164,11 +179,18 @@ header {
 }
 
 /*About*/
+.about {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .about-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  margin-top: 2rem;
+  margin-top: 10rem;
 }
 .about-img img {
   width: 100%;
@@ -178,7 +200,7 @@ header {
 .about-text p {
   font-size: var(--p-font);
   font-weight: 400;
-  text-align: justify;
+  text-align: left;
 }
 .about-text p a {
   color: var(--main-color);
@@ -257,6 +279,13 @@ span {
 }
 
 /*Experience*/
+.timeline {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .timeline-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -280,10 +309,10 @@ span {
 }
 .hexagon {
   display: inline-block;
-  box-shadow: 10px 10px 5px var(--text-color);
+  position: relative;
   width: 150px;
   height: 150px;
-  background: var(--main-color);
+  background: var(--bg-color);
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   -webkit-clip-path: polygon(
     50% 0%,
@@ -295,10 +324,22 @@ span {
   );
   transition: 1s;
 }
+.hexagon.active {
+  background: var(--text-color);
+}
 .hexagon:hover {
   background: var(--hover);
   transform: rotateY(-180deg);
   transition: 1s;
+}
+
+.hexagon img {
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  top: 55%;
+  left: 60%;
+  margin: -50px 0 0 -50px;
 }
 
 .timeline-box {
@@ -422,6 +463,13 @@ span {
 }
 
 /*Work*/
+.work {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .work-container {
   width: 80%;
   padding: 50px 0;
@@ -431,6 +479,14 @@ span {
 }
 
 /*Recommendations*/
+.recommendations {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .recommendations-container {
   width: 80%;
   padding: 50px 0;
@@ -440,6 +496,14 @@ span {
 }
 
 /*Contact Form*/
+.contact {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .contact-container {
   width: 80%;
   padding: 50px 0;
@@ -450,11 +514,12 @@ span {
 
 /*Footer*/
 .footer {
+  min-height: 25vh;
   display: grid;
   place-items: center;
   padding: 100px 0px;
-  color: var(--text-color);
-  background: var(--bg-color);
+  color: #fff;
+  background: #242329;
 }
 .footer-name {
   color: var(--main-color);
@@ -462,6 +527,7 @@ span {
 .footer h2 {
   font-size: 1.5rem;
   margin-bottom: 1.6rem;
+  color: var(--text-color);
 }
 .footer-social a i {
   color: rgb(10, 26, 208);
@@ -510,6 +576,9 @@ span {
   #menu-icon {
     display: initial;
     color: var(--text-color);
+  }
+  .home-text-break {
+    display: none;
   }
   header .navbar {
     position: absolute;
