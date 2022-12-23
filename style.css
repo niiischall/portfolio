@@ -1,7 +1,7 @@
-/* Google Fonts */
+/******************* Google Fonts **********************/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
-/*Global Selectors*/
+/******************* Global Selectors *********************/
 * {
   margin: 0;
   padding: 0;
@@ -106,7 +106,7 @@ header.shadow {
   cursor: pointer;
 }
 
-/*Home*/
+/************************************* Home ***************************************/
 .home {
   position: relative;
   width: 100%;
@@ -178,7 +178,7 @@ header.shadow {
   background: var(--hover);
 }
 
-/*About*/
+/************************************** About ************************************/
 .about {
   min-height: 100vh;
   display: flex;
@@ -217,7 +217,7 @@ header.shadow {
 .information .info-box .bx {
   font-size: 50px;
 }
-.information .info-box span {
+.information .info-box p {
   font-weight: 400;
   margin-left: 0.5rem;
 }
@@ -282,7 +282,7 @@ span {
   width: 80%;
 }
 
-/*Experience*/
+/************************************* Experience *********************************/
 .timeline {
   min-height: 100vh;
   display: flex;
@@ -292,60 +292,11 @@ span {
 }
 .timeline-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   align-items: center;
   gap: 2rem;
   margin: 4rem 0px;
 }
-.beehive-row {
-  position: relative;
-  margin-bottom: -38px;
-  text-align: center;
-}
-.beehive-row:nth-of-type(odd) :last-child {
-  margin-top: -38px;
-}
-.beehive-row:nth-of-type(odd) :nth-child(4) {
-  margin-top: -38px;
-}
-.beehive-row:nth-child(even) {
-  margin-bottom: -38px;
-}
-.hexagon {
-  display: inline-block;
-  position: relative;
-  width: 150px;
-  height: 150px;
-  background: var(--bg-color);
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  -webkit-clip-path: polygon(
-    50% 0%,
-    100% 25%,
-    100% 75%,
-    50% 100%,
-    0% 75%,
-    0% 25%
-  );
-  transition: 1s;
-}
-.hexagon.active {
-  background: var(--text-color);
-}
-.hexagon:hover {
-  background: var(--hover);
-  transform: rotateY(-180deg);
-  transition: 1s;
-}
-
-.hexagon img {
-  position: absolute;
-  width: 75px;
-  height: 75px;
-  top: 55%;
-  left: 60%;
-  margin: -50px 0 0 -50px;
-}
-
 .timeline-box {
   width: 100%;
   padding: 50px 0;
@@ -466,7 +417,7 @@ span {
   }
 }
 
-/*Work*/
+/***************************** Work ***********************************************/
 .work {
   min-height: 100vh;
   display: flex;
@@ -482,7 +433,7 @@ span {
   overflow: hidden;
 }
 
-/*Recommendations*/
+/****************************** Recommendations *************************************/
 .recommendations {
   min-height: 100vh;
   display: flex;
@@ -499,7 +450,7 @@ span {
   overflow: hidden;
 }
 
-/*Contact Form*/
+/********************************** Contact ****************************************/
 .contact {
   min-height: 100vh;
   display: flex;
@@ -556,7 +507,7 @@ span {
 .contact-form div {
   width: 100%;
   margin: 0.75rem 0;
-  border-radius: 10px;
+  border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
@@ -566,7 +517,7 @@ span {
   width: 100%;
   padding: 0.95rem;
   border: none;
-  border-radius: 7px;
+  border-radius: 4px;
   background-color: var(--bg-color-dark);
 
   font-family: "Poppins", sans-serif;
@@ -583,20 +534,10 @@ span {
 }
 
 .contact-form button {
-  padding: 1rem 2rem;
-  border-radius: 10px;
-  border: none;
-  background-color: var(--text-color);
-
-  font-weight: 500;
-  color: var(--bg-color);
-  outline: none;
-  margin: 2rem 0 0 0;
-  font-family: var(--font-base);
-  cursor: pointer;
+  background-color: var(--bg-color);
 }
 
-/*Footer*/
+/*************************************** Footer ************************************/
 .footer {
   min-height: 25vh;
   display: grid;
@@ -634,7 +575,7 @@ span {
   color: #22cf91;
 }
 
-/* Responsiveness */
+/******************************* Responsiveness *********************************/
 @media (max-width: 991px) {
   header {
     padding: 18px 4%;
