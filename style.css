@@ -73,11 +73,10 @@ header {
   padding: 13px 10%;
 }
 header.shadow {
-  -webkit-box-shadow: 0 3px 5px rgba(186, 38, 92, 0.3);
-  -moz-box-shadow: 0 3px 5px rgba(186, 38, 92, 0.3);
-  box-shadow: 0 3px 5px rgba(186, 38, 92, 0.3);
+  -webkit-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  -moz-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
 }
-
 .logo {
   font-size: 1.61rem;
   font-weight: 600;
@@ -361,14 +360,14 @@ span {
 .timeline-content h3 {
   margin-top: 5px;
   margin-bottom: 5px;
-  font-size: 24px;
+  font-size: var(--medium-font);
   font-weight: 400;
   color: var(--text-color);
 }
 
 .timeline-content h4 {
   margin-top: 5px;
-  font-size: 16px;
+  font-size: var(--p-font);
   font-weight: 500;
   color: var(--main-color);
   display: flex;
@@ -381,7 +380,7 @@ span {
 }
 
 .timeline-content span {
-  font-size: 12px;
+  font-size: var(--p-font);
   color: var(--text-color);
   display: flex;
   align-items: center;
@@ -392,7 +391,7 @@ span {
 }
 
 .timeline-content p {
-  font-size: 14px;
+  font-size: var(--p-font);
   line-height: 1.5em;
   word-spacing: 1px;
   color: var(--text-color);
@@ -426,11 +425,69 @@ span {
   align-items: center;
 }
 .work-container {
-  width: 80%;
-  padding: 50px 0;
+  padding: 50px;
   margin: 50px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  gap: 2rem;
+  margin: 4rem 0px;
   position: relative;
   overflow: hidden;
+}
+.feature-box__icon {
+  margin-bottom: 0.5rem;
+}
+.feature-box {
+  background-color: var(--bg-color);
+  font-size: 1.5rem;
+  height: 35rem;
+  width: 20rem;
+  text-align: center;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+
+  transition: transform 0.3s;
+}
+.feature-box:hover {
+  transform: translateY(-1.8rem) scale(1.05);
+}
+.feature-box__icon--1 {
+  background-image: url("./images/cryptobase.gif");
+  background-size: cover;
+  width: 100%;
+  height: 35%;
+  margin-bottom: 1.5rem;
+}
+.feature-box__icon--2 {
+  background-image: url("./images/newyorker.gif");
+  background-size: cover;
+  width: 100%;
+  height: 35%;
+  margin-bottom: 1.5rem;
+}
+.feature-box__icon--3 {
+  background-image: url("./images/shopify.gif");
+  background-size: cover;
+  width: 100%;
+  height: 35%;
+  margin-bottom: 1.5rem!important;
+}
+.heading-tertiary {
+  color: #ba265c;
+  font-weight: 500;
+  margin: 0px 1rem;
+  margin-bottom: 1.5rem !important;
+  font-size: var(--medium-font);
+}
+.feature-box__text {
+  font-weight: 400;
+  line-height: 1.7;
+  margin: 0px 1rem;
+  font-size: var(--p-font);
+  color: #777;
+  margin-bottom: 1.5rem !important;
 }
 
 /****************************** Recommendations *************************************/
@@ -576,6 +633,11 @@ span {
 }
 
 /******************************* Responsiveness *********************************/
+@media (max-width: 1200px) {
+  .work-container {
+    grid-template-columns: 1fr;
+  }
+}
 @media (max-width: 991px) {
   header {
     padding: 18px 4%;
@@ -669,6 +731,9 @@ span {
   }
   .timeline-box {
     order: -1;
+  }
+  .work-container {
+    grid-template-columns: 1fr;
   }
   .contact-container {
     width: 100%;

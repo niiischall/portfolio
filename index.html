@@ -17,7 +17,6 @@
     <script src="https://unpkg.com/phosphor-icons"></script>
   </head>
   <body>
-
     <!-- Navbar -->
     <header>
       <a href="#" class="logo">nischal</a>
@@ -178,28 +177,68 @@
     </section>
 
     <!-- Work -->
-    <!--
     <section class="work" id="work">
       <div class="heading">
         <h2>some of my work</h2>
       </div>
       <div class="work-container">
-        <span>&nbsp;</span>
+        <div class="feature-box">
+          <div class="feature-box__icon--1"></div>
+          <h3 class="heading-tertiary">cryptobase</h3>
+          <p class="feature-box__text">
+            cryptobase is a chrome extension made for getting crypto trading
+            easier as than it is with a single notification. No need to visit
+            every other site to keep tabs on the market.
+          </p>
+          <a
+            href="https://crypto-base-landing-page.vercel.app/"
+            target="_blank"
+            class="btn"
+            >check it out</a
+          >
+        </div>
+        <div class="feature-box">
+          <div class="feature-box__icon--2"></div>
+          <h3 class="heading-tertiary">new yorker</h3>
+          <p class="feature-box__text">
+            new yorker is a web application developed with new york times behind
+            the scenes to search through its content, see top stories, look for
+            categories, with some cool charts.
+          </p>
+          <a
+            href="https://thenewyorker.netlify.app/"
+            target="_blank"
+            class="btn"
+            >check it out</a
+          >
+        </div>
+        <div class="feature-box">
+          <div class="feature-box__icon--3"></div>
+          <h3 class="heading-tertiary">shopify</h3>
+          <p class="feature-box__text">
+            shopify is an e-commerce mobile app. built with react native at its
+            core, you can make up your profile, shop through categories,
+            favourite stuff for later or buy straight from the store.
+          </p>
+          <a
+            href="https://github.com/niiischall/Shopify"
+            target="_blank"
+            class="btn"
+            >check it out</a
+          >
+        </div>
       </div>
     </section>
-    -->
 
     <!-- Recommendations -->
-    <!--
     <section class="recommendations" id="recommendations">
       <div class="heading">
-        <h2>recommendations</h2>
+        <h2>&nbsp;</h2>
       </div>
       <div class="recommendations-container">
         <span>&nbsp;</span>
       </div>
     </section>
-    -->
 
     <!-- Contact -->
     <section class="contact" id="contact">
@@ -255,7 +294,7 @@
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
       // TODO: Add SDKs for Firebase products that you want to use
       // https://firebase.google.com/docs/web/setup#available-libraries
-    
+
       // Your web app's Firebase configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
       const firebaseConfig = {
@@ -265,9 +304,9 @@
         storageBucket: "personal-website-f3769.appspot.com",
         messagingSenderId: "602477502886",
         appId: "1:602477502886:web:b89fd29d860b2855992f67",
-        measurementId: "G-C4VM1KBWBF"
+        measurementId: "G-C4VM1KBWBF",
       };
-    
+
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
