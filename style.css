@@ -472,7 +472,7 @@ span {
   background-size: cover;
   width: 100%;
   height: 35%;
-  margin-bottom: 1.5rem!important;
+  margin-bottom: 1.5rem !important;
 }
 .heading-tertiary {
   color: #ba265c;
@@ -490,21 +490,72 @@ span {
   margin-bottom: 1.5rem !important;
 }
 
-/****************************** Recommendations *************************************/
-.recommendations {
+/****************************** Writings *************************************/
+.writings {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 100px 0px;
 }
 
-.recommendations-container {
-  width: 80%;
-  padding: 50px 0;
+.writings-container {
   margin: 50px auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 2rem;
+  margin: 4rem 0px;
   position: relative;
   overflow: hidden;
+}
+
+.story {
+  width: 70%;
+  margin: 0 auto;
+  margin-bottom: 8rem;
+  padding: 6rem;
+  padding-left: 9rem;
+  box-shadow: rgba(0,0,0, 0.3) 0px 3px 8px;
+  background-color: var(--bg-color);
+  border-radius: 3px;
+  font-size: var(--p-font);
+}
+
+.story-shape {
+  width: 15rem;
+  height: 15rem;
+  float: left;
+
+  -webkit-shape-outside: circle(50% at 50% 50%);
+  shape-outside: circle(50% at 50% 50%);
+
+  -webkit-clip-path: circle(50% at 50% 50%);
+  clip-path: circle(50% at 50% 50%);
+
+  transform: translateX(-3rem);
+
+  position: relative;
+}
+
+.story-image {
+  height: 100%;
+  transform: translate(-5rem) scale(1);
+  transition: all 0.2s;
+}
+
+.story-link {
+  margin-top: 1rem;
+}
+
+.story-text h3 {
+  font-size: var(--medium-font);
+  margin-bottom: 1.5rem;
+}
+
+.story-text p {
+  font-size: var(--p-font);
 }
 
 /********************************** Contact ****************************************/
@@ -652,6 +703,26 @@ span {
     --medium-font: 1.4rem;
   }
 }
+@media (max-width: 820px) {
+  .story {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    padding-bottom: 3rem;
+  }
+  .story-shape {
+    transform: translateX(0);
+  }
+  .story-text {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  .contact-container {
+    width: 100%;
+  }
+}
 @media (max-width: 768px) {
   :root {
     --big-font: 2.4rem;
@@ -734,6 +805,10 @@ span {
   }
   .work-container {
     grid-template-columns: 1fr;
+    padding: 0px;
+  }
+  .writings-container {
+    width: 100%;
   }
   .contact-container {
     width: 100%;
