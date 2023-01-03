@@ -797,6 +797,9 @@ span {
     display: flex;
     justify-content: center;
   }
+  .timeline {
+    margin-top: 100px;
+  }
   .timeline-container {
     grid-template-columns: 1fr;
   }
