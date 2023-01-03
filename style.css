@@ -15,7 +15,7 @@
 :root {
   --main-color: rgb(186, 38, 92);
   --bg-color: #fff;
-  --bg-color-dark: #e4e4e4;
+  --bg-color-dark: rgb(228, 228, 228);
   --text-color: #0f0c27;
   --hover: rgb(255, 51, 102);
 
@@ -423,6 +423,7 @@ span {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 50px 0px;
 }
 .work-container {
   padding: 50px;
@@ -431,7 +432,6 @@ span {
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   gap: 2rem;
-  margin: 4rem 0px;
   position: relative;
   overflow: hidden;
 }
@@ -446,7 +446,7 @@ span {
   text-align: center;
   border-radius: 3px;
   overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 
   transition: transform 0.3s;
 }
