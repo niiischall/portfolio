@@ -802,6 +802,7 @@ span {
   }
   .timeline-box {
     order: -1;
+    margin: 0px auto;
   }
   .work {
     padding: 100px 0px;
