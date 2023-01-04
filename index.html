@@ -4,9 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="hey 👋, i'm nischal nikit. i build things that live on the web. i also talk & write about some of those things. this is my corner of the internet."/>
-    <meta name="keywords" content="nischal nikit, personal website, portfolio"/>
-    <meta name="theme-color" content="#ba265c"/>
+    <meta
+      name="description"
+      content="hey 👋, i'm nischal nikit. i build things that live on the web. i also talk & write about some of those things. this is my corner of the internet."
+    />
+    <meta
+      name="keywords"
+      content="nischal nikit, personal website, portfolio"
+    />
+    <meta name="theme-color" content="#ba265c" />
     <title>nischal nikit's website</title>
     <!-- Link To CSS -->
     <link rel="stylesheet" href="./style.css" />
@@ -16,8 +22,84 @@
       href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
     />
     <link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico" />
-    <!-- Phosphor Icons-->
+    <!-- Phosphor Icons -->
     <script src="https://unpkg.com/phosphor-icons"></script>
+    <!-- Mixpanel SDK -->
+    <script type="text/javascript">
+      (function (f, b) {
+        if (!b.__SV) {
+          var e, g, i, h;
+          window.mixpanel = b;
+          b._i = [];
+          b.init = function (e, f, c) {
+            function g(a, d) {
+              var b = d.split(".");
+              2 == b.length && ((a = a[b[0]]), (d = b[1]));
+              a[d] = function () {
+                a.push([d].concat(Array.prototype.slice.call(arguments, 0)));
+              };
+            }
+            var a = b;
+            "undefined" !== typeof c ? (a = b[c] = []) : (c = "mixpanel");
+            a.people = a.people || [];
+            a.toString = function (a) {
+              var d = "mixpanel";
+              "mixpanel" !== c && (d += "." + c);
+              a || (d += " (stub)");
+              return d;
+            };
+            a.people.toString = function () {
+              return a.toString(1) + ".people (stub)";
+            };
+            i =
+              "disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(
+                " "
+              );
+            for (h = 0; h < i.length; h++) g(a, i[h]);
+            var j = "set set_once union unset remove delete".split(" ");
+            a.get_group = function () {
+              function b(c) {
+                d[c] = function () {
+                  call2_args = arguments;
+                  call2 = [c].concat(Array.prototype.slice.call(call2_args, 0));
+                  a.push([e, call2]);
+                };
+              }
+              for (
+                var d = {},
+                  e = ["get_group"].concat(
+                    Array.prototype.slice.call(arguments, 0)
+                  ),
+                  c = 0;
+                c < j.length;
+                c++
+              )
+                b(j[c]);
+              return d;
+            };
+            b._i.push([e, f, c]);
+          };
+          b.__SV = 1.2;
+          e = f.createElement("script");
+          e.type = "text/javascript";
+          e.async = !0;
+          e.src =
+            "undefined" !== typeof MIXPANEL_CUSTOM_LIB_URL
+              ? MIXPANEL_CUSTOM_LIB_URL
+              : "file:" === f.location.protocol &&
+                "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)
+              ? "https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js"
+              : "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";
+          g = f.getElementsByTagName("script")[0];
+          g.parentNode.insertBefore(e, g);
+        }
+      })(document, window.mixpanel || []);
+
+      // Enabling the debug mode flag is useful during implementation,
+      // but it's recommended you remove it for production
+      mixpanel.init("a7a7ed154bd3033a63f703ad5570cad3", { debug: true });
+      mixpanel.track("Sign up");
+    </script>
   </head>
   <body>
     <!-- Navbar -->
@@ -25,11 +107,11 @@
       <a href="#" class="logo">nischal</a>
       <div class="bx bx-menu" id="menu-icon"></div>
       <ul class="navbar">
-        <li><a href="#about">about</a></li>
-        <li><a href="#experience">experience</a></li>
-        <li><a href="#work">work</a></li>
-        <li><a href="#writings">writings</a></li>
-        <li><a href="#contact">contact</a></li>
+        <li><a id="nav-about" href="#about">about</a></li>
+        <li><a id="nav-exprience" href="#experience">experience</a></li>
+        <li><a id="nav-work" href="#work">work</a></li>
+        <li><a id="nav-writings" href="#writings">writings</a></li>
+        <li><a id="nav-contact" href="#contact">contact</a></li>
         <div class="bx bx-moon" id="darkmode"></div>
       </ul>
     </header>
@@ -37,16 +119,16 @@
     <!-- Home -->
     <section class="home" id="home">
       <div class="social">
-        <a href="https://github.com/niiischall" target="_blank">
+        <a id="github-logo" href="https://github.com/niiischall" target="_blank">
           <i class="ph-github-logo" alt="github"></i>
         </a>
-        <a href="https://www.linkedin.com/in/niiischall" target="_blank">
+        <a id="linkedin-logo" href="https://www.linkedin.com/in/niiischall" target="_blank">
           <i class="ph-linkedin-logo" alt="linkedin"></i>
         </a>
-        <a href="https://twitter.com/niiischall" target="_blank"
+        <a id="twitter-logo" href="https://twitter.com/niiischall" target="_blank"
           ><i class="ph-twitter-logo" alt="twitter"></i
         ></a>
-        <a href="https://www.instagram.com/niiischall" target="_blank"
+        <a id="instagram-logo" href="https://www.instagram.com/niiischall" target="_blank"
           ><i class="ph-instagram-logo" alt="instagram"></i
         ></a>
       </div>
@@ -65,7 +147,7 @@
           some of those things. this is my corner of the internet.
           <strong>welcome :)</strong>
         </p>
-        <a href="#contact" class="btn">get in touch</a>
+        <a id="home-contact" href="#contact" class="btn">get in touch</a>
       </div>
     </section>
 
@@ -91,7 +173,7 @@
             i am a software developer based out of bengaluru, india. i try to
             build delightful experiences on the web and mobile with my craft.
             today, i am working as a developer at
-            <a href="https://jupiter.money/" target="_blank"
+            <a id="about-jupiter-link" href="https://jupiter.money/" target="_blank"
               ><strong>jupiter</strong></a
             >
             -- one of the leading neobanks in the country. i am building for our
@@ -107,6 +189,7 @@
             </div>
           </div>
           <a
+            id="about-cv-download-clicked"
             href="https://drive.google.com/file/d/1PAflSM4BbIAgWupyXEgoiixmvHGMU0KS/view?usp=sharing"
             target="_blank"
             class="btn"
@@ -129,13 +212,13 @@
               <h3>SDE-I</h3>
               <h4>
                 <i class="ph-buildings"></i>
-                <a href="https://jupiter.money/" target="_blank"
+                <a id="experience-jupiter-link" href="https://jupiter.money/" target="_blank"
                   >Jupiter Money</a
                 >
               </h4>
               <span><i class="ph-clock"></i> Jul 2022 - Present</span>
               <p>
-                working in customer success enginnering vertical to build
+                working in customer success engineering vertical to build
                 product solutions to a user's pain points in their journey on
                 the platform. developed products by collaborating with the
                 product team, leading releases for the vertical on multiple
@@ -150,7 +233,7 @@
               <h3>Software Engineer</h3>
               <h4>
                 <i class="ph-buildings"></i
-                ><a href="https://www.geekyants.com/" target="_blank"
+                ><a id="experience-geekyants-link" href="https://www.geekyants.com/" target="_blank"
                   >GeekyAnts India</a
                 >
               </h4>
@@ -169,7 +252,7 @@
               <h3>Software Engineering Intern</h3>
               <h4>
                 <i class="ph-buildings"></i
-                ><a href="https://litmusblox.io/" target="_blank">Litmusblox</a>
+                ><a id="experience-litmusblox-link" href="https://litmusblox.io/" target="_blank">Litmusblox</a>
               </h4>
               <span><i class="ph-clock"></i>Jul 2020 - Jun 2021</span>
               <p>
@@ -201,6 +284,7 @@
             every other site to keep tabs on the market.
           </p>
           <a
+            id="work-cryptobase-link"
             href="https://crypto-base-landing-page.vercel.app/"
             target="_blank"
             class="btn"
@@ -216,6 +300,7 @@
             categories, with some cool charts.
           </p>
           <a
+            id="work-newyorker-link"
             href="https://thenewyorker.netlify.app/"
             target="_blank"
             class="btn"
@@ -231,6 +316,7 @@
             favourite stuff for later or buy straight from the store.
           </p>
           <a
+            id="work-shopify-link"
             href="https://github.com/niiischall/Shopify"
             target="_blank"
             class="btn"
@@ -240,6 +326,7 @@
       </div>
     </section>
 
+    <!-- Writings -->
     <section class="writings" id="writings">
       <div class="heading">
         <h2>things i wrote recently</h2>
@@ -249,35 +336,8 @@
           <figure class="story-shape">
             <img
               class="story-image"
-              src="https://ik.imagekit.io/3dv5nkw89t3/writing-1_K2nF9uGC6o.png?ik-sdk-version=javascript-1.4.3&updatedAt=1672250138325"
-              alt="Article 1"
-            />
-          </figure>
-          <div class="story-text">
-            <h3 class="">building a chrome extension in 2021</h3>
-            <p>
-              "a huge part of what makes chrome such a widely-used product is
-              how expandable it is and chrome extensions have had a huge role to
-              play in this expansion. there's a chrome extension for anything
-              and everything in this world and what's great is that it's
-              remarkably easy to build one by yourself..."
-            </p>
-          </div>
-          <div class="story-link">
-            <a
-              href="https://techblog.geekyants.com/building-a-chrome-extension-in-2021"
-              target="_blank"
-              class="btn"
-              >read more</a
-            >
-          </div>
-        </div>
-        <div class="story">
-          <figure class="story-shape">
-            <img
-              class="story-image"
               src="https://ik.imagekit.io/3dv5nkw89t3/writing-2_xlBlYdZsXm.png?ik-sdk-version=javascript-1.4.3&updatedAt=1672250138379"
-              alt="Articlw 2"
+              alt="Article 1"
             />
           </figure>
           <div class="story-text">
@@ -295,6 +355,7 @@
           </div>
           <div class="story-link">
             <a
+              id="writings-nftcollection-link"
               href="https://web3.hashnode.com/build-and-deploy-an-nft-collection-minting-app-with-solidity-and-react"
               target="_blank"
               class="btn"
@@ -307,7 +368,7 @@
             <img
               class="story-image"
               src="https://ik.imagekit.io/3dv5nkw89t3/writing-3_OLSPPDvle.png?ik-sdk-version=javascript-1.4.3&updatedAt=1672250138987"
-              alt="Articlw 3"
+              alt="Article 2"
             />
           </figure>
           <div class="story-text">
@@ -324,7 +385,36 @@
           </div>
           <div class="story-link">
             <a
+              id="writings-blockchainapp-link"
               href="https://web3.hashnode.com/how-to-build-and-deploy-a-modern-web3-blockchain-app-tutorial"
+              target="_blank"
+              class="btn"
+              >read more</a
+            >
+          </div>
+        </div>
+        <div class="story">
+          <figure class="story-shape">
+            <img
+              class="story-image"
+              src="https://ik.imagekit.io/3dv5nkw89t3/writing-1_K2nF9uGC6o.png?ik-sdk-version=javascript-1.4.3&updatedAt=1672250138325"
+              alt="Article 3"
+            />
+          </figure>
+          <div class="story-text">
+            <h3>building a chrome extension in 2021</h3>
+            <p>
+              "a huge part of what makes chrome such a widely-used product is
+              how expandable it is and chrome extensions have had a huge role to
+              play in this expansion. there's a chrome extension for anything
+              and everything in this world and what's great is that it's
+              remarkably easy to build one by yourself..."
+            </p>
+          </div>
+          <div class="story-link">
+            <a
+              id="writings-chromeextension-link"
+              href="https://techblog.geekyants.com/building-a-chrome-extension-in-2021"
               target="_blank"
               class="btn"
               >read more</a
@@ -368,7 +458,9 @@
             <small></small>
           </div>
           <p id="submit-message">&nbsp;</p>
-          <button type="submit" class="btn">send message</button>
+          <button id="send-message-btn" type="submit" class="btn">
+            send message
+          </button>
         </form>
       </div>
     </section>
@@ -383,28 +475,5 @@
 
     <!-- Link To JS -->
     <script src="./script.js"></script>
-    <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
-
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      const firebaseConfig = {
-        apiKey: "AIzaSyBvoqrZFaMbBbM4Zz87dnm9ENKerbifmu4",
-        authDomain: "personal-website-f3769.firebaseapp.com",
-        projectId: "personal-website-f3769",
-        storageBucket: "personal-website-f3769.appspot.com",
-        messagingSenderId: "602477502886",
-        appId: "1:602477502886:web:b89fd29d860b2855992f67",
-        measurementId: "G-C4VM1KBWBF",
-      };
-
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const analytics = getAnalytics(app);
-    </script>
   </body>
 </html>

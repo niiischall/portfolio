@@ -704,6 +704,9 @@ span {
   }
 }
 @media (max-width: 820px) {
+  .work {
+    padding: 100px 0px;
+  }
   .story {
     width: 100%;
     display: flex;
