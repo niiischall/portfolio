@@ -34,7 +34,7 @@ mixpanel.track_links("#linkedin-logo", "logo-linkedin-clicked", {
 mixpanel.track_links("#twitter-logo", "logo-twitter-clicked", {
   "referrer": document.referrer
 });
-mixpanel.track_links("#instagram-logo", "logo-instagram-clicked", {
+mixpanel.track_links("#hashnode-logo", "logo-hashnode-clicked", {
   "referrer": document.referrer
 });
 mixpanel.track_links("#home-contact", "home-contact-clicked", {
