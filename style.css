@@ -513,6 +513,7 @@ span {
 
 .story {
   width: 90%;
+  max-width: 950px;
   margin: 0 auto;
   margin-bottom: 4rem;
   padding: 3rem;
