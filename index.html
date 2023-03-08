@@ -13,7 +13,7 @@
       content="nischal nikit, personal website, portfolio"
     />
     <meta name="theme-color" content="#ba265c" />
-    <title>nischal nikit's website</title>
+    <title>hey! i am nischal! 👋</title>
 
     <!-- Link To CSS -->
     <link rel="stylesheet" href="./style.css" />
@@ -109,7 +109,7 @@
 
       // Enabling the debug mode flag is useful during implementation,
       // but it's recommended you remove it for production
-      mixpanel.init("a7a7ed154bd3033a63f703ad5570cad3", { debug: true });
+      mixpanel.init("a7a7ed154bd3033a63f703ad5570cad3", { debug: false });
       mixpanel.track("Sign up");
     </script>
   </head>
@@ -120,8 +120,8 @@
       <div class="bx bx-menu" id="menu-icon"></div>
       <ul class="navbar">
         <li><a id="nav-about" href="#about">about</a></li>
-        <li><a id="nav-exprience" href="#experience">experience</a></li>
         <li><a id="nav-work" href="#work">work</a></li>
+        <li><a id="nav-experiments" href="#experiments">experiments</a></li>
         <li><a id="nav-writings" href="#writings">writings</a></li>
         <li><a id="nav-contact" href="#contact">contact</a></li>
         <div class="bx bx-moon" id="darkmode"></div>
@@ -188,17 +188,6 @@
         <h2>about me</h2>
       </div>
       <div class="about-container container-spacing">
-        <div class="about-img">
-          <iframe
-            height="360"
-            width="75%"
-            frameborder="0"
-            cellspacing="0"
-            src="https://www.youtube.com/embed/GR4ZDMdKy2Y"
-            title="Building Your First Web3 App-Nischal Nikit"
-          >
-          </iframe>
-        </div>
         <div class="about-text">
           <p>
             i am a software developer based out of bengaluru, india. i try to
@@ -211,7 +200,7 @@
               ><strong>jupiter</strong></a
             >
             -- one of the leading neobanks in the country. i am building for our
-            mobile apps and internal platforms.
+            mobile app and internal platforms.
           </p>
           <div class="information">
             <div class="info-box">
@@ -222,21 +211,23 @@
               <p>mailfornischal@gmail.com</p>
             </div>
           </div>
-          <a
-            id="about-cv-download-clicked"
-            href="https://drive.google.com/file/d/1PAflSM4BbIAgWupyXEgoiixmvHGMU0KS/view?usp=sharing"
-            target="_blank"
-            class="btn"
-            >Download Cv</a
-          >
+          <div class="cv">
+            <a
+              id="about-cv-download-clicked"
+              href="https://drive.google.com/file/d/1PAflSM4BbIAgWupyXEgoiixmvHGMU0KS/view?usp=sharing"
+              target="_blank"
+              class="btn"
+              >Download Cv</a
+            >
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Experience -->
-    <section class="timeline" id="experience">
+    <!-- Work -->
+    <section class="timeline" id="work">
       <div class="heading">
-        <h2>experience</h2>
+        <h2>work experience</h2>
       </div>
       <div class="timeline-container container-spacing">
         <div class="timeline-box">
@@ -315,9 +306,9 @@
     </section>
 
     <!-- Work -->
-    <section class="work" id="work">
+    <section class="work" id="experiments">
       <div class="heading">
-        <h2>some of my work</h2>
+        <h2>some of my experiments</h2>
       </div>
       <div class="work-container container-spacing">
         <div class="feature-box">
@@ -386,21 +377,12 @@
             />
           </figure>
           <div class="story-text">
-            <h3>Inside WebSockets: Building a Chat Application.</h3>
+            <h2>Inside WebSockets: Building a Chat Application.</h2>
             <p>
               "A deep dive into how a network protocol makes it possible for
               real-time communication to happen on the internet and leveraging
               it through a mini-app."
             </p>
-          </div>
-          <div class="story-link">
-            <a
-              id="writings-nftcollection-link"
-              href="https://blog.nischalnikit.com/inside-websockets-building-a-chat-application"
-              target="_blank"
-              class="btn"
-              >read more</a
-            >
           </div>
         </div>
         <div class="story">
@@ -412,25 +394,16 @@
             />
           </figure>
           <div class="story-text">
-            <h3>
+            <h2>
               build and deploy a fun, modern web3 blockchain app - step by step
               tutorial
-            </h3>
+            </h2>
             <p>
               "in this web3 tutorial, we'll be building a fully-functional
               blockchain, web3 app. We'll be starting with the basics of
               building a blockchain app and at the end, we'll get our web3 app
               live for everyone to use..."
             </p>
-          </div>
-          <div class="story-link">
-            <a
-              id="writings-blockchainapp-link"
-              href="https://web3.hashnode.com/how-to-build-and-deploy-a-modern-web3-blockchain-app-tutorial"
-              target="_blank"
-              class="btn"
-              >read more</a
-            >
           </div>
         </div>
         <div class="story">
@@ -442,7 +415,7 @@
             />
           </figure>
           <div class="story-text">
-            <h3>building a chrome extension in 2021</h3>
+            <h2>building a chrome extension in 2021</h2>
             <p>
               "a huge part of what makes chrome such a widely-used product is
               how expandable it is and chrome extensions have had a huge role to
@@ -450,15 +423,6 @@
               and everything in this world and what's great is that it's
               remarkably easy to build one by yourself..."
             </p>
-          </div>
-          <div class="story-link">
-            <a
-              id="writings-chromeextension-link"
-              href="https://techblog.geekyants.com/building-a-chrome-extension-in-2021"
-              target="_blank"
-              class="btn"
-              >read more</a
-            >
           </div>
         </div>
       </div>
@@ -470,38 +434,7 @@
         <h2>get in touch with me</h2>
       </div>
       <div class="contact-container container-spacing">
-        <form
-          action="index.html"
-          method="POST"
-          id="contact-form"
-          class="contact-form"
-        >
-          <div>
-            <input type="text" id="name" name="name" placeholder="your name" />
-            <small></small>
-          </div>
-          <div>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              placeholder="your email"
-            />
-            <small></small>
-          </div>
-          <div>
-            <textarea
-              name="message"
-              id="message"
-              placeholder="your message"
-            ></textarea>
-            <small></small>
-          </div>
-          <p id="submit-message">&nbsp;</p>
-          <button id="send-message-btn" type="submit" class="btn">
-            send message
-          </button>
-        </form>
+        <h3>If you want to work together or just say hi, my DMs are open.</h3>
       </div>
     </section>
 
