@@ -24,7 +24,7 @@
   --p-font: 0.941rem;
 }
 section {
-  padding: 100px 10%;
+  padding: 50px 10%;
   background-color: var(--bg-color);
 }
 body.active {
@@ -132,6 +132,7 @@ header {
   grid-template-columns: 0.2fr 1fr 1fr;
   align-items: center;
   gap: 1rem;
+  padding-top: 100px;
 }
 .home-img {
   order: 3;
@@ -509,6 +510,25 @@ span {
   font-size: var(--p-font);
   border-radius: 2.5px;
   border: 1px solid var(--text-color);
+  cursor: pointer;
+  position: relative;
+}
+.story:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2.5px;
+  bottom: -5px;
+  left: 0px;
+  transform: scaleX(0);
+  background: var(--main-color);
+  transform-origin: bottom right;
+  transition: transform 0.5s ease-out;
+}
+
+.story:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 .story-shape {
@@ -555,37 +575,11 @@ span {
 
 .contact-container {
   width: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+  text-align: center;
   overflow: hidden;
 }
-
-.contact-card {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  border-radius: 10px;
-  cursor: pointer;
-  background-color: var(--bg-color);
-
-  transition: all 0.3s ease-in-out;
-}
-
-.contact-card img {
-  width: 40px;
-  height: 40px;
-  margin-right: 0.7rem;
-}
-
-.contact-card a {
-  text-decoration: none;
-  font-weight: 600;
-  color: var(--text-color);
+.contact-container h3 {
+  color: var(--main-color);
 }
 
 /*************************************** Footer ************************************/
@@ -806,7 +800,7 @@ span {
     height: 30%;
   }
   .story {
-    width: 95%;
+    width: 85%;
     padding: 2rem 1rem;
   }
   .story-shape {

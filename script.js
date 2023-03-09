@@ -84,13 +84,9 @@ mixpanel.track_links("#work-shopify-link", "work-shopify-clicked", {
 });
 
 //Writings
-mixpanel.track_links(
-  "#writings-nftcollection-link",
-  "writings-nftCollection-clicked",
-  {
-    referrer: document.referrer,
-  }
-);
+mixpanel.track_links("#writings-websocket-link", "writings-websocket-clicked", {
+  referrer: document.referrer,
+});
 mixpanel.track_links(
   "#writings-blockchainapp-link",
   "writings-blockchainApp-clicked",
