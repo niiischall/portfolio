@@ -806,10 +806,13 @@ span {
     width: 85%;
     height: 30rem;
   }
+  .feature-box__text {
+    margin-bottom: 0px !important;
+  }
   .feature-box__icon--1,
   .feature-box__icon--2,
   .feature-box__icon--3 {
-    height: 30%;
+    height: 40%;
   }
   .story {
     width: 85%;
