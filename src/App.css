@@ -28,11 +28,7 @@ section {
   padding: 50px 10%;
   background-color: var(--bg-color);
 }
-body.active {
-  --text-color: #fff;
-  --bg-color: #0f0c27;
-}
-body {
+.container {
   background: var(--bg-color);
   color: var(--text-color);
 }
@@ -68,11 +64,6 @@ body {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-}
-.btn:active {
-  box-shadow: 0px 0px 0px 0px;
-  top: 5px;
-  left: 5px;
 }
 .btn:hover {
   color: var(--text-color);
@@ -118,10 +109,6 @@ header {
   cursor: pointer;
   z-index: 10001;
   display: none;
-}
-#darkmode {
-  font-size: 22px;
-  cursor: pointer;
 }
 
 /************************************* Home ***************************************/
@@ -604,6 +591,7 @@ span {
 }
 .footer-name {
   color: var(--main-color);
+  margin-left: 5px;
 }
 .footer h2 {
   font-size: 1.5rem;
@@ -720,18 +708,10 @@ span {
     transition: 0.2s ease;
     text-align: center;
   }
-  .navbar.active {
-    top: 100%;
-  }
   .navbar a {
     padding: 1.5rem;
     display: block;
     background: var(--bg-color);
-  }
-  #darkmode {
-    position: absolute;
-    top: 1.4rem;
-    right: 2rem;
   }
   .scroll-down {
     display: none;
