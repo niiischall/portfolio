@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.css";
 
-const App = () => {
+const App: React.FC<{}> = () => {
   return (
-    <div className="container">
+    <>
       {/*Header*/}
       <header>
         <a href="#" className="logo">
@@ -86,12 +86,12 @@ const App = () => {
         </div>
         <div className="home-text">
           <span>hey 👋, i&apos;m</span>
-          <h1>nischal nikit</h1>
+          <h1 className="font-sans">nischal nikit</h1>
           <p>
             i build things that live on the web. i also talk & write about
             <br className="home-text-break" />
             some of those things. this is my corner of the internet.
-            <span className="home-text-welcome">welcome :)</span>
+            <span className="home-text-welcome font-sans">welcome :)</span>
           </p>
           <a id="home-contact" href="#contact" className="btn">
             get in touch
@@ -101,7 +101,7 @@ const App = () => {
       {/* About */}
       <section className="about" id="about">
         <div className="heading">
-          <h2>about me</h2>
+          <h2 className="font-sans">about me</h2>
         </div>
         <div className="about-container container-spacing">
           <div className="about-text">
@@ -126,7 +126,7 @@ const App = () => {
                   src="https://ik.imagekit.io/3dv5nkw89t3/mail_oO3ONrK8w.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1672250138746"
                   alt="mail"
                 />
-                <p>mailfornischal@gmail.com</p>
+                <p className="font-sans">mailfornischal@gmail.com</p>
               </div>
             </div>
             <div className="cv">
@@ -146,14 +146,14 @@ const App = () => {
       {/*Work*/}
       <section className="timeline" id="work">
         <div className="heading">
-          <h2>work experience</h2>
+          <h2 className="font-sans">work experience</h2>
         </div>
         <div className="timeline-container container-spacing">
           <div className="timeline-box">
             <div className="timeline-block timeline-block-right">
               <div className="marker"></div>
               <div className="timeline-content">
-                <h3>SDE-I</h3>
+                <h3 className="font-sans">SDE-I</h3>
                 <h4>
                   <i className="ph-buildings"></i>
                   <a
@@ -181,7 +181,7 @@ const App = () => {
             <div className="timeline-block timeline-block-right">
               <div className="marker"></div>
               <div className="timeline-content">
-                <h3>Software Engineer</h3>
+                <h3 className="font-sans">Software Engineer</h3>
                 <h4>
                   <i className="ph-buildings"></i>
                   <a
@@ -208,7 +208,7 @@ const App = () => {
             <div className="timeline-block timeline-block-right">
               <div className="marker"></div>
               <div className="timeline-content">
-                <h3>Software Engineering Intern</h3>
+                <h3 className="font-sans">Software Engineering Intern</h3>
                 <h4>
                   <i className="ph-buildings"></i>
                   <a
@@ -239,12 +239,12 @@ const App = () => {
       {/*Experiments*/}
       <section className="work" id="experiments">
         <div className="heading">
-          <h2>some of my experiments</h2>
+          <h2 className="font-sans">some of my experiments</h2>
         </div>
         <div className="work-container container-spacing">
           <div className="feature-box">
             <div className="feature-box__icon--1"></div>
-            <h3 className="heading-tertiary">cryptobase</h3>
+            <h3 className="heading-tertiary font-sans">cryptobase</h3>
             <p className="feature-box__text">
               cryptobase is a chrome extension made for getting crypto trading
               easier as than it is with a single notification. No need to visit
@@ -262,7 +262,7 @@ const App = () => {
           </div>
           <div className="feature-box">
             <div className="feature-box__icon--2"></div>
-            <h3 className="heading-tertiary">new yorker</h3>
+            <h3 className="heading-tertiary font-sans">new yorker</h3>
             <p className="feature-box__text">
               new yorker is a web application developed with new york times
               behind the scenes to search through its content, see top stories,
@@ -280,7 +280,7 @@ const App = () => {
           </div>
           <div className="feature-box">
             <div className="feature-box__icon--3"></div>
-            <h3 className="heading-tertiary">shopify</h3>
+            <h3 className="heading-tertiary font-sans">shopify</h3>
             <p className="feature-box__text">
               shopify is an e-commerce mobile app. built with react native at
               its core, you can make up your profile, shop through categories,
@@ -298,11 +298,10 @@ const App = () => {
           </div>
         </div>
       </section>
-
       {/*Writings*/}
       <section className="writings" id="writings">
         <div className="heading">
-          <h2>things i wrote recently</h2>
+          <h2 className="font-sans">things i wrote recently</h2>
         </div>
         <div className="writings-container container-spacing">
           <a
@@ -320,7 +319,9 @@ const App = () => {
               />
             </figure>
             <div className="story-text">
-              <h2>Inside WebSockets: Building a Chat Application.</h2>
+              <h2 className="font-sans">
+                Inside WebSockets: Building a Chat Application.
+              </h2>
               <p>
                 &quot;A deep dive into how a network protocol makes it possible
                 for real-time communication to happen on the internet and
@@ -343,7 +344,7 @@ const App = () => {
               />
             </figure>
             <div className="story-text">
-              <h2>
+              <h2 className="font-sans">
                 build and deploy a fun, modern web3 blockchain app - step by
                 step tutorial
               </h2>
@@ -370,7 +371,7 @@ const App = () => {
               />
             </figure>
             <div className="story-text">
-              <h2>building a chrome extension in 2021</h2>
+              <h2 className="font-sans">building a chrome extension in 2021</h2>
               <p>
                 &quot;a huge part of what makes chrome such a widely-used
                 product is how expandable it is and chrome extensions have had a
@@ -383,11 +384,10 @@ const App = () => {
           </a>
         </div>
       </section>
-
       {/*Contact*/}
       <section className="contact" id="contact">
         <div className="heading">
-          <h2>get in touch with me</h2>
+          <h2 className="font-sans">get in touch with me</h2>
         </div>
         <div className="contact-container container-spacing">
           <p>
@@ -395,7 +395,6 @@ const App = () => {
           </p>
         </div>
       </section>
-
       {/*Footer*/}
       <footer className="footer">
         <p>
@@ -403,7 +402,7 @@ const App = () => {
           <span className="footer-name">nischal nikit</span>
         </p>
       </footer>
-    </div>
+    </>
   );
 };
 

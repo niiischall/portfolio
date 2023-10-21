@@ -1,7 +1,3 @@
-/******************* Google Fonts **********************/
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Spectral:wght@400;500&display=swap");
-
 /******************* Global Selectors *********************/
 * {
   margin: 0;
@@ -27,10 +23,6 @@
 section {
   padding: 50px 10%;
   background-color: var(--bg-color);
-}
-.container {
-  background: var(--bg-color);
-  color: var(--text-color);
 }
 *::selection {
   color: var(--bg-color);
@@ -99,7 +91,7 @@ header {
   font-size: 1rem;
   padding: 10px 20px;
   color: var(--text-color);
-  font-weight: 500;
+  font-weight: 600;
 }
 .navbar a:hover {
   color: var(--hover);
@@ -130,7 +122,7 @@ header {
 }
 .home-text span {
   font-size: var(--medium-font);
-  font-weight: 500;
+  font-weight: 600;
 }
 .home-text h1 {
   font-size: var(--big-font);
@@ -146,8 +138,7 @@ header {
 }
 .home-text .home-text-welcome {
   font-size: var(--p-font);
-  font-weight: 500;
-  font-family: "Spectral", sans-serif;
+  margin-left: 0.2rem;
 }
 .social {
   display: flex;
@@ -203,8 +194,6 @@ header {
   font-size: 50px;
 }
 .information .info-box p {
-  font-weight: 500;
-  font-family: "Spectral", sans-serif;
   margin-left: 0.5rem;
 }
 .information .info-box img {
@@ -241,7 +230,7 @@ header {
 .bars-box h3,
 span {
   font-size: 1.1rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 .light-bar {
   position: absolute;
@@ -352,7 +341,6 @@ span {
   margin-top: 5px;
   margin-bottom: 5px;
   font-size: var(--medium-font);
-  font-family: "Spectral", sans-serif;
   font-weight: 400;
   color: var(--text-color);
 }
@@ -360,7 +348,7 @@ span {
 .timeline-content h4 {
   margin-top: 5px;
   font-size: var(--p-font);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--main-color);
   display: flex;
   align-items: center;
@@ -459,11 +447,10 @@ span {
 }
 .heading-tertiary {
   color: #ba265c;
-  font-weight: 500;
+  font-weight: 600;
   margin: 0px 1rem;
   margin-bottom: 1.5rem !important;
   font-size: 1.5rem;
-  font-family: "Spectral", sans-serif;
 }
 .feature-box__text {
   font-weight: 400;
@@ -551,9 +538,8 @@ span {
 
 .story-text h2 {
   color: var(--main-color);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1.5rem;
-  font-family: "Spectral", sans-serif;
   margin-bottom: 1.5rem;
 }
 
@@ -822,7 +808,7 @@ span {
   }
   .home-text h2 {
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 6x00;
   }
   .information .info-box span {
     font-size: 1rem;
