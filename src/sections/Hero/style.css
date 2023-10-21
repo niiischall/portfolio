@@ -1,0 +1,48 @@
+.home {
+  position: relative;
+  width: 100%;
+  min-height: 75vh;
+  display: grid;
+  grid-template-columns: 0.2fr 1fr 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 100px;
+}
+.home-img {
+  order: 3;
+}
+.home-img img {
+  width: 50%;
+}
+.home-text span {
+  font-size: var(--medium-font);
+  font-weight: 600;
+}
+.home-text h1 {
+  font-size: var(--big-font);
+}
+.home-text h2 {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+.home-text p {
+  font-size: var(--p-font);
+  font-weight: 400;
+  margin: 0.7rem 0 1rem;
+}
+.home-text .home-text-welcome {
+  font-size: var(--p-font);
+  margin-left: 0.2rem;
+}
+.social {
+  display: flex;
+  flex-direction: column;
+}
+.social a {
+  margin-bottom: 1rem;
+  font-size: 32px;
+  color: var(--text-color);
+}
+.social a:hover {
+  color: var(--hover);
+}

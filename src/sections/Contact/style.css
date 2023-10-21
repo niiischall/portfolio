@@ -1,0 +1,17 @@
+.contact {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-container {
+  width: 80%;
+  text-align: center;
+  overflow: hidden;
+}
+.contact-container p {
+  color: var(--text-color);
+  font-size: var(--p-font);
+}
