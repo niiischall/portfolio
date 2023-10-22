@@ -1,18 +1,20 @@
-import React from "react";
-import "./App.css";
+import React from 'react';
+import './App.css';
 
-import Navigation from "./sections/Navigation";
-import Hero from "./sections/Hero";
-import About from "./sections/About";
-import Work from "./sections/Work";
-import Experiments from "./sections/Experiments";
-import Writings from "./sections/Writings";
-import Contact from "./sections/Contact";
-import Footer from "./sections/Footer";
+import Navigation from './sections/Navigation';
+import Hero from './sections/Hero';
+import About from './sections/About';
+import Work from './sections/Work';
+import Experiments from './sections/Experiments';
+import Writings from './sections/Writings';
+import Contact from './sections/Contact';
+import Footer from './sections/Footer';
 
-const App: React.FC<{}> = () => {
+import Layout from './components/shared/Layout';
+
+const App: React.FC = () => {
   return (
-    <div>
+    <Layout>
       <Navigation />
       <Hero />
       <About />
@@ -21,7 +23,7 @@ const App: React.FC<{}> = () => {
       <Writings />
       <Contact />
       <Footer />
-    </div>
+    </Layout>
   );
 };
 
