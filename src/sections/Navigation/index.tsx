@@ -1,11 +1,13 @@
-import React from "react";
-import "./style.css";
+import React from 'react';
+import './style.css';
 
-const Navigation: React.FC<{}> = ({}) => {
+export interface NavigationProps {}
+
+const Navigation: React.FC<NavigationProps> = () => {
   return (
     <header>
       <nav>
-        <a href="#" className="logo">
+        <a href="/" className="logo">
           nischal
         </a>
         <div className="bx bx-menu" id="menu-icon"></div>

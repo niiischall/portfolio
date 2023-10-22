@@ -1,7 +1,9 @@
-import React from "react";
-import "./style.css";
+import React from 'react';
+import './style.css';
 
-const Writings: React.FC<{}> = () => {
+export interface WritingsProps {}
+
+const Writings: React.FC<WritingsProps> = () => {
   return (
     <section className="writings" id="writings">
       <div className="heading">
@@ -23,13 +25,10 @@ const Writings: React.FC<{}> = () => {
             />
           </figure>
           <div className="story-text">
-            <h2 className="font-sans">
-              Inside WebSockets: Building a Chat Application.
-            </h2>
+            <h2 className="font-sans">Inside WebSockets: Building a Chat Application.</h2>
             <p>
-              &quot;A deep dive into how a network protocol makes it possible
-              for real-time communication to happen on the internet and
-              leveraging it through a mini-app.&quot;
+              &quot;A deep dive into how a network protocol makes it possible for real-time communication to happen on
+              the internet and leveraging it through a mini-app.&quot;
             </p>
           </div>
         </a>
@@ -48,15 +47,11 @@ const Writings: React.FC<{}> = () => {
             />
           </figure>
           <div className="story-text">
-            <h2 className="font-sans">
-              build and deploy a fun, modern web3 blockchain app - step by step
-              tutorial
-            </h2>
+            <h2 className="font-sans">build and deploy a fun, modern web3 blockchain app - step by step tutorial</h2>
             <p>
-              &quot;in this web3 tutorial, we&apos;ll be building a
-              fully-functional blockchain, web3 app. We&apos;ll be starting with
-              the basics of building a blockchain app and at the end, we&apos;ll
-              get our web3 app live for everyone to use...&quot;
+              &quot;in this web3 tutorial, we&apos;ll be building a fully-functional blockchain, web3 app. We&apos;ll be
+              starting with the basics of building a blockchain app and at the end, we&apos;ll get our web3 app live for
+              everyone to use...&quot;
             </p>
           </div>
         </a>
@@ -77,11 +72,10 @@ const Writings: React.FC<{}> = () => {
           <div className="story-text">
             <h2 className="font-sans">building a chrome extension in 2021</h2>
             <p>
-              &quot;a huge part of what makes chrome such a widely-used product
-              is how expandable it is and chrome extensions have had a huge role
-              to play in this expansion. there&apos;s a chrome extension for
-              anything and everything in this world and what&apos;s great is
-              that it&apos;s remarkably easy to build one by yourself...&quot;
+              &quot;a huge part of what makes chrome such a widely-used product is how expandable it is and chrome
+              extensions have had a huge role to play in this expansion. there&apos;s a chrome extension for anything
+              and everything in this world and what&apos;s great is that it&apos;s remarkably easy to build one by
+              yourself...&quot;
             </p>
           </div>
         </a>

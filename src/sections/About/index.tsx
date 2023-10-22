@@ -1,7 +1,9 @@
-import React from "react";
-import "./style.css";
+import React from 'react';
+import './style.css';
 
-const About: React.FC<{}> = ({}) => {
+export interface AboutProps {}
+
+const About: React.FC<AboutProps> = () => {
   return (
     <section className="about" id="about">
       <div className="heading">
@@ -10,19 +12,12 @@ const About: React.FC<{}> = ({}) => {
       <div className="about-container container-spacing">
         <div className="about-text">
           <p>
-            i am a software developer based out of bengaluru, india. i try to
-            build delightful experiences on the web and mobile with my craft.
-            today, i am working as a developer at
-            <a
-              id="about-jupiter-link"
-              href="https://jupiter.money/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            i am a software developer based out of bengaluru, india. i try to build delightful experiences on the web
+            and mobile with my craft. today, i am working as a developer at
+            <a id="about-jupiter-link" href="https://jupiter.money/" target="_blank" rel="noopener noreferrer">
               <strong>jupiter</strong>
             </a>
-            -- one of the leading neobanks in the country. i am buildi ng for
-            our mobile app and internal platforms.
+            -- one of the leading neobanks in the country. i am buildi ng for our mobile app and internal platforms.
           </p>
           <div className="information">
             <div className="info-box">

@@ -20,7 +20,7 @@
 }
 
 .timeline-box:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 2%;

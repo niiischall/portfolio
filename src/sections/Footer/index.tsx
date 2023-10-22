@@ -1,7 +1,9 @@
-import React from "react";
-import "./style.css";
+import React from 'react';
+import './style.css';
 
-const Footer: React.FC<{}> = () => {
+export interface FooterProps {}
+
+const Footer: React.FC<FooterProps> = () => {
   return (
     <footer className="footer">
       <p>

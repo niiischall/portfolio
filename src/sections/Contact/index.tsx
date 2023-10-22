@@ -1,7 +1,9 @@
-import React from "react";
-import "./style.css";
+import React from 'react';
+import './style.css';
 
-const Contact: React.FC<{}> = () => {
+export interface ContactProps {}
+
+const Contact: React.FC<ContactProps> = () => {
   return (
     <section className="contact" id="contact">
       <div className="heading">

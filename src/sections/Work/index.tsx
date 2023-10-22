@@ -1,7 +1,9 @@
-import React from "react";
-import "./style.css";
+import React from 'react';
+import './style.css';
 
-const Work: React.FC<{}> = () => {
+export interface WorkProps {}
+
+const Work: React.FC<WorkProps> = () => {
   return (
     <section className="timeline" id="work">
       <div className="heading">
@@ -15,12 +17,7 @@ const Work: React.FC<{}> = () => {
               <h3 className="font-sans">SDE-I</h3>
               <h4>
                 <i className="ph-buildings"></i>
-                <a
-                  id="experience-jupiter-link"
-                  href="https://jupiter.money/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a id="experience-jupiter-link" href="https://jupiter.money/" target="_blank" rel="noopener noreferrer">
                   Jupiter Money
                 </a>
               </h4>
@@ -28,11 +25,9 @@ const Work: React.FC<{}> = () => {
                 <i className="ph-clock"></i> Jul 2022 - Present
               </span>
               <p>
-                working in customer success engineering vertical to build
-                product solutions to a user&apos;s pain points in their journey
-                on the platform. developed products by collaborating with the
-                product team, leading releases for the vertical on multiple
-                sprint cycles while being a major part of the development of
+                working in customer success engineering vertical to build product solutions to a user&apos;s pain points
+                in their journey on the platform. developed products by collaborating with the product team, leading
+                releases for the vertical on multiple sprint cycles while being a major part of the development of
                 internal platform tooling called as oneview.
               </p>
             </div>
@@ -56,10 +51,9 @@ const Work: React.FC<{}> = () => {
                 <i className="ph-clock"></i> Jul 2021 - Jun 2022
               </span>
               <p>
-                worked with an offshore client based in north america in leading
-                development for their existing product and new initiatives.
-                developed the chrome extension to supplement the exisiting web
-                app and also worked in developing a similar app on blockchain.
+                worked with an offshore client based in north america in leading development for their existing product
+                and new initiatives. developed the chrome extension to supplement the exisiting web app and also worked
+                in developing a similar app on blockchain.
               </p>
             </div>
           </div>
@@ -82,11 +76,9 @@ const Work: React.FC<{}> = () => {
                 <i className="ph-clock"></i>Jul 2020 - Jun 2021
               </span>
               <p>
-                worked collaboratively and closely with a team of fellow
-                developers and designers to solve challenges for multiple
-                clients related to onboarding on the platform. majorly involved
-                in front end for a new candidate screening product using
-                react.js, redux and carried out improvement of technical debt in
+                worked collaboratively and closely with a team of fellow developers and designers to solve challenges
+                for multiple clients related to onboarding on the platform. majorly involved in front end for a new
+                candidate screening product using react.js, redux and carried out improvement of technical debt in
                 frontend platform.
               </p>
             </div>

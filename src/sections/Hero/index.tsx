@@ -1,7 +1,9 @@
-import React from "react";
-import "./style.css";
+import React from 'react';
+import './style.css';
 
-const Hero: React.FC<{}> = ({}) => {
+export interface HeroProps {}
+
+const Hero: React.FC<HeroProps> = () => {
   return (
     <section className="home" id="home">
       <div className="social">
