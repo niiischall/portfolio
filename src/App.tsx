@@ -1,4 +1,6 @@
 import React from 'react';
+import '@radix-ui/themes/styles.css';
+import { Theme } from '@radix-ui/themes';
 import './App.css';
 
 import Navigation from './sections/Navigation';
@@ -14,16 +16,18 @@ import Layout from './components/shared/Layout';
 
 const App: React.FC = () => {
   return (
-    <Layout>
-      <Navigation />
-      <Hero />
-      <About />
-      <Work />
-      <Experiments />
-      <Writings />
-      <Contact />
-      <Footer />
-    </Layout>
+    <Theme>
+      <Layout>
+        <Navigation />
+        <Hero />
+        <About />
+        <Work />
+        <Experiments />
+        <Writings />
+        <Contact />
+        <Footer />
+      </Layout>
+    </Theme>
   );
 };
 
