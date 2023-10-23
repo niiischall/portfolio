@@ -113,6 +113,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .timeline-container {
+    grid-template-columns: 1fr;
+  }
   .timeline-box:before {
     left: 8px;
     width: 2px;
@@ -124,9 +127,12 @@
   .timeline-block-right {
     float: none;
   }
-
   .timeline-block-left {
     float: none;
     direction: ltr;
+  }
+  .timeline-box {
+    order: -1;
+    margin: 0px auto;
   }
 }
