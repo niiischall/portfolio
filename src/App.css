@@ -72,9 +72,6 @@ section {
 
 /******************************* Responsiveness *********************************/
 @media (max-width: 991px) {
-  header {
-    padding: 18px 4%;
-  }
   section {
     padding: 50px 4%;
   }
@@ -89,9 +86,6 @@ section {
   :root {
     --big-font: 2.4rem;
     --medium-font: 1.2rem;
-  }
-  header {
-    padding: 11px 4%;
   }
   .btn {
     padding: 0.25em 0.75em;
