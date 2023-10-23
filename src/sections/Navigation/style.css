@@ -20,13 +20,18 @@ nav {
 .navbar {
   display: flex;
 }
-.navbar a {
+.sidebar {
+  display: none;
+}
+.navbar a,
+.sidebar a {
   font-size: 1rem;
   padding: 10px 20px;
   color: var(--text-color);
   font-weight: 600;
 }
-.navbar a:hover {
+.navbar a:hover,
+.sidebar a:hover {
   color: var(--hover);
 }
 #menu-icon {
@@ -41,6 +46,9 @@ nav {
     color: var(--text-color);
   }
   .navbar {
+    display: none;
+  }
+  .sidebar {
     position: absolute;
     top: 50px;
     left: 0;
@@ -51,7 +59,7 @@ nav {
     transition: 0.2s ease;
     text-align: center;
   }
-  .navbar a {
+  .sidebar a {
     padding: 1.5rem;
     display: block;
     background: var(--bg-color);
