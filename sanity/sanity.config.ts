@@ -7,8 +7,8 @@ export default defineConfig({
   name: 'default',
   title: 'sanity',
 
-  projectId: '',
-  dataset: '',
+  projectId: 'd3ylbkps',
+  dataset: 'production',
 
   plugins: [deskTool(), visionTool()],
 

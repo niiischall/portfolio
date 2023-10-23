@@ -1,19 +1,17 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'category',
-  title: 'Category',
+  name: 'writings',
+  title: 'Writings',
   type: 'document',
+  liveEdit: true,
   fields: [
     defineField({
       name: 'title',
+      description: 'This field is the title of your writings section.',
       title: 'Title',
       type: 'string',
-    }),
-    defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'text',
+      validation: (rule) => rule.required(),
     }),
   ],
 })
