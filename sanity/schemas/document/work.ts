@@ -14,6 +14,25 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'heading',
+      description: 'The heading for navigation',
+      title: 'Heading',
+      type: 'object',
+      fields: [
+        defineField({
+          title: 'Title',
+          name: 'title',
+          type: 'string',
+        }),
+        defineField({
+          title: 'Link',
+          name: 'link',
+          type: 'url',
+        }),
+      ],
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'experiences',
       description: 'This field is for all your work experience',
       title: 'workExperiences',
