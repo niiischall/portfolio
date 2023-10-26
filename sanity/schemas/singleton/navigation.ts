@@ -13,6 +13,25 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'heading',
+      description: 'The heading for navigation',
+      title: 'Heading',
+      type: 'object',
+      fields: [
+        defineField({
+          title: 'Title',
+          name: 'title',
+          type: 'string',
+        }),
+        defineField({
+          title: 'Link',
+          name: 'link',
+          type: 'url',
+        }),
+      ],
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       type: 'array',
       name: 'navItems',
       title: 'Navigation Items list',

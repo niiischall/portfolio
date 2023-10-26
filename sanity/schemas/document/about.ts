@@ -13,6 +13,25 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'heading',
+      description: 'The heading for navigation',
+      title: 'Heading',
+      type: 'object',
+      fields: [
+        defineField({
+          title: 'Title',
+          name: 'title',
+          type: 'string',
+        }),
+        defineField({
+          title: 'Link',
+          name: 'link',
+          type: 'url',
+        }),
+      ],
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'overview',
       description: 'Used both for the <meta> description tag for SEO, and project subheader.',
       title: 'Overview',
@@ -56,12 +75,12 @@ export default defineType({
         {
           name: 'icon',
           type: 'url',
-          title: 'Icon URL',
+          title: 'Icon',
         },
         {
           name: 'contact',
           type: 'string',
-          title: 'Contact',
+          title: 'Info',
         },
       ],
     }),
