@@ -1,53 +1,55 @@
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export default defineType({
+  type: 'document',
   name: 'about',
   title: 'About',
-  type: 'document',
+  liveEdit: false,
   fields: [
     defineField({
-      name: 'title',
-      description: 'This field is the title of your about section.',
-      title: 'Title',
       type: 'string',
+      name: 'title',
+      title: 'Title',
+      description: 'This field is the title of your about section.',
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'heading',
-      description: 'The heading for navigation',
-      title: 'Heading',
       type: 'object',
+      name: 'heading',
+      title: 'Heading',
+      description: 'The heading for about section.',
       fields: [
         defineField({
-          title: 'Title',
-          name: 'title',
           type: 'string',
+          name: 'title',
+          title: 'Title',
         }),
         defineField({
-          title: 'Link',
-          name: 'link',
           type: 'url',
+          name: 'link',
+          title: 'URL',
         }),
       ],
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'overview',
-      description: 'Used both for the <meta> description tag for SEO, and project subheader.',
-      title: 'Overview',
       type: 'array',
+      name: 'overview',
+      title: 'Overview',
+      description: 'Used for overview in about section and associated link',
       of: [
         defineArrayMember({
+          type: 'block',
           marks: {
             annotations: [
               {
-                name: 'link',
                 type: 'object',
+                name: 'link',
                 title: 'Link',
                 fields: [
                   {
-                    name: 'href',
                     type: 'url',
+                    name: 'href',
                     title: 'Url',
                   },
                 ],
@@ -60,29 +62,33 @@ export default defineType({
               },
             ],
           },
-          styles: [],
-          type: 'block',
         }),
       ],
       validation: (rule) => rule.max(155).required(),
     }),
     defineField({
-      name: 'contact',
-      description: 'This field is the contact of your about section.',
-      title: 'Contact',
       type: 'object',
+      name: 'contact',
+      title: 'Contact',
+      description: 'This field is the contact of your about section.',
       fields: [
-        {
-          name: 'icon',
+        defineField({
           type: 'url',
+          name: 'icon',
           title: 'Icon',
-        },
-        {
-          name: 'contact',
+        }),
+        defineField({
           type: 'string',
-          title: 'Info',
-        },
+          name: 'text',
+          title: 'Text',
+        }),
+        defineField({
+          type: 'url',
+          name: 'href',
+          title: 'Url',
+        }),
       ],
+      validation: (rule) => rule.required(),
     }),
   ],
 })

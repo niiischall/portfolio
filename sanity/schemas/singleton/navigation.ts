@@ -1,56 +1,56 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
+  type: 'document',
   name: 'navigation',
   title: 'Navigation',
-  type: 'document',
   fields: [
     defineField({
-      name: 'title',
-      description: 'This field is the heading of the navigation.',
-      title: 'Title',
       type: 'string',
+      name: 'title',
+      title: 'Title',
+      description: 'This field is the heading of the navigation.',
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'heading',
-      description: 'The heading for navigation',
-      title: 'Heading',
       type: 'object',
+      name: 'heading',
+      title: 'Heading',
+      description: 'The heading for navigation',
       fields: [
         defineField({
-          title: 'Title',
-          name: 'title',
           type: 'string',
+          name: 'title',
+          title: 'Title',
         }),
         defineField({
-          title: 'Link',
-          name: 'link',
           type: 'url',
+          name: 'href',
+          title: 'URL',
         }),
       ],
       validation: (rule) => rule.required(),
     }),
     defineField({
       type: 'array',
-      name: 'navItems',
-      title: 'Navigation Items list',
+      name: 'collection',
+      title: 'Navigation Items List',
       description: 'Section links displayed on the navigation.',
       of: [
         defineField({
           type: 'object',
-          name: 'navLink',
+          name: 'item',
           title: 'Navigation Link',
           fields: [
             defineField({
-              title: 'Title',
-              name: 'title',
               type: 'string',
+              name: 'title',
+              title: 'Title',
             }),
             defineField({
-              title: 'Link',
-              name: 'link',
               type: 'url',
+              name: 'href',
+              title: 'URL',
             }),
           ],
         }),

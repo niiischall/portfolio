@@ -1,94 +1,107 @@
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export default defineType({
+  type: 'document',
   name: 'work',
   title: 'Work',
-  type: 'document',
   liveEdit: false,
   fields: [
     defineField({
-      name: 'title',
-      description: 'This field is the title of your work section.',
-      title: 'Title',
       type: 'string',
+      name: 'title',
+      title: 'Title',
+      description: 'This field is the title of your work section.',
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'heading',
-      description: 'The heading for navigation',
-      title: 'Heading',
       type: 'object',
+      name: 'heading',
+      title: 'Heading',
+      description: 'This field is the heading for work section',
       fields: [
         defineField({
-          title: 'Title',
-          name: 'title',
           type: 'string',
+          name: 'title',
+          title: 'Title',
         }),
         defineField({
-          title: 'Link',
-          name: 'link',
           type: 'url',
+          name: 'link',
+          title: 'Link',
         }),
       ],
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'experiences',
-      description: 'This field is for all your work experience',
-      title: 'workExperiences',
       type: 'array',
+      name: 'collection',
+      title: 'Work Experience',
+      description: 'This field is for your work experience',
       of: [
         defineArrayMember({
-          name: 'experience',
           type: 'object',
+          name: 'experience',
           title: 'Experience',
           fields: [
-            {
+            defineField({
+              type: 'string',
               name: 'title',
-              type: 'string',
               title: 'Title',
-            },
-            {
-              name: 'designation',
+              description: 'Used for title of experience.',
+            }),
+            defineField({
               type: 'string',
+              name: 'designation',
               title: 'Designation',
-            },
-            {
-              name: 'organization',
-              title: 'Organization',
+              description: 'Used for designation.',
+            }),
+            defineField({
               type: 'object',
+              name: 'org',
+              title: 'Organization',
               fields: [
                 defineField({
-                  name: 'name',
-                  title: 'Name',
-                  type: 'string',
-                }),
-                defineField({
+                  type: 'object',
                   name: 'link',
                   title: 'Link',
-                  type: 'object',
+                  description: 'Used for link of the organization.',
                   fields: [
-                    {
-                      name: 'href',
+                    defineField({
+                      type: 'string',
+                      name: 'name',
+                      title: 'Name',
+                    }),
+                    defineField({
                       type: 'url',
-                      title: 'url',
-                    },
+                      name: 'href',
+                      title: 'URL',
+                    }),
                   ],
                 }),
                 defineField({
-                  name: 'duration',
                   type: 'duration',
-                  title: 'Work Duration',
+                  name: 'duration',
+                  title: 'Duration',
+                  description: 'Used for duration of the experience.',
                 }),
                 defineField({
-                  name: 'description',
-                  description: 'Used for describing the project.',
-                  title: 'Description',
                   type: 'string',
+                  name: 'description',
+                  title: 'Description',
+                  description: 'Used for describing the experience.',
                   validation: (rule) => rule.max(1000).required(),
                 }),
               ],
-            },
+            }),
+            defineField({
+              type: 'image',
+              name: 'cover',
+              title: 'Image',
+              options: {
+                hotspot: true,
+              },
+              description: 'This image will be used as the cover image for the experience.',
+            }),
           ],
         }),
       ],

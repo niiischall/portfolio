@@ -19,7 +19,7 @@ export const schemaTypes = [
   work,
   experiments,
   talks,
-  contact,
   writings,
+  contact,
   footer,
 ]
