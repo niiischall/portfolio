@@ -1,0 +1,9 @@
+export const navigationQuery = ``
+export const heroQuery = ``
+export const aboutQuery = ``
+export const workQuery = ``
+export const experimentsQuery = ``
+export const talksQuery = ``
+export const writingsQuery = ``
+export const contactQuery = ``
+export const footerQuery = ``

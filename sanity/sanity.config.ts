@@ -2,13 +2,14 @@ import {defineConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
+import {dataset, projectId} from './lib/sanity.api'
 
 export default defineConfig({
   name: 'default',
   title: 'sanity',
 
-  projectId: 'd3ylbkps',
-  dataset: 'production',
+  projectId,
+  dataset,
 
   plugins: [deskTool(), visionTool()],
 
