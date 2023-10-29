@@ -1,6 +1,7 @@
 import React from 'react';
 import '@radix-ui/themes/styles.css';
 import { Theme } from '@radix-ui/themes';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import './App.css';
 
 import Hero from './sections/Hero';
@@ -12,18 +13,28 @@ import Contact from './sections/Contact';
 
 import Layout from './components/shared/Layout';
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      cacheTime: 1000 * 60 * 60 * 24, // 24 hours
+    },
+  },
+});
+
 const App: React.FC = () => {
   return (
-    <Theme>
-      <Layout>
-        <Hero />
-        <About />
-        <Work />
-        <Experiments />
-        <Writings />
-        <Contact />
-      </Layout>
-    </Theme>
+    <QueryClientProvider client={queryClient}>
+      <Theme>
+        <Layout>
+          <Hero />
+          <About />
+          <Work />
+          <Experiments />
+          <Writings />
+          <Contact />
+        </Layout>
+      </Theme>
+    </QueryClientProvider>
   );
 };
 

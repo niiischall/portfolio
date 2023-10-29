@@ -1,15 +1,26 @@
 import React, { useCallback, useState } from 'react';
+import { useQuery } from 'react-query';
+import sanityClient from '../../lib/sanity.client';
+import { navigationQuery } from '../../lib/sanity.queries';
 import './style.css';
 
 export interface NavigationProps {}
 
 const Navigation: React.FC<NavigationProps> = () => {
+  const { data } = useQuery('navigation', () =>
+    sanityClient
+      .fetch(navigationQuery)
+      .then((res) => res)
+      .catch((err) => console.log(err)),
+  );
+
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
 
   const handleSidebarToggle = useCallback(() => {
     setShowSidebar((showSidebar) => !showSidebar);
   }, []);
 
+  console.log('data: ', data);
   return (
     <header>
       <nav>
