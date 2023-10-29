@@ -1,9 +1,21 @@
 import React from 'react';
+import { useQuery } from 'react-query';
+import sanityClient from '../../lib/sanity.client';
+import { heroQuery } from '../../lib/sanity.queries';
+
 import './style.css';
 
 export interface HeroProps {}
 
 const Hero: React.FC<HeroProps> = () => {
+  const { data } = useQuery('hero', () =>
+    sanityClient
+      .fetch(heroQuery)
+      .then((res) => res)
+      .catch((err) => console.log(err)),
+  );
+
+  console.log('hero: ', data);
   return (
     <section className="home" id="home">
       <div className="social">

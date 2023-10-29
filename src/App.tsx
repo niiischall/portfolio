@@ -12,6 +12,7 @@ import Writings from './sections/Writings';
 import Contact from './sections/Contact';
 
 import Layout from './components/shared/Layout';
+import Talks from './sections/Talks';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,6 +32,7 @@ const App: React.FC = () => {
           <Work />
           <Experiments />
           <Writings />
+          <Talks />
           <Contact />
         </Layout>
       </Theme>

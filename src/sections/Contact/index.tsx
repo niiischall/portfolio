@@ -1,9 +1,21 @@
 import React from 'react';
+import { useQuery } from 'react-query';
+import sanityClient from '../../lib/sanity.client';
+import { contactQuery } from '../../lib/sanity.queries';
+
 import './style.css';
 
 export interface ContactProps {}
 
 const Contact: React.FC<ContactProps> = () => {
+  const { data } = useQuery('contact', () =>
+    sanityClient
+      .fetch(contactQuery)
+      .then((res) => res)
+      .catch((err) => console.log(err)),
+  );
+
+  console.log('contact: ', data);
   return (
     <section className="contact" id="contact">
       <div className="heading">

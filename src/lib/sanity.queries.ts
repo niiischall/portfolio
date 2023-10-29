@@ -5,7 +5,7 @@ export const navigationQuery = `*[_type == "navigation"][0]{
     title,
     href
   }
-}`
+}`;
 
 export const heroQuery = `*[_type == "hero"][0]{
   socials[]{
@@ -21,15 +21,15 @@ export const heroQuery = `*[_type == "hero"][0]{
   cover{
     asset
   }
-}`
+}`;
 
-export const aboutQuery = `*[_type == "about"]{
+export const aboutQuery = `*[_type == "about"][0]{
   heading,
   contact,
   overview
-}`
+}`;
 
-export const workQuery = `*[_type == "work"]{
+export const workQuery = `*[_type == "work"][0]{
   heading,
   collection[]{
     org{
@@ -42,7 +42,7 @@ export const workQuery = `*[_type == "work"]{
       description
     }
   }
-}`
+}`;
 
 export const experimentsQuery = `*[_type == "experiments"][0]{
   heading,
@@ -52,7 +52,7 @@ export const experimentsQuery = `*[_type == "experiments"][0]{
     heading,
     body
   }
-}`
+}`;
 
 export const talksQuery = `*[_type == "talks"][0]{
   heading,
@@ -62,7 +62,7 @@ export const talksQuery = `*[_type == "talks"][0]{
     heading,
     body
   }
-}`
+}`;
 
 export const writingsQuery = `*[_type == "writings"][0]{
   heading,
@@ -73,13 +73,13 @@ export const writingsQuery = `*[_type == "writings"][0]{
     body,
     link
   }
-}`
+}`;
 
 export const contactQuery = `*[_type == "contact"][0]{
   heading,
   text  
-}`
+}`;
 
 export const footerQuery = `*[_type == "footer"][0]{
   heading
-}`
+}`;

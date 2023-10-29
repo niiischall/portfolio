@@ -1,9 +1,21 @@
 import React from 'react';
+import { useQuery } from 'react-query';
+import sanityClient from '../../lib/sanity.client';
+import { workQuery } from '../../lib/sanity.queries';
+
 import './style.css';
 
 export interface WorkProps {}
 
 const Work: React.FC<WorkProps> = () => {
+  const { data } = useQuery('work', () =>
+    sanityClient
+      .fetch(workQuery)
+      .then((res) => res)
+      .catch((err) => console.log(err)),
+  );
+
+  console.log('work: ', data);
   return (
     <section className="timeline" id="work">
       <div className="heading">

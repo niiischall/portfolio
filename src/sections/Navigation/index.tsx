@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { useQuery } from 'react-query';
 import sanityClient from '../../lib/sanity.client';
 import { navigationQuery } from '../../lib/sanity.queries';
+
 import './style.css';
 
 export interface NavigationProps {}
@@ -20,7 +21,7 @@ const Navigation: React.FC<NavigationProps> = () => {
     setShowSidebar((showSidebar) => !showSidebar);
   }, []);
 
-  console.log('data: ', data);
+  console.log('navigation: ', data);
   return (
     <header>
       <nav>

@@ -1,9 +1,21 @@
 import React from 'react';
+import { useQuery } from 'react-query';
+import { writingsQuery } from '../../lib/sanity.queries';
+
 import './style.css';
+import sanityClient from '../../lib/sanity.client';
 
 export interface WritingsProps {}
 
 const Writings: React.FC<WritingsProps> = () => {
+  const { data } = useQuery('writings', () =>
+    sanityClient
+      .fetch(writingsQuery)
+      .then((res) => res)
+      .catch((err) => console.log(err)),
+  );
+
+  console.log('writings: ', data);
   return (
     <section className="writings" id="writings">
       <div className="heading">

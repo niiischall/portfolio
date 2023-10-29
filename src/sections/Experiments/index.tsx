@@ -1,9 +1,21 @@
 import React from 'react';
+import { useQuery } from 'react-query';
+import sanityClient from '../../lib/sanity.client';
+import { experimentsQuery } from '../../lib/sanity.queries';
+
 import './style.css';
 
 export interface ExperimentsProps {}
 
 const Experiments: React.FC<ExperimentsProps> = () => {
+  const { data } = useQuery('experiments', () =>
+    sanityClient
+      .fetch(experimentsQuery)
+      .then((res) => res)
+      .catch((err) => console.log(err)),
+  );
+
+  console.log('experiments: ', data);
   return (
     <section className="work" id="experiments">
       <div className="heading">
