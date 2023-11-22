@@ -14,6 +14,9 @@ const Navigation: React.FC<NavigationProps> = () => {
       .then((res) => res)
       .catch((err) => console.log(err)),
   );
+  const { heading, collection = [] } = data ?? {};
+  const { title = '', slug } = heading ?? {};
+  const { current: titleLink = '' } = slug ?? {};
 
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
 
@@ -21,68 +24,49 @@ const Navigation: React.FC<NavigationProps> = () => {
     setShowSidebar((showSidebar) => !showSidebar);
   }, []);
 
-  console.log('navigation: ', data);
   return (
     <header>
       <nav>
-        <a href="/" className="logo">
-          nischal
+        <a href={titleLink} className="logo">
+          {title}
         </a>
         <button className="bx bx-menu" id="menu-icon" onClick={handleSidebarToggle}></button>
         <ul className="navbar">
-          <li>
-            <a id="nav-about" href="#about">
-              about
-            </a>
-          </li>
-          <li>
-            <a id="nav-work" href="#work">
-              work
-            </a>
-          </li>
-          <li>
-            <a id="nav-experiments" href="#experiments">
-              experiments
-            </a>
-          </li>
-          <li>
-            <a id="nav-writings" href="#writings">
-              writings
-            </a>
-          </li>
-          <li>
-            <a id="nav-contact" href="#contact">
-              contact
-            </a>
-          </li>
+          {collection.map(
+            (navItem: {
+              _key: number;
+              title: string;
+              slug: {
+                _type: 'slug';
+                current: string;
+              };
+            }) => {
+              return (
+                <li key={navItem._key}>
+                  <a href={navItem?.slug.current}>{navItem.title}</a>
+                </li>
+              );
+            },
+          )}
         </ul>
         {showSidebar ? (
           <ul className="sidebar">
-            <li>
-              <a id="sidebar-about" href="#about">
-                about
-              </a>
-            </li>
-            <li>
-              <a id="sidebar-work" href="#work">
-                work
-              </a>
-            </li>
-            <li>
-              <a id="sidebar-experiments" href="#experiments">
-                experiments
-              </a>
-            </li>
-            <li>
-              <a id="sidebar-writings" href="#writings">
-                writings
-              </a>
-            </li>
-            <li>
-              <a id="sidebar-contact" href="#contact">
-                contact
-              </a>
-            </li>
+            {collection.map(
+              (navItem: {
+                _key: number;
+                title: string;
+                slug: {
+                  _type: 'slug';
+                  current: string;
+                };
+              }) => {
+                return (
+                  <li key={navItem._key}>
+                    <a href={navItem.slug.current}>{navItem.title}</a>
+                  </li>
+                );
+              },
+            )}
           </ul>
         ) : null}
       </nav>

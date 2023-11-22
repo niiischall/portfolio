@@ -1,6 +1,8 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import { PortableText } from '@portabletext/react';
 import sanityClient from '../../lib/sanity.client';
+import { urlForImage } from '../../lib/sanity.image';
 import { heroQuery } from '../../lib/sanity.queries';
 
 import './style.css';
@@ -14,66 +16,43 @@ const Hero: React.FC<HeroProps> = () => {
       .then((res) => res)
       .catch((err) => console.log(err)),
   );
+  const { socials = [], greeting, cover = {} } = data ?? {};
+  const { link, text: greetingText = [] } = greeting ?? {};
+  const { text: buttonText = '', slug } = link ?? {};
+  const { current: buttonSlug = '' } = slug ?? {};
 
-  console.log('hero: ', data);
   return (
     <section className="home" id="home">
       <div className="social">
-        <a
-          id="twitter-logo"
-          href="https://twitter.com/niiischall"
-          target="_blank"
-          title="twitter"
-          rel="noopener noreferrer"
-        >
-          <i className="fa-brands fa-twitter"></i>
-        </a>
-        <a
-          id="github-logo"
-          href="https://github.com/niiischall"
-          target="_blank"
-          title="github"
-          rel="noopener noreferrer"
-        >
-          <i className="fa-brands fa-github"></i>
-        </a>
-        <a
-          id="hashnode-logo"
-          href="https://blog.nischalnikit.com"
-          target="_blank"
-          title="hashnode"
-          rel="noopener noreferrer"
-        >
-          <i className="fa-brands fa-hashnode"></i>
-        </a>
-        <a
-          id="linkedin-logo"
-          href="https://www.linkedin.com/in/niiischall"
-          target="_blank"
-          title="linkedin"
-          rel="noopener noreferrer"
-        >
-          <i className="fa-brands fa-linkedin"></i>
-        </a>
+        {socials.map(
+          (social: {
+            _key: string;
+            url: string;
+            cover: {
+              asset: { _type: 'reference'; _ref: string };
+              _type: 'image';
+            };
+            caption: string;
+            alt: string;
+          }) => {
+            return (
+              <a key={social._key} href={social.url} target="_blank" title={social.caption} rel="noopener noreferrer">
+                <img src={urlForImage(social.cover)?.width(100).url()} alt={social.alt} />
+              </a>
+            );
+          },
+        )}
       </div>
       <div className="home-img">
-        <img
-          src="https://ik.imagekit.io/3dv5nkw89t3/profile-pic_wG_TcuOV3.png?ik-sdk-version=javascript-1.4.3&updatedAt=1672250138287"
-          alt="Profile"
-        />
+        <img src={urlForImage(cover)?.url()} alt="Profile" />
       </div>
       <div className="home-text">
-        <span>hey 👋, i&apos;m</span>
-        <h1 className="font-sans">nischal nikit</h1>
-        <p>
-          i build things that live on the web. i also talk & write about
-          <br className="home-text-break" />
-          some of those things. this is my corner of the internet.
-          <span className="home-text-welcome font-sans">welcome :)</span>
-        </p>
-        <a id="home-contact" href="#contact" className="btn">
-          get in touch
-        </a>
+        <PortableText value={greetingText} />
+        {buttonText ? (
+          <a id="home-contact" href={buttonSlug} className="btn">
+            {buttonText}
+          </a>
+        ) : null}
       </div>
     </section>
   );

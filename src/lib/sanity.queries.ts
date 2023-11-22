@@ -3,14 +3,15 @@ export const navigationQuery = `*[_type == "navigation"][0]{
   collection[]{
     _key,
     title,
-    href
+    slug
   }
 }`;
 
 export const heroQuery = `*[_type == "hero"][0]{
   socials[]{
     _key,
-     url,
+    cover,
+    url,
     caption,
     alt
   },
