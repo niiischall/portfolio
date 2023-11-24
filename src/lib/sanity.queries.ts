@@ -27,7 +27,8 @@ export const heroQuery = `*[_type == "hero"][0]{
 export const aboutQuery = `*[_type == "about"][0]{
   heading,
   contact,
-  overview
+  overview,
+  cv
 }`;
 
 export const workQuery = `*[_type == "work"][0]{

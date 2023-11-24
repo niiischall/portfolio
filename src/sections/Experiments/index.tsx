@@ -15,7 +15,6 @@ const Experiments: React.FC<ExperimentsProps> = () => {
       .catch((err) => console.log(err)),
   );
 
-  console.log('experiments: ', data);
   return (
     <section className="work" id="experiments">
       <div className="heading">

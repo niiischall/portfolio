@@ -15,7 +15,6 @@ const Contact: React.FC<ContactProps> = () => {
       .catch((err) => console.log(err)),
   );
 
-  console.log('contact: ', data);
   return (
     <section className="contact" id="contact">
       <div className="heading">

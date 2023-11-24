@@ -8,7 +8,7 @@ export interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="flex min-h-screen flex-col bg-white text-black">
+    <div className="flex min-h-screen flex-col text-black">
       <Navigation />
       <div className="flex-grow">{children}</div>
       <Footer />

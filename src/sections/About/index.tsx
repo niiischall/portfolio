@@ -1,9 +1,11 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import { PortableText } from '@portabletext/react';
 import sanityClient from '../../lib/sanity.client';
 import { aboutQuery } from '../../lib/sanity.queries';
 
 import './style.css';
+import { urlForImage } from '../../lib/sanity.image';
 
 export interface AboutProps {}
 
@@ -15,42 +17,39 @@ const About: React.FC<AboutProps> = () => {
       .catch((err) => console.log(err)),
   );
 
-  console.log('about: ', data);
+  const { heading, contact, overview = [], cv } = data ?? {};
+
+  const { title: headingTitle = [] } = heading ?? {};
+  const {
+    cover = {
+      asset: { _type: 'reference', _ref: '' },
+      _type: 'image',
+    },
+    text = '',
+  } = contact ?? {};
+  const { link: cvLink = '', title: cvTitle = '' } = cv ?? {};
+
   return (
     <section className="about" id="about">
       <div className="heading">
-        <h2 className="font-sans">about me</h2>
+        <PortableText value={headingTitle} />
       </div>
       <div className="about-container container-spacing">
         <div className="about-text">
-          <p>
-            i am a software developer based out of bengaluru, india. i try to build delightful experiences on the web
-            and mobile with my craft. today, i am working as a developer at
-            <a id="about-jupiter-link" href="https://jupiter.money/" target="_blank" rel="noopener noreferrer">
-              <strong>jupiter</strong>
-            </a>
-            -- one of the leading neobanks in the country. i am buildi ng for our mobile app and internal platforms.
-          </p>
+          <PortableText value={overview} />
           <div className="information">
             <div className="info-box">
-              <img
-                src="https://ik.imagekit.io/3dv5nkw89t3/mail_oO3ONrK8w.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1672250138746"
-                alt="mail"
-              />
-              <p className="font-sans">mailfornischal@gmail.com</p>
+              <img src={urlForImage(cover)?.url()} alt="mail" />
+              <p className="font-sans strong">{text}</p>
             </div>
           </div>
-          <div className="cv">
-            <a
-              id="about-cv-download-clicked"
-              href="https://drive.google.com/file/d/1PAflSM4BbIAgWupyXEgoiixmvHGMU0KS/view?usp=sharing"
-              target="_blank"
-              className="btn"
-              rel="noopener noreferrer"
-            >
-              Download Cv
-            </a>
-          </div>
+          {cvTitle && cvLink ? (
+            <div className="cv">
+              <a id="about-cv-download-clicked" href={cvLink} target="_blank" className="btn" rel="noopener noreferrer">
+                {cvTitle}
+              </a>
+            </div>
+          ) : null}
         </div>
       </div>
     </section>

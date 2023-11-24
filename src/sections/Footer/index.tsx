@@ -15,7 +15,6 @@ const Footer: React.FC<FooterProps> = () => {
       .catch((err) => console.log(err)),
   );
 
-  console.log('footer: ', data);
   return (
     <footer className="footer">
       <p>

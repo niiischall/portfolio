@@ -37,7 +37,7 @@ const Hero: React.FC<HeroProps> = () => {
           }) => {
             return (
               <a key={social._key} href={social.url} target="_blank" title={social.caption} rel="noopener noreferrer">
-                <img src={urlForImage(social.cover)?.width(100).url()} alt={social.alt} />
+                <img src={urlForImage(social.cover)?.width(24).url()} alt={social.alt} />
               </a>
             );
           },

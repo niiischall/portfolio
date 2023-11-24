@@ -15,7 +15,6 @@ const Writings: React.FC<WritingsProps> = () => {
       .catch((err) => console.log(err)),
   );
 
-  console.log('writings: ', data);
   return (
     <section className="writings" id="writings">
       <div className="heading">

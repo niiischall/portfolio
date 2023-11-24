@@ -15,7 +15,6 @@ const Talks: React.FC<TalksProps> = () => {
       .catch((err) => console.log(err)),
   );
 
-  console.log('talks: ', data);
   return null;
 };
 

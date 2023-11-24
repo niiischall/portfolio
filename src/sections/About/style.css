@@ -1,5 +1,4 @@
 .about {
-  min-height: 75vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,10 +38,6 @@
 }
 .information .info-box p {
   margin-left: 0.5rem;
-}
-.information .info-box img {
-  width: 30px;
-  height: 30px;
 }
 .cv {
   display: flex;

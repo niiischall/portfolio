@@ -15,7 +15,7 @@ const Work: React.FC<WorkProps> = () => {
       .catch((err) => console.log(err)),
   );
 
-  console.log('work: ', data);
+  console.log('work ex: ', data);
   return (
     <section className="timeline" id="work">
       <div className="heading">
