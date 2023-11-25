@@ -23,7 +23,7 @@
   content: '';
   position: absolute;
   top: 0;
-  left: 2%;
+  left: 3%;
   margin-left: -1px;
   width: 2px;
   height: 100%;
@@ -57,13 +57,14 @@
 }
 
 .marker {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  border: 2px solid var(--text-color);
-  background: var(--hover);
+  width: 48px;
+  height: 48px;
   margin-top: 10px;
   z-index: 9999;
+}
+
+.marker img {
+  border: 2px solid var(--text-color);
 }
 
 .timeline-content {
@@ -90,7 +91,7 @@
 }
 
 .timeline-content h4 a {
-  margin: 0px 3px;
+  margin: 0px 5px;
   color: var(--main-color);
 }
 
@@ -117,7 +118,7 @@
     grid-template-columns: 1fr;
   }
   .timeline-box:before {
-    left: 8px;
+    left: 12px;
     width: 2px;
   }
   .timeline-block {

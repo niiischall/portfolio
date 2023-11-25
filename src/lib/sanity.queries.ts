@@ -33,16 +33,14 @@ export const aboutQuery = `*[_type == "about"][0]{
 
 export const workQuery = `*[_type == "work"][0]{
   heading,
-  collection[]{
-    org{
-      duration{
-        start,
-        end
-      },
-      image,
-      link,
-      description
-    }
+  collection[] {
+    _key,
+    title,
+    designation,
+    link,
+    duration,
+    description,
+    cover
   }
 }`;
 
