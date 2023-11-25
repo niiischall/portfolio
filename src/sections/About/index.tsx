@@ -5,7 +5,6 @@ import sanityClient from '../../lib/sanity.client';
 import { aboutQuery } from '../../lib/sanity.queries';
 
 import './style.css';
-import { urlForImage } from '../../lib/sanity.image';
 
 export interface AboutProps {}
 
@@ -17,16 +16,8 @@ const About: React.FC<AboutProps> = () => {
       .catch((err) => console.log(err)),
   );
 
-  const { heading, contact, overview = [], cv } = data ?? {};
-
+  const { heading, overview = [], cv } = data ?? {};
   const { title: headingTitle = [] } = heading ?? {};
-  const {
-    cover = {
-      asset: { _type: 'reference', _ref: '' },
-      _type: 'image',
-    },
-    text = '',
-  } = contact ?? {};
   const { link: cvLink = '', title: cvTitle = '' } = cv ?? {};
 
   return (
@@ -37,12 +28,6 @@ const About: React.FC<AboutProps> = () => {
       <div className="about-container container-spacing">
         <div className="about-text">
           <PortableText value={overview} />
-          <div className="information">
-            <div className="info-box">
-              <img src={urlForImage(cover)?.url()} alt="mail" />
-              <p className="font-sans strong">{text}</p>
-            </div>
-          </div>
           {cvTitle && cvLink ? (
             <div className="cv">
               <a id="about-cv-download-clicked" href={cvLink} target="_blank" className="btn" rel="noopener noreferrer">

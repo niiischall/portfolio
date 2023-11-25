@@ -75,7 +75,7 @@ const Work: React.FC<WorkProps> = () => {
                       </h4>
                       <span>
                         <Clock />
-                        <p className="ml-1">
+                        <p className="ml-1 font-bold">
                           {startDurationInString} - {endDurationInString}
                         </p>
                       </span>
