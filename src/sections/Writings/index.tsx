@@ -20,7 +20,7 @@ const Writings: React.FC<WritingsProps> = () => {
 
   return (
     <section
-      className="flex flex-col justify-center items-start space-x-0 space-y-24  md:space-x-24 md:flex-row md:space-y-0"
+      className="flex flex-col justify-center items-start space-x-0 space-y-24  md:space-x-48 md:flex-row md:space-y-0"
       id="writings"
     >
       <div className="heading text-left md:text-center p-0">
