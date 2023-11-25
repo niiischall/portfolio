@@ -23,7 +23,6 @@ const Work: React.FC<WorkProps> = () => {
   const { heading, collection = [] } = data ?? {};
   const { title = [] } = heading ?? {};
 
-  console.log(collection);
   return (
     <section className="timeline" id="work">
       <div className="heading">

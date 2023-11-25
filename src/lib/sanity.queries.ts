@@ -48,9 +48,9 @@ export const experimentsQuery = `*[_type == "experiments"][0]{
   heading,
   collection[]{
     _key,
-    cover,
     heading,
-    body
+    body,
+    link,
   }
 }`;
 
@@ -60,7 +60,7 @@ export const talksQuery = `*[_type == "talks"][0]{
     _key,
     cover,
     heading,
-    body
+    body,
   }
 }`;
 
