@@ -15,13 +15,7 @@ const Talks: React.FC<TalksProps> = () => {
       .catch((err) => console.log(err)),
   );
 
-  return (
-    <section className="talks" id="talks">
-      <div className="heading">
-        <h2 className="font-sans">&nbsp;</h2>
-      </div>
-    </section>
-  );
+  return <div id="talks">{null}</div>;
 };
 
 export default Talks;
