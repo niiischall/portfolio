@@ -21,7 +21,7 @@
   --p-font: 0.941rem;
 }
 section {
-  padding: 50px 10%;
+  padding: 100px 10%;
   background-color: var(--bg-color);
 }
 *::selection {
@@ -86,6 +86,9 @@ section {
   :root {
     --big-font: 2.4rem;
     --medium-font: 1.2rem;
+  }
+  .heading {
+    text-align: left;
   }
   .btn {
     padding: 0.25em 0.75em;

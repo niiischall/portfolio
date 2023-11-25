@@ -24,7 +24,7 @@ const Work: React.FC<WorkProps> = () => {
   const { title = [] } = heading ?? {};
 
   return (
-    <section className="timeline" id="work">
+    <section className="relative timeline" id="work">
       <div className="heading">
         <PortableText value={title} />
       </div>
@@ -86,6 +86,9 @@ const Work: React.FC<WorkProps> = () => {
             },
           )}
         </div>
+      </div>
+      <div className="absolute bottom-0 w-3/4">
+        <hr className="h-px w-3/4 mx-auto bg-[#34373c] border-0"></hr>
       </div>
     </section>
   );

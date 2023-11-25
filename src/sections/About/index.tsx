@@ -21,21 +21,32 @@ const About: React.FC<AboutProps> = () => {
   const { link: cvLink = '', title: cvTitle = '' } = cv ?? {};
 
   return (
-    <section className="about" id="about">
-      <div className="heading">
-        <PortableText value={headingTitle} />
-      </div>
-      <div className="about-container container-spacing">
-        <div className="about-text">
-          <PortableText value={overview} />
-          {cvTitle && cvLink ? (
-            <div className="cv">
-              <a id="about-cv-download-clicked" href={cvLink} target="_blank" className="btn" rel="noopener noreferrer">
-                {cvTitle}
-              </a>
-            </div>
-          ) : null}
+    <section id="about">
+      <div className="about">
+        <div className="heading">
+          <PortableText value={headingTitle} />
         </div>
+        <div className="about-container container-spacing">
+          <div className="about-text">
+            <PortableText value={overview} />
+            {cvTitle && cvLink ? (
+              <div className="cv">
+                <a
+                  id="about-cv-download-clicked"
+                  href={cvLink}
+                  target="_blank"
+                  className="btn"
+                  rel="noopener noreferrer"
+                >
+                  {cvTitle}
+                </a>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </div>
+      <div className="w-full">
+        <hr className="h-px w-3/4 mx-auto bg-[#34373c] border-0"></hr>
       </div>
     </section>
   );

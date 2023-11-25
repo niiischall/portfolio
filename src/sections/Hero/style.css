@@ -6,7 +6,6 @@
   grid-template-columns: 0.2fr 1fr 1fr;
   align-items: center;
   gap: 1rem;
-  padding-top: 100px;
 }
 .home-img {
   order: 3;
@@ -16,7 +15,9 @@
 }
 .home-text span {
   font-size: var(--medium-font);
-  font-family: Josefin Sans, sans-serif;
+  font-family:
+    Josefin Sans,
+    sans-serif;
   font-weight: 600;
 }
 .home-text h1 {
