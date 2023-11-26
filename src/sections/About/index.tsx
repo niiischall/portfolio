@@ -22,15 +22,15 @@ const About: React.FC<AboutProps> = () => {
 
   return (
     <section id="about">
-      <div className="about">
-        <div className="heading">
+      <div className="flex flex-col justify-center items-start md:items-center">
+        <div className="heading ml-5 text-left md:text-center md:ml-0 p-0">
           <PortableText value={headingTitle} />
         </div>
         <div className="about-container container-spacing">
-          <div className="about-text">
+          <div className="about-text text-left md:text-center">
             <PortableText value={overview} />
             {cvTitle && cvLink ? (
-              <div className="cv">
+              <div className="cv justify-center items-left md:items-center">
                 <a
                   id="about-cv-download-clicked"
                   href={cvLink}

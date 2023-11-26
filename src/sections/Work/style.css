@@ -1,9 +1,5 @@
 .timeline {
   min-height: 75vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 .timeline-container {
   max-width: 950px;

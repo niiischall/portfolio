@@ -24,8 +24,8 @@ const Work: React.FC<WorkProps> = () => {
   const { title = [] } = heading ?? {};
 
   return (
-    <section className="relative timeline" id="work">
-      <div className="heading">
+    <section className="relative flex flex-col justify-center items-start md:items-center" id="work">
+      <div className="heading ml-5 text-left md:text-center md:ml-0 p-0">
         <PortableText value={title} />
       </div>
       <div className="timeline-container container-spacing">
