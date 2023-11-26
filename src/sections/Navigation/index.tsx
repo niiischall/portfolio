@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import { useQuery } from 'react-query';
 import sanityClient from '../../lib/sanity.client';
 import { navigationQuery } from '../../lib/sanity.queries';
@@ -18,19 +18,12 @@ const Navigation: React.FC<NavigationProps> = () => {
   const { title = '', slug } = heading ?? {};
   const { current: titleLink = '' } = slug ?? {};
 
-  const [showSidebar, setShowSidebar] = useState<boolean>(false);
-
-  const handleSidebarToggle = useCallback(() => {
-    setShowSidebar((showSidebar) => !showSidebar);
-  }, []);
-
   return (
     <header>
       <nav>
         <a href={titleLink} className="logo">
           {title}
         </a>
-        <button className="bx bx-menu" id="menu-icon" onClick={handleSidebarToggle}></button>
         <ul className="navbar">
           {collection.map(
             (navItem: {
@@ -49,26 +42,6 @@ const Navigation: React.FC<NavigationProps> = () => {
             },
           )}
         </ul>
-        {showSidebar ? (
-          <ul className="sidebar">
-            {collection.map(
-              (navItem: {
-                _key: number;
-                title: string;
-                slug: {
-                  _type: 'slug';
-                  current: string;
-                };
-              }) => {
-                return (
-                  <li key={navItem._key}>
-                    <a href={navItem.slug.current}>{navItem.title}</a>
-                  </li>
-                );
-              },
-            )}
-          </ul>
-        ) : null}
       </nav>
     </header>
   );

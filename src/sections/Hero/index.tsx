@@ -46,7 +46,7 @@ const Hero: React.FC<HeroProps> = () => {
       <div className="home-img">
         <img src={urlForImage(cover)?.url()} alt="Profile" />
       </div>
-      <div className="home-text">
+      <div className="home-text max-w-md">
         <PortableText value={greetingText} />
         {buttonText ? (
           <a id="home-contact" href={buttonSlug} className="btn">
