@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import { PortableText } from '@portabletext/react';
 import sanityClient from '../../lib/sanity.client';
 import { footerQuery } from '../../lib/sanity.queries';
 
@@ -15,12 +16,12 @@ const Footer: React.FC<FooterProps> = () => {
       .catch((err) => console.log(err)),
   );
 
+  const { heading } = data ?? {};
+  const { title = [] } = heading ?? {};
+
   return (
     <footer className="footer">
-      <p>
-        &#xA9; designed and built by
-        <span className="footer-name">nischal nikit</span>
-      </p>
+      <PortableText value={title} />
     </footer>
   );
 };

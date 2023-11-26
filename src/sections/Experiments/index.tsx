@@ -15,7 +15,6 @@ const Experiments: React.FC<ExperimentsProps> = () => {
       .catch((err) => console.log(err)),
   );
 
-  console.log(data);
   const { heading, collection = [] } = data ?? {};
   const { title = [] } = heading ?? {};
 
