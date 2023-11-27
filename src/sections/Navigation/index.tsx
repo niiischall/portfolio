@@ -1,13 +1,13 @@
-import React from 'react';
-import { navigationQuery } from '../../lib/sanity.queries';
+import React, { useContext } from 'react';
 
 import './style.css';
-import { useReactQuery } from '../../utils/hooks/useCustomQuery';
+import { PortfolioContext } from '../../utils/hooks/useContext';
 
 export interface NavigationProps {}
 
 const Navigation: React.FC<NavigationProps> = () => {
-  const { data, isLoading, error } = useReactQuery('navigation', navigationQuery);
+  const { navigation } = useContext(PortfolioContext) ?? [];
+  const { data } = navigation ?? {};
 
   const { heading, collection = [] } = data ?? {};
   const { title = '', slug } = heading ?? {};

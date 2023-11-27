@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { PortableText } from '@portabletext/react';
 
-import { writingsQuery } from '../../lib/sanity.queries';
 import { urlForImage } from '../../lib/sanity.image';
-import { useReactQuery } from '../../utils/hooks/useCustomQuery';
+import { PortfolioContext } from '../../utils/hooks/useContext';
 
 export interface WritingsProps {}
 
 const Writings: React.FC<WritingsProps> = () => {
-  const { data, isLoading, error } = useReactQuery('writings', writingsQuery);
+  const { writings } = useContext(PortfolioContext) ?? [];
+  const { data } = writings ?? {};
 
   const { heading, collection = [] } = data ?? {};
   const { title = [] } = heading ?? {};
@@ -20,7 +20,7 @@ const Writings: React.FC<WritingsProps> = () => {
           <PortableText value={title} />
         </div>
         <div className="flex flex-col justify-between">
-          {collection.map((item: { _key: string; heading: string; body: string; link: string; image: {} }) => {
+          {collection.map((item: { _key: string; heading: string; body: string; link: string; image: any }) => {
             const { _key = '', heading = '', body = '', link = '', image = {} } = item ?? {};
             return (
               <div key={_key} className="feature-box max-w-lg mb-24">

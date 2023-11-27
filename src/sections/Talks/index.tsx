@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import './style.css';
-import { talksQuery } from '../../lib/sanity.queries';
-import { useReactQuery } from '../../utils/hooks/useCustomQuery';
+import { PortfolioContext } from '../../utils/hooks/useContext';
 
 export interface TalksProps {}
 
 const Talks: React.FC<TalksProps> = () => {
-  const { data, isLoading, error } = useReactQuery('talks', talksQuery);
+  const { talks } = useContext(PortfolioContext) ?? [];
+  const { data } = talks ?? {};
 
   return <div id="talks">{null}</div>;
 };

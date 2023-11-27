@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { PortableText } from '@portabletext/react';
 
 import './style.css';
-import { footerQuery } from '../../lib/sanity.queries';
-import { useReactQuery } from '../../utils/hooks/useCustomQuery';
+import { PortfolioContext } from '../../utils/hooks/useContext';
 
 export interface FooterProps {}
 
 const Footer: React.FC<FooterProps> = () => {
-  const { data, isLoading, error } = useReactQuery('footer', footerQuery);
+  const { footer } = useContext(PortfolioContext) ?? [];
+  const { data } = footer ?? {};
 
   const { heading } = data ?? {};
   const { title = [] } = heading ?? {};

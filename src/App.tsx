@@ -13,6 +13,7 @@ import Contact from './sections/Contact';
 
 import Layout from './components/shared/Layout';
 import Talks from './sections/Talks';
+import { ContextWrapper } from './utils/hooks/useContext';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -25,17 +26,19 @@ const queryClient = new QueryClient({
 const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <Theme>
-        <Layout>
-          <Hero />
-          <About />
-          <Work />
-          <Experiments />
-          <Writings />
-          <Talks />
-          <Contact />
-        </Layout>
-      </Theme>
+      <ContextWrapper>
+        <Theme>
+          <Layout>
+            <Hero />
+            <About />
+            <Work />
+            <Experiments />
+            <Writings />
+            <Talks />
+            <Contact />
+          </Layout>
+        </Theme>
+      </ContextWrapper>
     </QueryClientProvider>
   );
 };

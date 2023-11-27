@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { PortableText } from '@portabletext/react';
 
 import './style.css';
-import { aboutQuery } from '../../lib/sanity.queries';
-import { useReactQuery } from '../../utils/hooks/useCustomQuery';
+import { PortfolioContext } from '../../utils/hooks/useContext';
 
 export interface AboutProps {}
 
 const About: React.FC<AboutProps> = () => {
-  const { data, isLoading, error } = useReactQuery('about', aboutQuery);
+  const { about } = useContext(PortfolioContext) ?? [];
+  const { data } = about ?? {};
 
   const { heading, overview = [], cv } = data ?? {};
   const { title: headingTitle = [] } = heading ?? {};

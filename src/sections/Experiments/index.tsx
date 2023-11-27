@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { PortableText } from '@portabletext/react';
 
-import { experimentsQuery } from '../../lib/sanity.queries';
-import { useReactQuery } from '../../utils/hooks/useCustomQuery';
+import { PortfolioContext } from '../../utils/hooks/useContext';
 
 export interface ExperimentsProps {}
 
 const Experiments: React.FC<ExperimentsProps> = () => {
-  const { data, isLoading, error } = useReactQuery('experiments', experimentsQuery);
+  const { experiments } = useContext(PortfolioContext) ?? [];
+  const { data } = experiments ?? {};
 
   const { heading, collection = [] } = data ?? {};
   const { title = [] } = heading ?? {};

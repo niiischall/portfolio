@@ -1,14 +1,14 @@
-import React from 'react';
-import { contactQuery } from '../../lib/sanity.queries';
+import React, { useContext } from 'react';
 
 import './style.css';
 import { PortableText } from '@portabletext/react';
-import { useReactQuery } from '../../utils/hooks/useCustomQuery';
+import { PortfolioContext } from '../../utils/hooks/useContext';
 
 export interface ContactProps {}
 
 const Contact: React.FC<ContactProps> = () => {
-  const { data, isLoading, error } = useReactQuery('contact', contactQuery);
+  const { contact } = useContext(PortfolioContext) ?? [];
+  const { data } = contact ?? {};
 
   const { heading, text = [] } = data ?? {};
   const { title = [] } = heading ?? {};

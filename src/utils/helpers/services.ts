@@ -1,3 +1,6 @@
+import { QueriesType } from '../hooks/useCustomQuery';
+import { QUERIES } from './constants';
+
 export const getStartDuration = (start: string) => {
   return new Date(start).toLocaleString('default', { month: 'long' }) + ', ' + new Date(start).getFullYear();
 };
@@ -16,4 +19,41 @@ export const getEndDuration = (end: string) => {
   }
 
   return new Date(end).toLocaleString('default', { month: 'long' }) + ', ' + new Date(end).getFullYear();
+};
+
+export const getPortfolioContext = (response: any) => {
+  const portfolioResponse = response.map((responseData: any) => {
+    const { data, isLoading, isSuccess, isError, error } = responseData ?? {};
+    return {
+      data,
+      isLoading,
+      isSuccess,
+      isError,
+      error,
+    };
+  });
+
+  let portfolioData = {
+    navigation: {},
+    hero: {
+      data: {},
+    },
+    about: {},
+    work: {},
+    experiments: {},
+    writings: {},
+    talks: {},
+    contact: {},
+    footer: {},
+  };
+
+  QUERIES.forEach((query: QueriesType, index) => {
+    const { key } = query;
+    portfolioData = {
+      ...portfolioData,
+      [key]: portfolioResponse[index],
+    };
+  });
+
+  return portfolioData;
 };

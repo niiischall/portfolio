@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { PortableText } from '@portabletext/react';
-import { workQuery } from '../../lib/sanity.queries';
 
 import './style.css';
 import { urlForImage } from '../../lib/sanity.image';
 import Building from '../../utils/svgs/Building';
 import Clock from '../../utils/svgs/Clock';
 import { getEndDuration, getStartDuration } from '../../utils/helpers/services';
-import { useReactQuery } from '../../utils/hooks/useCustomQuery';
+import { PortfolioContext } from '../../utils/hooks/useContext';
 
 export interface WorkProps {}
 
 const Work: React.FC<WorkProps> = () => {
-  const { data, isLoading, error } = useReactQuery('work', workQuery);
+  const { work } = useContext(PortfolioContext) ?? [];
+  const { data } = work ?? {};
 
   const { heading, collection = [] } = data ?? {};
   const { title = [] } = heading ?? {};

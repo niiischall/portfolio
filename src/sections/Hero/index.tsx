@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { PortableText } from '@portabletext/react';
 
 import './style.css';
 import { urlForImage } from '../../lib/sanity.image';
-import { heroQuery } from '../../lib/sanity.queries';
-import { useReactQuery } from '../../utils/hooks/useCustomQuery';
+import { PortfolioContext } from '../../utils/hooks/useContext';
 
 export interface HeroProps {}
 
 const Hero: React.FC<HeroProps> = () => {
-  const { data, isLoading, error } = useReactQuery('hero', heroQuery);
+  const { hero } = useContext(PortfolioContext) ?? [];
+  const { data } = hero ?? {};
 
   const { socials = [], greeting, cover = {} } = data ?? {};
   const { link, text: greetingText = [] } = greeting ?? {};
