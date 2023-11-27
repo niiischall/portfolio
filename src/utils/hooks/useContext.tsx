@@ -1,42 +1,35 @@
 import React, { createContext } from 'react';
 import { useReactQueries } from './useCustomQuery';
-import { QUERIES } from '../helpers/constants';
+import { queries, initialState } from '../helpers/constants';
 import { getPortfolioContext } from '../helpers/services';
-
-export type PortfolioSection = {
-  data: object;
-  isLoading: boolean;
-  isSuccess: boolean;
-  isError: boolean;
-  error: boolean;
-};
+import {
+  AboutContextType,
+  ContactsContextType,
+  ExperimentContextType,
+  FooterContextType,
+  HeroContextType,
+  NavigationContextType,
+  TalksContextType,
+  WorkContextType,
+  WritingsContextType,
+} from '../helpers/types';
 
 export interface PortfolioContextType {
-  navigation: object;
-  hero: object;
-  about: object;
-  work: object;
-  experiments: object;
-  writings: object;
-  talks: object;
-  contact: object;
-  footer: object;
+  navigation: NavigationContextType;
+  hero: HeroContextType;
+  about: AboutContextType;
+  work: WorkContextType;
+  experiments: ExperimentContextType;
+  writings: WritingsContextType;
+  talks: TalksContextType;
+  contact: ContactsContextType;
+  footer: FooterContextType;
 }
 
-export const PortfolioContext = createContext<PortfolioContextType>({
-  navigation: {},
-  hero: {},
-  about: {},
-  work: {},
-  experiments: {},
-  writings: {},
-  talks: {},
-  contact: {},
-  footer: {},
-});
+export const PortfolioContext = createContext<PortfolioContextType>(initialState);
 
 export const ContextWrapper = ({ children }: { children: React.ReactNode }) => {
-  const response = useReactQueries(QUERIES);
+  const response = useReactQueries(queries);
   const data = getPortfolioContext(response);
 
   return <PortfolioContext.Provider value={data}>{children}</PortfolioContext.Provider>;

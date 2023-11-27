@@ -3,6 +3,7 @@ import { PortableText } from '@portabletext/react';
 
 import { urlForImage } from '../../lib/sanity.image';
 import { PortfolioContext } from '../../utils/hooks/useContext';
+import { WritingsCollectionType } from '../../utils/helpers/types';
 
 export interface WritingsProps {}
 
@@ -20,7 +21,7 @@ const Writings: React.FC<WritingsProps> = () => {
           <PortableText value={title} />
         </div>
         <div className="flex flex-col justify-between">
-          {collection.map((item: { _key: string; heading: string; body: string; link: string; image: any }) => {
+          {collection.map((item: WritingsCollectionType) => {
             const { _key = '', heading = '', body = '', link = '', image = {} } = item ?? {};
             return (
               <div key={_key} className="feature-box max-w-lg mb-24">

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 
 import './style.css';
 import { PortfolioContext } from '../../utils/hooks/useContext';
+import { NavigationCollectionType } from '../../utils/helpers/types';
 
 export interface NavigationProps {}
 
@@ -21,22 +22,13 @@ const Navigation: React.FC<NavigationProps> = () => {
         </a>
         <ul className="navbar">
           {collection.length > 0 &&
-            collection.map(
-              (navItem: {
-                _key: number;
-                title: string;
-                slug: {
-                  _type: 'slug';
-                  current: string;
-                };
-              }) => {
-                return (
-                  <li key={navItem._key}>
-                    <a href={navItem?.slug.current}>{navItem.title}</a>
-                  </li>
-                );
-              },
-            )}
+            collection.map((navItem: NavigationCollectionType) => {
+              return (
+                <li key={navItem._key}>
+                  <a href={navItem?.slug.current}>{navItem.title}</a>
+                </li>
+              );
+            })}
         </ul>
       </nav>
     </header>

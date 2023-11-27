@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { PortableText } from '@portabletext/react';
 
 import { PortfolioContext } from '../../utils/hooks/useContext';
+import { ExperimentCollectionType } from '../../utils/helpers/types';
 
 export interface ExperimentsProps {}
 
@@ -19,29 +20,19 @@ const Experiments: React.FC<ExperimentsProps> = () => {
           <PortableText value={title} />
         </div>
         <div className="flex flex-col justify-between">
-          {collection.map(
-            (item: {
-              _key: string;
-              heading: string;
-              body: string;
-              link: {
-                text: string;
-                href: string;
-              };
-            }) => {
-              const { _key = '', heading = '', body = '', link } = item ?? {};
-              const { text = '', href = '' } = link ?? {};
-              return (
-                <div key={_key} className="feature-box max-w-lg mb-24">
-                  <h3 className="text-xl font-sans font-bold mb-4">{heading}</h3>
-                  <p className="text-sm mb-4">{body}</p>
-                  <a href={href} target="_blank" className="btn" rel="noopener noreferrer">
-                    {text}
-                  </a>
-                </div>
-              );
-            },
-          )}
+          {collection.map((item: ExperimentCollectionType) => {
+            const { _key = '', heading = '', body = '', link } = item ?? {};
+            const { text = '', href = '' } = link ?? {};
+            return (
+              <div key={_key} className="feature-box max-w-lg mb-24">
+                <h3 className="text-xl font-sans font-bold mb-4">{heading}</h3>
+                <p className="text-sm mb-4">{body}</p>
+                <a href={href} target="_blank" className="btn" rel="noopener noreferrer">
+                  {text}
+                </a>
+              </div>
+            );
+          })}
         </div>
       </div>
       <div className="w-full">

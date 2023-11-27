@@ -4,6 +4,7 @@ import { PortableText } from '@portabletext/react';
 import './style.css';
 import { urlForImage } from '../../lib/sanity.image';
 import { PortfolioContext } from '../../utils/hooks/useContext';
+import { HeroSocialType } from '../../utils/helpers/types';
 
 export interface HeroProps {}
 
@@ -19,24 +20,13 @@ const Hero: React.FC<HeroProps> = () => {
   return (
     <section className="home" id="home">
       <div className="social">
-        {socials.map(
-          (social: {
-            _key: string;
-            url: string;
-            cover: {
-              asset: { _type: 'reference'; _ref: string };
-              _type: 'image';
-            };
-            caption: string;
-            alt: string;
-          }) => {
-            return (
-              <a key={social._key} href={social.url} target="_blank" title={social.caption} rel="noopener noreferrer">
-                <img src={urlForImage(social.cover)?.width(24).url()} alt={social.alt} />
-              </a>
-            );
-          },
-        )}
+        {socials.map((social: HeroSocialType) => {
+          return (
+            <a key={social._key} href={social.url} target="_blank" title={social.caption} rel="noopener noreferrer">
+              <img src={urlForImage(social.cover)?.width(24).url()} alt={social.alt} />
+            </a>
+          );
+        })}
       </div>
       <div className="home-img">
         <img src={urlForImage(cover)?.url()} alt="Profile" />

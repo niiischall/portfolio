@@ -1,5 +1,5 @@
 import { QueriesType } from '../hooks/useCustomQuery';
-import { QUERIES } from './constants';
+import { queries, initialState } from './constants';
 
 export const getStartDuration = (start: string) => {
   return new Date(start).toLocaleString('default', { month: 'long' }) + ', ' + new Date(start).getFullYear();
@@ -34,20 +34,10 @@ export const getPortfolioContext = (response: any) => {
   });
 
   let portfolioData = {
-    navigation: {},
-    hero: {
-      data: {},
-    },
-    about: {},
-    work: {},
-    experiments: {},
-    writings: {},
-    talks: {},
-    contact: {},
-    footer: {},
+    ...initialState,
   };
 
-  QUERIES.forEach((query: QueriesType, index) => {
+  queries.forEach((query: QueriesType, index: number) => {
     const { key } = query;
     portfolioData = {
       ...portfolioData,
