@@ -1,21 +1,16 @@
 import React from 'react';
-import { useQuery } from 'react-query';
 import { PortableText } from '@portabletext/react';
-import sanityClient from '../../lib/sanity.client';
-import { urlForImage } from '../../lib/sanity.image';
-import { heroQuery } from '../../lib/sanity.queries';
 
 import './style.css';
+import { urlForImage } from '../../lib/sanity.image';
+import { heroQuery } from '../../lib/sanity.queries';
+import { useReactQuery } from '../../utils/hooks/useCustomQuery';
 
 export interface HeroProps {}
 
 const Hero: React.FC<HeroProps> = () => {
-  const { data } = useQuery('hero', () =>
-    sanityClient
-      .fetch(heroQuery)
-      .then((res) => res)
-      .catch((err) => console.log(err)),
-  );
+  const { data, isLoading, error } = useReactQuery('hero', heroQuery);
+
   const { socials = [], greeting, cover = {} } = data ?? {};
   const { link, text: greetingText = [] } = greeting ?? {};
   const { text: buttonText = '', slug } = link ?? {};

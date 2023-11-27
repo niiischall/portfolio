@@ -1,20 +1,14 @@
 import React from 'react';
-import { useQuery } from 'react-query';
 import { PortableText } from '@portabletext/react';
-import sanityClient from '../../lib/sanity.client';
-import { aboutQuery } from '../../lib/sanity.queries';
 
 import './style.css';
+import { aboutQuery } from '../../lib/sanity.queries';
+import { useReactQuery } from '../../utils/hooks/useCustomQuery';
 
 export interface AboutProps {}
 
 const About: React.FC<AboutProps> = () => {
-  const { data } = useQuery('about', () =>
-    sanityClient
-      .fetch(aboutQuery)
-      .then((res) => res)
-      .catch((err) => console.log(err)),
-  );
+  const { data, isLoading, error } = useReactQuery('about', aboutQuery);
 
   const { heading, overview = [], cv } = data ?? {};
   const { title: headingTitle = [] } = heading ?? {};

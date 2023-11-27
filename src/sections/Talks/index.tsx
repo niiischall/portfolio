@@ -1,19 +1,13 @@
 import React from 'react';
-import { useQuery } from 'react-query';
-import sanityClient from '../../lib/sanity.client';
-import { talksQuery } from '../../lib/sanity.queries';
 
 import './style.css';
+import { talksQuery } from '../../lib/sanity.queries';
+import { useReactQuery } from '../../utils/hooks/useCustomQuery';
 
 export interface TalksProps {}
 
 const Talks: React.FC<TalksProps> = () => {
-  const { data } = useQuery('talks', () =>
-    sanityClient
-      .fetch(talksQuery)
-      .then((res) => res)
-      .catch((err) => console.log(err)),
-  );
+  const { data, isLoading, error } = useReactQuery('talks', talksQuery);
 
   return <div id="talks">{null}</div>;
 };

@@ -1,19 +1,13 @@
 import React from 'react';
-import { useQuery } from 'react-query';
-import sanityClient from '../../lib/sanity.client';
-import { experimentsQuery } from '../../lib/sanity.queries';
-
 import { PortableText } from '@portabletext/react';
+
+import { experimentsQuery } from '../../lib/sanity.queries';
+import { useReactQuery } from '../../utils/hooks/useCustomQuery';
 
 export interface ExperimentsProps {}
 
 const Experiments: React.FC<ExperimentsProps> = () => {
-  const { data } = useQuery('experiments', () =>
-    sanityClient
-      .fetch(experimentsQuery)
-      .then((res) => res)
-      .catch((err) => console.log(err)),
-  );
+  const { data, isLoading, error } = useReactQuery('experiments', experimentsQuery);
 
   const { heading, collection = [] } = data ?? {};
   const { title = [] } = heading ?? {};

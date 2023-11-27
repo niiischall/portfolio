@@ -1,20 +1,14 @@
 import React from 'react';
-import { useQuery } from 'react-query';
 import { PortableText } from '@portabletext/react';
-import sanityClient from '../../lib/sanity.client';
-import { footerQuery } from '../../lib/sanity.queries';
 
 import './style.css';
+import { footerQuery } from '../../lib/sanity.queries';
+import { useReactQuery } from '../../utils/hooks/useCustomQuery';
 
 export interface FooterProps {}
 
 const Footer: React.FC<FooterProps> = () => {
-  const { data } = useQuery('footer', () =>
-    sanityClient
-      .fetch(footerQuery)
-      .then((res) => res)
-      .catch((err) => console.log(err)),
-  );
+  const { data, isLoading, error } = useReactQuery('footer', footerQuery);
 
   const { heading } = data ?? {};
   const { title = [] } = heading ?? {};

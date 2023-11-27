@@ -1,7 +1,5 @@
 import React from 'react';
-import { useQuery } from 'react-query';
 import { PortableText } from '@portabletext/react';
-import sanityClient from '../../lib/sanity.client';
 import { workQuery } from '../../lib/sanity.queries';
 
 import './style.css';
@@ -9,16 +7,12 @@ import { urlForImage } from '../../lib/sanity.image';
 import Building from '../../utils/svgs/Building';
 import Clock from '../../utils/svgs/Clock';
 import { getEndDuration, getStartDuration } from '../../utils/helpers/services';
+import { useReactQuery } from '../../utils/hooks/useCustomQuery';
 
 export interface WorkProps {}
 
 const Work: React.FC<WorkProps> = () => {
-  const { data } = useQuery('work', () =>
-    sanityClient
-      .fetch(workQuery)
-      .then((res) => res)
-      .catch((err) => console.log(err)),
-  );
+  const { data, isLoading, error } = useReactQuery('work', workQuery);
 
   const { heading, collection = [] } = data ?? {};
   const { title = [] } = heading ?? {};

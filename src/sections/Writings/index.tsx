@@ -1,19 +1,14 @@
 import React from 'react';
-import { useQuery } from 'react-query';
 import { PortableText } from '@portabletext/react';
+
 import { writingsQuery } from '../../lib/sanity.queries';
-import sanityClient from '../../lib/sanity.client';
 import { urlForImage } from '../../lib/sanity.image';
+import { useReactQuery } from '../../utils/hooks/useCustomQuery';
 
 export interface WritingsProps {}
 
 const Writings: React.FC<WritingsProps> = () => {
-  const { data } = useQuery('writings', () =>
-    sanityClient
-      .fetch(writingsQuery)
-      .then((res) => res)
-      .catch((err) => console.log(err)),
-  );
+  const { data, isLoading, error } = useReactQuery('writings', writingsQuery);
 
   const { heading, collection = [] } = data ?? {};
   const { title = [] } = heading ?? {};
