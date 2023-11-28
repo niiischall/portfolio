@@ -34,7 +34,7 @@ const Navigation: React.FC<NavigationProps> = () => {
 
   return (
     <header className="fixed w-full top-0 left-0 z-10">
-      <nav className="flex justify-start items-center bg-light px-8 py-4 md:px-36 md:py-8 md:justify-between">
+      <nav className="flex justify-start items-center bg-light px-8 py-4 md:px-36 md:justify-between">
         <a href={titleLink} className="text-3xl font-sans font-bold text-primary">
           {title}
         </a>

@@ -17,7 +17,7 @@ const Contact: React.FC<ContactProps> = () => {
       <div className="text-3xl px-0 py-4 md:px-36 md:py-8 text-left md:text-center">
         <PortableText value={title} />
       </div>
-      <div className="w-full my-10 text-left text-md md:text-center">
+      <div className="w-full text-left px-5 py-10 text-md md:text-center">
         <PortableText value={text} />
       </div>
     </section>

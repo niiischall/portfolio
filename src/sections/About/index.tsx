@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { PortableText } from '@portabletext/react';
 
-import './style.css';
 import { PortfolioContext } from '../../utils/hooks/useContext';
 
 export interface AboutProps {}
@@ -17,14 +16,14 @@ const About: React.FC<AboutProps> = () => {
   return (
     <section id="about">
       <div className="flex flex-col justify-center items-start md:items-center">
-        <div className="heading ml-5 text-left md:text-center md:ml-0 p-0">
+        <div className="text-3xl px-0 py-4 md:px-36 md:py-8 text-left md:text-center">
           <PortableText value={headingTitle} />
         </div>
-        <div className="about-container container-spacing">
-          <div className="about-text text-left md:text-center">
+        <div className="max-w-2xl px-5 py-10">
+          <div className="text-left md:text-center">
             <PortableText value={overview} />
             {cvTitle && cvLink ? (
-              <div className="cv justify-center items-left md:items-center">
+              <div className="my-5 mb-10 justify-center items-left md:items-center">
                 <a
                   id="about-cv-download-clicked"
                   href={cvLink}
@@ -40,7 +39,7 @@ const About: React.FC<AboutProps> = () => {
         </div>
       </div>
       <div className="w-full">
-        <hr className="h-px w-3/4 mx-auto bg-[#34373c] border-0"></hr>
+        <hr className="h-px w-3/4 mx-auto bg-rule border-0"></hr>
       </div>
     </section>
   );

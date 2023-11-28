@@ -7,6 +7,7 @@ export default {
       secondary: 'rgb(186, 38, 92)',
       light: 'rgb(238, 234, 227)',
       gray: 'rgb(228, 228, 228)',
+      rule: 'rgb(52, 55, 60)',
     },
     screens: {
       sm: '640px',
