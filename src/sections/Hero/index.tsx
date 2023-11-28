@@ -18,7 +18,7 @@ const Hero: React.FC<HeroProps> = () => {
   const { current: buttonSlug = '' } = slug ?? {};
 
   return (
-    <section className="home" id="home">
+    <section className="home mt-16 md:mt-8" id="home">
       <div className="social">
         {socials.map((social: HeroSocialType) => {
           return (
