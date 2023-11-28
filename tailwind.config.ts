@@ -18,7 +18,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Josefin Sans', 'sans-serif'],
+        sans: ['Josefin Sans'],
         poppins: ['Poppins'],
       },
       letterSpacing: {
