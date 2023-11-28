@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 
-import './style.css';
 import { PortableText } from '@portabletext/react';
 import { PortfolioContext } from '../../utils/hooks/useContext';
 
@@ -15,10 +14,10 @@ const Contact: React.FC<ContactProps> = () => {
 
   return (
     <section className="flex flex-col justify-center items-start md:items-center" id="contact">
-      <div className="heading text-left md:text-center p-0 ml-5 md:ml-0">
+      <div className="text-3xl px-0 py-4 md:px-36 md:py-8 text-left md:text-center">
         <PortableText value={title} />
       </div>
-      <div className="contact-container w-full my-10 pl-5 pr-5 md:pl-0 md:pr-0 text-left md:text-center">
+      <div className="w-full my-10 text-left text-md md:text-center">
         <PortableText value={text} />
       </div>
     </section>

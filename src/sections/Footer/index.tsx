@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { PortableText } from '@portabletext/react';
 
-import './style.css';
 import { PortfolioContext } from '../../utils/hooks/useContext';
 
 export interface FooterProps {}
@@ -14,7 +13,7 @@ const Footer: React.FC<FooterProps> = () => {
   const { title = [] } = heading ?? {};
 
   return (
-    <footer className="footer">
+    <footer className="min-h-[25vh] flex justify-center items-center bg-primary text-gray">
       <PortableText value={title} />
     </footer>
   );

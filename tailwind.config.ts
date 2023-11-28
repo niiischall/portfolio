@@ -2,6 +2,12 @@
 export default {
   content: ['./src/components/**/*.tsx', './src/sections/**/*.tsx'],
   theme: {
+    colors: {
+      primary: 'rgb(52, 55, 60)',
+      secondary: 'rgb(186, 38, 92)',
+      light: 'rgb(238, 234, 227)',
+      gray: 'rgb(228, 228, 228)',
+    },
     screens: {
       sm: '640px',
       md: '768px',
