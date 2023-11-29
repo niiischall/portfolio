@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 
-import './style.css';
 import { PortfolioContext } from '../../utils/hooks/useContext';
 
 export interface TalksProps {}
