@@ -14,10 +14,10 @@ const Contact: React.FC<ContactProps> = () => {
 
   return (
     <section className="flex flex-col justify-center items-start md:items-center" id="contact">
-      <div className="text-3xl px-0 py-4 md:px-36 md:py-8 text-left md:text-center">
+      <div className="px-0 py-4 md:px-36 md:py-8 text-left md:text-center">
         <PortableText value={title} />
       </div>
-      <div className="w-full text-left px-5 py-10 text-md md:text-center">
+      <div className="w-full text-left px-5 py-10 md:text-center">
         <PortableText value={text} />
       </div>
     </section>

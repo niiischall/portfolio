@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { PortableText } from '@portabletext/react';
 
-import './style.css';
 import { urlForImage } from '../../lib/sanity.image';
 import { PortfolioContext } from '../../utils/hooks/useContext';
 import { HeroSocialType } from '../../utils/helpers/types';
@@ -18,20 +17,30 @@ const Hero: React.FC<HeroProps> = () => {
   const { current: buttonSlug = '' } = slug ?? {};
 
   return (
-    <section className="home mt-16 md:mt-8" id="home">
-      <div className="social">
+    <section
+      className="relative w-full min-h-[75vh] mt-16 flex flex-col items-start justify-start space-x-0 md:items-center md:flex-row md:mt-8 md:space-x-6 lg:space-x-12"
+      id="home"
+    >
+      <div className="flex flex-col absolute top-12 left-4 md:relative">
         {socials.map((social: HeroSocialType) => {
           return (
-            <a key={social._key} href={social.url} target="_blank" title={social.caption} rel="noopener noreferrer">
+            <a
+              key={social._key}
+              href={social.url}
+              target="_blank"
+              className="mb-6 md:w-12"
+              title={social.caption}
+              rel="noopener noreferrer"
+            >
               <img src={urlForImage(social.cover)?.width(24).url()} alt={social.alt} />
             </a>
           );
         })}
       </div>
-      <div className="home-img">
-        <img src={urlForImage(cover)?.url()} alt="Profile" />
+      <div className="order-first md:order-2 flex justify-start pl-12 md:pl-0">
+        <img src={urlForImage(cover)?.url()} className="w-[200px] md:w-[300px] lg:w-[350px]" alt="Profile" />
       </div>
-      <div className="home-text max-w-md">
+      <div className="max-w-lg md:max-w-md lg:max-w-lg mt-8">
         <PortableText value={greetingText} />
         {buttonText ? (
           <a id="home-contact" href={buttonSlug} className="btn">
