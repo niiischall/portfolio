@@ -38,12 +38,12 @@ const Work: React.FC<WorkProps> = () => {
             </div>
             <div className="w-[95%] p-8">
               <h3 className="font-sans font-bold">{designation}</h3>
-              <h5 className="flex items-center space-x-1">
+              <div className="flex items-center space-x-1">
                 <Building />
                 <a href={orgLink} className="text-secondary font-bold" target="_blank" rel="noopener noreferrer">
                   {orgName}
                 </a>
-              </h5>
+              </div>
               <div className="flex items-center space-x-1">
                 <Clock />
                 <p className="ml-1 font-bold">
