@@ -17,14 +17,14 @@ const Writings: React.FC<WritingsProps> = () => {
   return (
     <section id="writings">
       <div className="flex flex-col justify-center items-start space-x-0 space-y-24  md:space-x-48 md:flex-row md:space-y-0">
-        <div className="heading text-left md:text-center p-0">
+        <div className="text-left md:text-center p-0">
           <PortableText value={title} />
         </div>
         <div className="flex flex-col justify-between">
           {collection.map((item: WritingsCollectionType) => {
             const { _key = '', heading = '', body = '', link = '', image = {} } = item ?? {};
             return (
-              <div key={_key} className="feature-box max-w-lg mb-24">
+              <div key={_key} className="max-w-lg mb-24">
                 <div className="mb-6 overflow-hidden rounded-md shadow-xl">
                   <img src={urlForImage(image)?.url()} alt={heading} />
                 </div>

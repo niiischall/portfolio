@@ -2,7 +2,6 @@ import React from 'react';
 import '@radix-ui/themes/styles.css';
 import { Theme } from '@radix-ui/themes';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import './App.css';
 
 import Hero from './sections/Hero';
 import About from './sections/About';

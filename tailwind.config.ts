@@ -24,6 +24,9 @@ export default {
       letterSpacing: {
         widest: '0.3em',
       },
+      boxShadow: {
+        btn: ' 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;',
+      },
     },
   },
   plugins: [],
