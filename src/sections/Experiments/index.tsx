@@ -22,13 +22,12 @@ const Experiments: React.FC<ExperimentsProps> = () => {
         <div className="flex flex-col justify-between">
           {collection.map((item: ExperimentCollectionType) => {
             const { _key = '', heading = '', body = '', link } = item ?? {};
-            const { text = '', href = '' } = link ?? {};
+            const { href = '' } = link ?? {};
             return (
-              <div key={_key} className="max-w-lg mb-24">
-                <h3 className="text-xl font-sans font-bold mb-4">{heading}</h3>
-                <p className="text-sm mb-4">{body}</p>
-                <a href={href} target="_blank" className="btn" rel="noopener noreferrer">
-                  {text}
+              <div key={_key} className="max-w-lg mb-12">
+                <a href={href} target="_blank" className="group" rel="noopener noreferrer">
+                  <h3 className="text-xl font-sans font-bold mb-4 group-hover:text-secondary">{heading}</h3>
+                  <p className="text-sm mb-4 group-hover:text-secondary">{body}</p>
                 </a>
               </div>
             );
