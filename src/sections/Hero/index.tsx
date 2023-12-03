@@ -18,7 +18,7 @@ const Hero: React.FC<HeroProps> = () => {
 
   return (
     <section
-      className="relative w-full min-h-[50vh] pt-12 flex flex-col items-start justify-start space-x-0 md:justify-center md:items-center md:flex-row md:space-x-6 lg:space-x-12 md:pt-10"
+      className="relative w-full min-h-[60vh] pt-12 flex flex-col items-start justify-start space-x-0 md:justify-center md:items-center md:flex-row md:space-x-6 lg:space-x-12 md:pt-10"
       id="home"
     >
       <div className="flex flex-col absolute top-15 left-4 md:relative">
@@ -40,7 +40,7 @@ const Hero: React.FC<HeroProps> = () => {
       <div className="order-first md:order-2 flex justify-start pl-12 md:pl-0">
         <img src={urlForImage(cover)?.url()} className="w-[200px] md:w-[300px] lg:w-[350px]" alt="Profile" />
       </div>
-      <div className="max-w-lg md:max-w-md lg:max-w-lg">
+      <div className="max-w-lg md:max-w-md mt-8 md:mt-0 lg:max-w-lg">
         <PortableText value={greetingText} />
         {buttonText ? (
           <a id="home-contact" href={buttonSlug} className="btn">

@@ -19,7 +19,7 @@ const About: React.FC<AboutProps> = () => {
         <div className="text-3xl px-0 py-4 md:px-36 md:py-8 text-left md:text-center">
           <PortableText value={headingTitle} />
         </div>
-        <div className="max-w-2xl px-5 py-10">
+        <div className="max-w-2xl py-10">
           <div className="text-left md:text-center">
             <PortableText value={overview} />
             {cvTitle && cvLink ? (
