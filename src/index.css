@@ -42,6 +42,9 @@
   section {
     @apply py-[50px] px-[4%] bg-light md:py-[100px] md:px-[10%];
   }
+  header {
+    @apply bg-light;
+  }
   h1 {
     @apply text-6xl font-poppins;
   }
@@ -60,4 +63,52 @@
   .btn {
     @apply inline-block relative shadow-btn mt-4 cursor-pointer text-base border-[3px] px-2 py-2 border-solid font-sans text-primary uppercase tracking-wide hover:text-primary hover:bg-secondary;
   }
+}
+
+/*Custom styling*/
+
+/*Hamburger styling*/
+.hamburger {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  transition: all 0.25s;
+  position: relative;
+}
+
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom {
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  top: 0;
+  left: 0;
+  background-color: rgb(186, 38, 92);
+  transform: rotate(0);
+  transition: all 0.5s;
+}
+
+.hamburger-middle {
+  transform: translateY(7px);
+}
+
+.hamburger-bottom {
+  transform: translateY(14px);
+}
+
+.open {
+  transform: rotate(90deg);
+}
+
+.open .hamburger-top {
+  transform: rotate(45deg) translateY(6px) translateX(6px);
+}
+
+.open .hamburger-middle {
+  display: none;
+}
+
+.open .hamburger-bottom {
+  transform: rotate(-45deg) translateY(6px) translateX(-6px);
 }

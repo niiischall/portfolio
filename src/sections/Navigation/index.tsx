@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 
 import { PortfolioContext } from '../../utils/hooks/useContext';
 import { NavigationCollectionType } from '../../utils/helpers/types';
@@ -9,9 +9,11 @@ const Navigation: React.FC<NavigationProps> = () => {
   const { navigation } = useContext(PortfolioContext) ?? [];
   const { data } = navigation ?? {};
 
-  const { heading, collection = [] } = data ?? {};
-  const { title = '', slug } = heading ?? {};
-  const { current: titleLink = '' } = slug ?? {};
+  const { collection = [] } = data ?? {};
+
+  const toggleMobileMenuShow = useCallback(() => {
+    console.log('toggle mobile menu...');
+  }, []);
 
   const renderNavigationItems = () => {
     let renderedList = null;
@@ -20,7 +22,7 @@ const Navigation: React.FC<NavigationProps> = () => {
         return (
           <li key={navItem._key}>
             <a
-              className="text-xl font-sans font-bold px-4 py-8 text-primary hover:text-secondary"
+              className="text-xl font-sans font-bold px-4 text-primary hover:text-secondary duration-200"
               href={navItem?.slug.current}
             >
               {navItem.title}
@@ -34,11 +36,19 @@ const Navigation: React.FC<NavigationProps> = () => {
 
   return (
     <header className="fixed w-full top-0 left-0 z-50">
-      <nav className="flex justify-start items-center bg-gray px-8 py-4 md:px-36 md:justify-between">
-        <a href={titleLink} className="text-3xl font-sans font-bold text-primary">
-          {title}
-        </a>
+      <nav className="flex justify-end items-center p-8">
         <ul className="hidden lg:flex">{renderNavigationItems()}</ul>
+        <div className="md:hidden">
+          <button
+            id="menu-btn"
+            className="hamburger z-50 block md:hidden focus:outline-none"
+            onClick={toggleMobileMenuShow}
+          >
+            <span className="hamburger-top"></span>
+            <span className="hamburger-middle"></span>
+            <span className="hamburger-bottom"></span>
+          </button>
+        </div>
       </nav>
     </header>
   );
