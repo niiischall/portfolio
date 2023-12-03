@@ -40,10 +40,10 @@
     @apply scroll-smooth scroll-pt-2;
   }
   section {
-    @apply py-[50px] px-[4%] bg-light md:py-[100px] md:px-[10%];
+    @apply py-[50px] px-[6%] bg-light md:py-[100px] md:px-[10%];
   }
   header {
-    @apply bg-light;
+    @apply px-[6%] pt-[8%] bg-light md:px-[10%] md:py-[2%];
   }
   h1 {
     @apply text-6xl font-poppins;

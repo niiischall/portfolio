@@ -18,7 +18,7 @@ const Hero: React.FC<HeroProps> = () => {
 
   return (
     <section
-      className="relative w-full min-h-[75vh] pt-24 flex flex-col items-start justify-start space-x-0 md:items-center md:flex-row md:space-x-6 lg:space-x-12 md:pt-10"
+      className="relative w-full min-h-[50vh] pt-12 flex flex-col items-start justify-start space-x-0 md:justify-center md:items-center md:flex-row md:space-x-6 lg:space-x-12 md:pt-10"
       id="home"
     >
       <div className="flex flex-col absolute top-15 left-4 md:relative">

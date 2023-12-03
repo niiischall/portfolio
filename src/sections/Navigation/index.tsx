@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 
 import { PortfolioContext } from '../../utils/hooks/useContext';
 import { NavigationCollectionType } from '../../utils/helpers/types';
@@ -8,12 +8,40 @@ export interface NavigationProps {}
 const Navigation: React.FC<NavigationProps> = () => {
   const { navigation } = useContext(PortfolioContext) ?? [];
   const { data } = navigation ?? {};
-
   const { collection = [] } = data ?? {};
 
+  const [menuShowcase, setMenuShowcase] = useState<boolean>(false);
+
   const toggleMobileMenuShow = useCallback(() => {
-    console.log('toggle mobile menu...');
+    setMenuShowcase((prevMenuShowcase) => !prevMenuShowcase);
   }, []);
+
+  const navigateToSection = useCallback(
+    (slug: string) => {
+      document.location.href = `${slug}`;
+      toggleMobileMenuShow();
+    },
+    [toggleMobileMenuShow],
+  );
+
+  const renderMobileNavigationItems = () => {
+    let renderedList = null;
+    if (collection.length > 0) {
+      renderedList = collection.map((navItem: NavigationCollectionType) => {
+        return (
+          <li key={navItem._key}>
+            <button
+              className="text-xl font-sans font-bold px-4 text-primary hover:text-secondary duration-200"
+              onClick={() => navigateToSection(navItem?.slug.current)}
+            >
+              {navItem.title}
+            </button>
+          </li>
+        );
+      });
+    }
+    return renderedList;
+  };
 
   const renderNavigationItems = () => {
     let renderedList = null;
@@ -35,13 +63,13 @@ const Navigation: React.FC<NavigationProps> = () => {
   };
 
   return (
-    <header className="fixed w-full top-0 left-0 z-50">
-      <nav className="flex justify-end items-center p-8">
+    <header className="w-full top-0 left-0 z-50">
+      <nav className="flex justify-end items-center p-0">
         <ul className="hidden lg:flex">{renderNavigationItems()}</ul>
         <div className="md:hidden">
           <button
             id="menu-btn"
-            className="hamburger z-50 block md:hidden focus:outline-none"
+            className={`hamburger z-50 block md:hidden focus:outline-none ${menuShowcase ? 'open' : ''}`}
             onClick={toggleMobileMenuShow}
           >
             <span className="hamburger-top"></span>
@@ -50,6 +78,13 @@ const Navigation: React.FC<NavigationProps> = () => {
           </button>
         </div>
       </nav>
+      {menuShowcase ? (
+        <div id="menu-banner" className="absolute top-0 left-0 space-y-4 bg-light h-screen z-40 w-screen min-h-screen">
+          <ul className="flex flex-col w-full h-full space-y-8 justify-center items-center">
+            {renderMobileNavigationItems()}
+          </ul>
+        </div>
+      ) : null}
     </header>
   );
 };
