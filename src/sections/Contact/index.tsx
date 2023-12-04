@@ -9,17 +9,21 @@ const Contact: React.FC<ContactProps> = () => {
   const { contact } = useContext(PortfolioContext) ?? [];
   const { data } = contact ?? {};
 
-  const { heading, text = [] } = data ?? {};
+  const { heading, text = [], link } = data ?? {};
+  const { text: linkText, href: linkUrl } = link ?? {};
   const { title = [] } = heading ?? {};
 
   return (
-    <section className="flex flex-col justify-center items-start md:items-center" id="contact">
-      <div className="px-0 py-4 md:px-36 md:py-8 text-left md:text-center">
+    <section className="flex flex-col justify-center items-start md:items-center py-24" id="contact">
+      <div className="py-4 md:py-8 max-w-2xl md:text-center">
         <PortableText value={title} />
       </div>
-      <div className="w-full text-left py-10 md:text-center">
+      <div className="pb-4 w-full text-left max-w-2xl md:text-center">
         <PortableText value={text} />
       </div>
+      <a id="contact-link" href={linkUrl} className="btn">
+        {linkText} &rarr;
+      </a>
     </section>
   );
 };

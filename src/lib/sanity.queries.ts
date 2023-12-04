@@ -76,7 +76,8 @@ export const writingsQuery = `*[_type == "writings"][0]{
 
 export const contactQuery = `*[_type == "contact"][0]{
   heading,
-  text  
+  text,
+  link,  
 }`;
 
 export const footerQuery = `*[_type == "footer"][0]{

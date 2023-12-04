@@ -128,6 +128,10 @@ export const initialState = {
         title: [],
       },
       text: [],
+      link: {
+        text: '',
+        href: '',
+      },
     },
     isLoading: false,
     isSuccess: false,

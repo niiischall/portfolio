@@ -180,6 +180,10 @@ export interface ContactsContextType {
       title: TypedObject[];
     };
     text: TypedObject[];
+    link: {
+      text: string;
+      href: string;
+    };
   };
   isLoading: boolean;
   isSuccess: boolean;
