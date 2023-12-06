@@ -15,19 +15,19 @@ const Experiments: React.FC<ExperimentsProps> = () => {
 
   return (
     <section id="experiments">
-      <div className="flex flex-col justify-center items-start space-x-0 space-y-24  md:space-x-24 md:flex-row md:space-y-0">
+      <div className="flex flex-col justify-center items-center space-y-24 max-w-4xl mx-auto mb-24">
         <div className="text-left md:text-center p-0">
           <PortableText value={title} />
         </div>
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col space-y-24 md:space-y-0 md:space-x-16 md:flex-row justify-between">
           {collection.map((item: ExperimentCollectionType) => {
             const { _key = '', heading = '', body = '', link } = item ?? {};
             const { href = '' } = link ?? {};
             return (
-              <div key={_key} className="max-w-lg mb-12">
+              <div key={_key} className="max-w-lg">
                 <a href={href} target="_blank" className="group" rel="noopener noreferrer">
-                  <h3 className="text-xl font-sans font-bold mb-4 group-hover:text-secondary">{heading}</h3>
-                  <p className="text-sm mb-4 group-hover:text-secondary">{body}</p>
+                  <h3 className="text-2xl font-sans font-bold mb-4 group-hover:text-secondary">{heading}</h3>
+                  <p className="text-md mb-4 group-hover:text-secondary">{body}</p>
                 </a>
               </div>
             );

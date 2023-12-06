@@ -15,7 +15,7 @@ const About: React.FC<AboutProps> = () => {
 
   return (
     <section id="about">
-      <div className="flex flex-col justify-center items-start md:items-center">
+      <div className="mb-16 flex flex-col justify-center items-start md:items-center">
         <div className="text-3xl px-0 py-4 md:px-36 md:py-8 text-left md:text-center">
           <PortableText value={headingTitle} />
         </div>
@@ -23,7 +23,7 @@ const About: React.FC<AboutProps> = () => {
           <div className="text-left md:text-center">
             <PortableText value={overview} />
             {cvTitle && cvLink ? (
-              <div className="my-5 mb-10 justify-center items-left md:items-center">
+              <div className="my-5 justify-center items-left md:items-center">
                 <a
                   id="about-cv-download-clicked"
                   href={cvLink}
