@@ -25,15 +25,13 @@ const Experiments: React.FC<ExperimentsProps> = () => {
             const { _key = '', heading = '', body = '', link, image = {} } = item ?? {};
             const { href = '' } = link ?? {};
             return (
-              <div key={_key} className="max-w-lg">
+              <div key={_key} className="max-w-lg w-full md:w-1/3">
                 <a href={href} target="_blank" className="group" rel="noopener noreferrer">
-                  <div className="mb-6 overflow-hidden">
-                    <img src={urlForImage(image)?.url()} alt={heading} />
+                  <div className="mb-6 overflow-hidden h-120 flex justify-center items-start md:justify-center">
+                    <img className="max-w-[85%]" src={urlForImage(image)?.url()} alt={heading} />
                   </div>
-                  <h3 className="text-2xl font-sans font-bold mb-4 group-hover:text-secondary md:text-center">
-                    {heading}
-                  </h3>
-                  <p className="text-md mb-4 group-hover:text-secondary md:text-center">{body}</p>
+                  <h3 className="text-2xl font-sans font-bold mb-4 group-hover:text-secondary">{heading}</h3>
+                  <p className="text-md mb-4 group-hover:text-secondary">{body}</p>
                 </a>
               </div>
             );
