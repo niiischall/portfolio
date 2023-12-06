@@ -96,6 +96,7 @@ export const initialState = {
       heading: {
         title: [],
       },
+      image: {},
       collection: [],
     },
     isLoading: false,

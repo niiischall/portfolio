@@ -49,6 +49,7 @@ export const experimentsQuery = `*[_type == "experiments"][0]{
     _key,
     heading,
     body,
+    image,
     link,
   }
 }`;

@@ -123,6 +123,7 @@ export type ExperimentCollectionType = {
   _key: string;
   heading: string;
   body: string;
+  image: Image;
   link: {
     text: string;
     href: string;

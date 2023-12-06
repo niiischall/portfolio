@@ -3,6 +3,7 @@ import { PortableText } from '@portabletext/react';
 
 import { PortfolioContext } from '../../utils/hooks/useContext';
 import { ExperimentCollectionType } from '../../utils/helpers/types';
+import { urlForImage } from '../../lib/sanity.image';
 
 export interface ExperimentsProps {}
 
@@ -21,13 +22,18 @@ const Experiments: React.FC<ExperimentsProps> = () => {
         </div>
         <div className="flex flex-col space-y-24 md:space-y-0 md:space-x-16 md:flex-row justify-between">
           {collection.map((item: ExperimentCollectionType) => {
-            const { _key = '', heading = '', body = '', link } = item ?? {};
+            const { _key = '', heading = '', body = '', link, image = {} } = item ?? {};
             const { href = '' } = link ?? {};
             return (
               <div key={_key} className="max-w-lg">
                 <a href={href} target="_blank" className="group" rel="noopener noreferrer">
-                  <h3 className="text-2xl font-sans font-bold mb-4 group-hover:text-secondary">{heading}</h3>
-                  <p className="text-md mb-4 group-hover:text-secondary">{body}</p>
+                  <div className="mb-6 overflow-hidden">
+                    <img src={urlForImage(image)?.url()} alt={heading} />
+                  </div>
+                  <h3 className="text-2xl font-sans font-bold mb-4 group-hover:text-secondary md:text-center">
+                    {heading}
+                  </h3>
+                  <p className="text-md mb-4 group-hover:text-secondary md:text-center">{body}</p>
                 </a>
               </div>
             );
