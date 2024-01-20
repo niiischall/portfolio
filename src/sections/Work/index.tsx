@@ -4,7 +4,6 @@ import { PortableText } from '@portabletext/react';
 import Building from '../../utils/svgs/Building';
 import Clock from '../../utils/svgs/Clock';
 import { urlForImage } from '../../lib/sanity.image';
-import { getEndDuration, getStartDuration } from '../../utils/helpers/services';
 import { PortfolioContext } from '../../utils/hooks/useContext';
 import { WorkCollectionType } from '../../utils/helpers/types';
 
@@ -22,8 +21,6 @@ const Work: React.FC<WorkProps> = () => {
       const { designation = '', description = '', link, cover, duration } = item ?? {};
       const { name: orgName = '', href: orgLink = '' } = link ?? {};
       const { start = '', end = '' } = duration ?? {};
-      const startDurationInString = getStartDuration(start);
-      const endDurationInString = getEndDuration(end);
 
       return (
         <div key={item._key} className="relative">
@@ -47,7 +44,7 @@ const Work: React.FC<WorkProps> = () => {
               <div className="flex items-center space-x-1">
                 <Clock />
                 <p className="ml-1 font-bold">
-                  {startDurationInString} - {endDurationInString}
+                  {start} - {end}
                 </p>
               </div>
               <p>{description}</p>
