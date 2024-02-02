@@ -13,7 +13,7 @@ const Footer: React.FC<FooterProps> = () => {
   const { title = [] } = heading ?? {};
 
   return (
-    <footer className="min-h-[25vh] flex justify-center items-center bg-primary text-gray">
+    <footer className="pt-16 pb-32 flex justify-center items-center bg-light">
       <PortableText value={title} />
     </footer>
   );

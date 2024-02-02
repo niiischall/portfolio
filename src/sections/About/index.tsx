@@ -14,8 +14,8 @@ const About: React.FC<AboutProps> = () => {
   const { link: cvLink = '', title: cvTitle = '' } = cv ?? {};
 
   return (
-    <section id="about">
-      <div className="mb-16 flex flex-col justify-center items-start md:items-center">
+    <section className="px-[6%] md:px-0 pt-16 pb-24" id="about">
+      <div className="flex flex-col justify-center items-start md:items-center">
         <div className="text-3xl px-0 py-4 md:px-36 md:py-8 text-left md:text-center">
           <PortableText value={headingTitle} />
         </div>
@@ -37,9 +37,6 @@ const About: React.FC<AboutProps> = () => {
             ) : null}
           </div>
         </div>
-      </div>
-      <div className="w-full">
-        <hr className="h-px w-3/4 mx-auto bg-rule border-0"></hr>
       </div>
     </section>
   );

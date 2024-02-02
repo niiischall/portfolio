@@ -31,7 +31,7 @@ const Navigation: React.FC<NavigationProps> = () => {
         return (
           <li key={navItem._key}>
             <button
-              className="text-xl font-sans font-bold px-4 text-primary hover:text-secondary duration-200"
+              className="text-2xl font-sans font-bold px-4 text-primary hover:text-secondary duration-200"
               onClick={() => navigateToSection(navItem?.slug.current)}
             >
               {navItem.title}

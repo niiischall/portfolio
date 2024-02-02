@@ -58,16 +58,13 @@ const Work: React.FC<WorkProps> = () => {
   return (
     <section
       id="work"
-      className="relative flex flex-col justify-center items-start space-y-16 md:space-y-24 md:items-center"
+      className="px-[6%] md:px-0 pt-16 pb-32 relative flex flex-col justify-center items-start space-y-16 md:space-y-24 md:items-center"
     >
       <div className="text-left md:text-center p-0">
         <PortableText value={title} />
       </div>
       <div className="max-w-4xl">
         <div className="w-full py-10 px-0 relative overflow-hidden">{renderCollection()}</div>
-      </div>
-      <div className="absolute bottom-0 w-3/4">
-        <hr className="h-px w-3/4 mx-auto bg-[#34373c] border-0"></hr>
       </div>
     </section>
   );

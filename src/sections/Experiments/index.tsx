@@ -15,8 +15,8 @@ const Experiments: React.FC<ExperimentsProps> = () => {
   const { title = [] } = heading ?? {};
 
   return (
-    <section id="experiments">
-      <div className="flex flex-col justify-center items-center space-y-24 max-w-4xl mx-auto mb-24">
+    <section className="pt-16 pb-32 px-[6%] md:px-0" id="experiments">
+      <div className="flex flex-col justify-center items-start md:items-center space-y-24 max-w-4xl mx-auto">
         <div className="text-left md:text-center p-0">
           <PortableText value={title} />
         </div>
@@ -27,7 +27,7 @@ const Experiments: React.FC<ExperimentsProps> = () => {
             return (
               <div key={_key} className="w-full md:w-1/3">
                 <a href={href} target="_blank" className="group" rel="noopener noreferrer">
-                  <div className="mb-6 h-[300px] w-auto max-h-[250px] overflow-hidden flex justify-center items-center">
+                  <div className="mb-6 h-[300px] w-auto max-h-[250px] overflow-hidden flex flex-col justify-center items-start md:items-center">
                     <img src={urlForImage(image)?.height(250).url()} alt={heading} />
                   </div>
                   <div>
@@ -39,9 +39,6 @@ const Experiments: React.FC<ExperimentsProps> = () => {
             );
           })}
         </div>
-      </div>
-      <div className="w-full">
-        <hr className="h-px w-3/4 mx-auto bg-[#34373c] border-0"></hr>
       </div>
     </section>
   );

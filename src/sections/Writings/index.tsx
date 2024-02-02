@@ -15,7 +15,7 @@ const Writings: React.FC<WritingsProps> = () => {
   const { title = [] } = heading ?? {};
 
   return (
-    <section id="writings">
+    <section className="pt-16 pb-32 px-[6%] md:px-0" id="writings">
       <div className="flex flex-col justify-center items-start space-x-0 space-y-24  md:space-x-48 md:flex-row md:space-y-0">
         <div className="text-left md:text-center p-0">
           <PortableText value={title} />
@@ -36,9 +36,6 @@ const Writings: React.FC<WritingsProps> = () => {
             );
           })}
         </div>
-      </div>
-      <div className="w-full">
-        <hr className="h-px w-3/4 mx-auto bg-[#34373c] border-0"></hr>
       </div>
     </section>
   );
