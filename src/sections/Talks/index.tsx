@@ -8,7 +8,6 @@ const Talks: React.FC<TalksProps> = () => {
   const { talks } = useContext(PortfolioContext) ?? [];
   const { data } = talks ?? {};
 
-  console.log('talks: ', data);
   return <div id="talks">{null}</div>;
 };
 
