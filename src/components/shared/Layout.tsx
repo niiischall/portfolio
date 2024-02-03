@@ -76,6 +76,5 @@ export default function Layout({ children }: LayoutProps) {
     );
   }
 
-  console.log('error: ', isError);
   return <div className="flex min-h-screen flex-col text-black">{child}</div>;
 }
