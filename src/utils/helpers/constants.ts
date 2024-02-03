@@ -144,6 +144,10 @@ export const initialState = {
       heading: {
         title: [],
       },
+      email: '',
+      copyright: '',
+      socials: [],
+      collection: [],
     },
     isLoading: false,
     isSuccess: false,

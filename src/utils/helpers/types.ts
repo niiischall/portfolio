@@ -193,11 +193,35 @@ export interface ContactsContextType {
 }
 
 //////////// Footer
+export type FooterNavigationCollectionType = {
+  _key: number;
+  title: string;
+  slug: {
+    _type: string;
+    current: string;
+  };
+};
+
+export type FooterSocialType = {
+  _key: string;
+  url: string;
+  cover: {
+    asset: { _type: string; _ref: string };
+    _type: string;
+  };
+  caption: string;
+  alt: string;
+};
+
 export interface FooterContextType {
   data: {
     heading: {
       title: TypedObject[];
     };
+    email: string;
+    copyright: string;
+    socials: FooterSocialType[];
+    collection: FooterNavigationCollectionType[];
   };
   isLoading: boolean;
   isSuccess: boolean;

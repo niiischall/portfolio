@@ -82,5 +82,9 @@ export const contactQuery = `*[_type == "contact"][0]{
 }`;
 
 export const footerQuery = `*[_type == "footer"][0]{
-  heading
+  heading,
+  email,
+  copyright,
+  socials,
+  collection,
 }`;
