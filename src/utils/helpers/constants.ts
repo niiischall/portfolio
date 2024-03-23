@@ -117,7 +117,12 @@ export const initialState = {
     error: null,
   },
   talks: {
-    data: {},
+    data: {
+      heading: {
+        title: [],
+      },
+      collection: [],
+    },
     isLoading: false,
     isSuccess: false,
     isError: false,
