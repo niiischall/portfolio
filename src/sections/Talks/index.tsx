@@ -25,14 +25,10 @@ const Talks: React.FC<TalksProps> = () => {
             const { _key = '', heading = '', body = '', link, cover = {} } = item ?? {};
             const { url = '' } = link ?? {};
             return (
-              <div key={_key} className="w-full py-2 px-4 md:w-1/3 shadow-xl rounded-md border-2 border-gray">
+              <div key={_key} className="w-full py-2 px-4 md:w-1/3 ">
                 <a href={url} target="_blank" className="group" rel="noopener noreferrer">
-                  <div className="mb-6 h-[300px] w-auto max-h-[250px] overflow-hidden flex flex-col justify-center items-start md:items-center">
-                    <img
-                      className="border-solid border-2 border-primary"
-                      src={urlForImage(cover)?.height(200).url()}
-                      alt={heading}
-                    />
+                  <div className="mb-2 h-[300px] w-auto max-h-[250px] overflow-hidden flex flex-col justify-start items-start md:items-center">
+                    <img className="rounded-md shadow-xl" src={urlForImage(cover)?.height(350).url()} alt={heading} />
                   </div>
                   <div>
                     <h3 className="text-2xl font-sans font-bold mb-4 group-hover:text-secondary">{heading}</h3>
