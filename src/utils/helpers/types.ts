@@ -130,6 +130,18 @@ export type ExperimentCollectionType = {
   };
 };
 
+///////// Talks
+export type TalkCollectionType = {
+  _key: string;
+  heading: string;
+  body: string;
+  cover: Image;
+  link: {
+    text: string;
+    url: string;
+  };
+};
+
 export interface ExperimentContextType {
   data: {
     heading: {
@@ -167,7 +179,12 @@ export interface WritingsContextType {
 
 //////////// Talks
 export interface TalksContextType {
-  data: object;
+  data: {
+    heading: {
+      title: TypedObject[];
+    };
+    collection: TalkCollectionType[];
+  };
   isLoading: boolean;
   isSuccess: boolean;
   isError: boolean;

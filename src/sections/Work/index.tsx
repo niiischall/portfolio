@@ -24,7 +24,7 @@ const Work: React.FC<WorkProps> = () => {
 
       return (
         <div key={item._key} className="relative">
-          <div className="w-[98% + 8] h-full flex justify-between timeline-block-right">
+          <div className="w-[98% + 8] h-full flex justify-between">
             <div className="absolute top-0 left-[3%] w-[2px] min-h-full bg-primary ml-[-1px]" />
             <div className="w-[48px] h-[48px] mt-8 z-10">
               <img

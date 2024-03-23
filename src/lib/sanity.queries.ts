@@ -58,9 +58,10 @@ export const talksQuery = `*[_type == "talks"][0]{
   heading,
   collection[]{
     _key,
-    cover,
     heading,
     body,
+    link,
+    cover
   }
 }`;
 
