@@ -18,7 +18,7 @@ const Hero: React.FC<HeroProps> = () => {
 
   return (
     <section
-      className="px-[6%] md:px-0 pt-16 pb-32 mx-auto bg-light relative flex flex-col items-start justify-start space-x-0 md:justify-center md:items-center md:flex-row md:space-x-6 lg:space-x-12"
+      className="bg-light relative mx-auto flex flex-col items-start justify-start px-4 pt-6 pb-12 space-x-0 md:px-8 md:pt-8 md:pb-32 md:flex-row md:justify-center md:items-center md:space-x-6 lg:space-x-12"
       id="home"
     >
       <div className="flex flex-col absolute top-15 left-4 md:relative">
@@ -38,12 +38,17 @@ const Hero: React.FC<HeroProps> = () => {
         })}
       </div>
       <div className="order-first md:order-2 flex justify-start pl-12 md:pl-0">
-        <img src={urlForImage(cover)?.url()} className="w-[200px] md:w-[300px] lg:w-[350px]" alt="Profile" />
+        <div className="hidden md:flex">
+          <img src={urlForImage(cover)?.height(300).width(300).url()} alt="Profile" />
+        </div>
+        <div className="md:hidden">
+          <img src={urlForImage(cover)?.height(200).width(200).url()} alt="Profile" />
+        </div>
       </div>
-      <div className="max-w-lg md:max-w-md mt-8 md:mt-0 lg:max-w-lg">
+      <div className="max-w-lg md:max-w-md mt-16 md:mt-0 lg:max-w-lg">
         <PortableText value={greetingText} />
         {buttonText ? (
-          <a id="home-contact" href={buttonSlug} className="btn">
+          <a id="home-contact" href={buttonSlug} className="btn mt-8">
             {buttonText}
           </a>
         ) : null}
