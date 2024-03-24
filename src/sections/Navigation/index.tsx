@@ -66,7 +66,7 @@ const Navigation: React.FC<NavigationProps> = () => {
 
   return (
     <header className="relative flex justify-end items-center p-0 px-4 py-8 md:px-8 md:py-12">
-      <nav className="flex justify-end items-center">
+      <nav className="flex justify-end items-center max-w-4xl md:mx-auto">
         <ul className="space-x-2 hidden md:flex">{renderNavigationItems()}</ul>
         <div className="md:hidden">
           <button

@@ -14,11 +14,8 @@ const Contact: React.FC<ContactProps> = () => {
   const { title = [] } = heading ?? {};
 
   return (
-    <section
-      className="pt-16 pb-32 px-[6%] md:px-0 flex flex-col justify-center items-start md:items-center"
-      id="contact"
-    >
-      <div className="py-4 md:py-8 max-w-2xl md:text-center">
+    <section className="px-4 pt-12 pb-24 md:px-8 flex flex-col justify-center items-start md:items-center" id="contact">
+      <div className="pb-4 md:pb-8 max-w-2xl md:text-center">
         <PortableText value={title} />
       </div>
       <div className="pb-4 w-full text-left max-w-2xl md:text-center">

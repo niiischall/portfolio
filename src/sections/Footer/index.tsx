@@ -14,7 +14,7 @@ const Footer: React.FC<FooterProps> = () => {
   const { title = [] } = heading ?? {};
 
   return (
-    <footer className="pt-16 pb-32 px-[6%] md:px-0 bg-light">
+    <footer className="px-4 pt-12 pb-24 md:px-8 md:px-0 bg-light">
       <div className="flex flex-col space-y-16 max-w-4xl mx-auto justify-between items-start md:flex-row md:space-y-0">
         <div className="flex flex-col space-y-6">
           <div className="flex flex-col space-y-2 text-left p-0">

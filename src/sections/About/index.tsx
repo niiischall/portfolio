@@ -13,32 +13,37 @@ const About: React.FC<AboutProps> = () => {
   const { title: headingTitle = [] } = heading ?? {};
   const { link: cvLink = '', title: cvTitle = '' } = cv ?? {};
 
+  const isCvAvailable = cvTitle && cvLink;
+
   return (
-    <section className="px-[6%] md:px-0 pt-16 pb-24" id="about">
-      <div className="flex flex-col justify-center items-start md:items-center">
-        <div className="text-3xl px-0 py-4 md:px-36 md:py-8 text-left md:text-center">
-          <PortableText value={headingTitle} />
-        </div>
-        <div className="max-w-2xl py-10">
-          <div className="text-left md:text-center">
-            <PortableText value={overview} />
-            {cvTitle && cvLink ? (
-              <div className="my-5 justify-center items-left md:items-center">
-                <a
-                  id="about-cv-download-clicked"
-                  href={cvLink}
-                  target="_blank"
-                  className="btn"
-                  rel="noopener noreferrer"
-                >
-                  {cvTitle}
-                </a>
-              </div>
-            ) : null}
+    <>
+      <section className="pt-12 px-4 pb-24 md:pb-36 md:px-8" id="about">
+        <div className="max-w-4xl flex flex-col md:flex-row justify-center items-start space-y-12 space-x-0 md:space-x-24 md:justify-start md:items-center md:mx-auto">
+          <div className="text-3xl px-0 text-left md:text-center">
+            <PortableText value={headingTitle} />
+          </div>
+          <div className="md:max-w-xl">
+            <div className="text-left">
+              <PortableText value={overview} />
+              {isCvAvailable ? (
+                <div className="mt-8 justify-center items-left md:items-center">
+                  <a
+                    id="about-cv-download-clicked"
+                    href={cvLink}
+                    target="_blank"
+                    className="btn"
+                    rel="noopener noreferrer"
+                  >
+                    {cvTitle}
+                  </a>
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <div className="divider" />
+    </>
   );
 };
 

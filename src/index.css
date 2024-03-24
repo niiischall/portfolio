@@ -60,6 +60,9 @@
   .btn {
     @apply inline-block relative shadow-btn mt-4 cursor-pointer text-base border-[3px] px-2 py-2 border-solid font-sans text-primary uppercase tracking-wide hover:text-primary hover:bg-secondary;
   }
+  .divider {
+    @apply w-[25%] h-[1px] mx-auto bg-primary;
+  }
 }
 
 /*Custom styling*/
