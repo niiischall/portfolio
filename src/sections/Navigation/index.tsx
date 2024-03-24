@@ -49,12 +49,14 @@ const Navigation: React.FC<NavigationProps> = () => {
       renderedList = collection.map((navItem: NavigationCollectionType) => {
         return (
           <li key={navItem._key}>
-            <a
-              className="text-xl font-sans font-bold px-4 text-primary hover:text-secondary duration-200"
-              href={navItem?.slug.current}
-            >
-              {navItem.title}
-            </a>
+            <div className="flex flex-col items-center">
+              <a
+                className="text-xl font-sans font-bold px-4 text-primary hover:text-secondary duration-200"
+                href={navItem?.slug.current}
+              >
+                {navItem.title}
+              </a>
+            </div>
           </li>
         );
       });
@@ -63,9 +65,9 @@ const Navigation: React.FC<NavigationProps> = () => {
   };
 
   return (
-    <header className="w-full top-0 left-0 z-50">
-      <nav className="flex justify-end items-center p-0">
-        <ul className="hidden lg:flex">{renderNavigationItems()}</ul>
+    <header className="relative flex justify-end items-center p-0 px-4 py-8 md:px-8 md:py-12">
+      <nav className="flex justify-end items-center">
+        <ul className="space-x-2 hidden md:flex">{renderNavigationItems()}</ul>
         <div className="md:hidden">
           <button
             id="menu-btn"
@@ -79,7 +81,7 @@ const Navigation: React.FC<NavigationProps> = () => {
         </div>
       </nav>
       {menuShowcase ? (
-        <div id="menu-banner" className="absolute top-0 left-0 space-y-4 bg-light h-screen z-40 w-screen min-h-screen">
+        <div id="menu-banner" className="z-40 absolute top-0 left-0 space-y-4 bg-light w-full h-screen">
           <ul className="flex flex-col w-full h-full space-y-8 justify-center items-center">
             {renderMobileNavigationItems()}
           </ul>
