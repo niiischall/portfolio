@@ -413,7 +413,10 @@ const Hero = ({ data }) => {
     /* @__PURE__ */ jsxs("div", { className: "order-first md:order-2 flex justify-start pl-12 md:pl-0 lg:pl-12", children: [
       /* @__PURE__ */ jsxs("div", { className: "hidden md:flex", children: [
         /* @__PURE__ */ jsx("img", { src: (_a = urlForImage(cover)) == null ? void 0 : _a.height(300).width(300).url(), alt: "Profile" }),
-        /* @__PURE__ */ jsx("p", { children: data == null ? void 0 : data.title })
+        /* @__PURE__ */ jsxs("p", { children: [
+          "title: ",
+          data == null ? void 0 : data.title
+        ] })
       ] }),
       /* @__PURE__ */ jsx("div", { className: "md:hidden", children: /* @__PURE__ */ jsx("img", { src: (_b = urlForImage(cover)) == null ? void 0 : _b.height(200).width(200).url(), alt: "Profile" }) })
     ] }),
@@ -734,7 +737,6 @@ const queryClient = new QueryClient({
   }
 });
 const App = ({ data }) => {
-  console.log("data from server: ", data);
   return /* @__PURE__ */ jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsx(ContextWrapper, { children: /* @__PURE__ */ jsxs(Layout, { children: [
     /* @__PURE__ */ jsx(Hero, { data }),
     /* @__PURE__ */ jsx(About, {}),
