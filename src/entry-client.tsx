@@ -6,7 +6,8 @@ import './index.css';
 
 const rootDiv = document.getElementById('root')!;
 
-ReactDOM.createRoot(rootDiv).render(
+ReactDOM.hydrateRoot(
+  rootDiv,
   <React.StrictMode>
     <App />
   </React.StrictMode>,

@@ -1,6 +1,4 @@
 import React from 'react';
-import '@radix-ui/themes/styles.css';
-import { Theme } from '@radix-ui/themes';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import Hero from './sections/Hero';
@@ -26,17 +24,15 @@ const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ContextWrapper>
-        <Theme>
-          <Layout>
-            <Hero />
-            <About />
-            <Work />
-            <Experiments />
-            <Writings />
-            <Talks />
-            <Contact />
-          </Layout>
-        </Theme>
+        <Layout>
+          <Hero />
+          <About />
+          <Work />
+          <Experiments />
+          <Writings />
+          <Talks />
+          <Contact />
+        </Layout>
       </ContextWrapper>
     </QueryClientProvider>
   );
