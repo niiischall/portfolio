@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import Navigation from '../../sections/Navigation';
 import Footer from '../../sections/Footer';
-import { PortfolioContext } from '../../utils/hooks/useContext';
+import { PortfolioContext } from '../../utils/hooks/usePortfolioContext';
 import Loader from '../loader/Loader';
 
 export interface LayoutProps {

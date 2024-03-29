@@ -1,18 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { PortableText } from '@portabletext/react';
 
-import { PortfolioContext } from '../../utils/hooks/useContext';
+import { useExperiments } from '../../utils/hooks/usePortfolioContext';
 import { ExperimentCollectionType } from '../../utils/helpers/types';
 import { urlForImage } from '../../lib/sanity.image';
 
 export interface ExperimentsProps {}
 
 const Experiments: React.FC<ExperimentsProps> = () => {
-  const { experiments } = useContext(PortfolioContext) ?? [];
-  const { data } = experiments ?? {};
-
-  const { heading, collection = [] } = data ?? {};
-  const { title = [] } = heading ?? {};
+  const { title, collection } = useExperiments();
 
   return (
     <>

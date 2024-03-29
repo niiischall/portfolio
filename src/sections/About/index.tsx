@@ -1,18 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { PortableText } from '@portabletext/react';
 
-import { PortfolioContext } from '../../utils/hooks/useContext';
+import { useAbout } from '../../utils/hooks/usePortfolioContext';
 
 export interface AboutProps {}
 
 const About: React.FC<AboutProps> = () => {
-  const { about } = useContext(PortfolioContext) ?? [];
-  const { data } = about ?? {};
-
-  const { heading, overview = [], cv } = data ?? {};
-  const { title: headingTitle = [] } = heading ?? {};
-  const { link: cvLink = '', title: cvTitle = '' } = cv ?? {};
-
+  const { overview, headingTitle, cvLink, cvTitle } = useAbout();
   const isCvAvailable = cvTitle && cvLink;
 
   return (

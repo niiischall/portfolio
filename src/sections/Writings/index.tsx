@@ -1,18 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { PortableText } from '@portabletext/react';
 
 import { urlForImage } from '../../lib/sanity.image';
-import { PortfolioContext } from '../../utils/hooks/useContext';
+import { useWritings } from '../../utils/hooks/usePortfolioContext';
 import { WritingsCollectionType } from '../../utils/helpers/types';
 
 export interface WritingsProps {}
 
 const Writings: React.FC<WritingsProps> = () => {
-  const { writings } = useContext(PortfolioContext) ?? [];
-  const { data } = writings ?? {};
-
-  const { heading, collection = [] } = data ?? {};
-  const { title = [] } = heading ?? {};
+  const { title, collection } = useWritings();
 
   return (
     <>

@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import { PortfolioContext } from '../../utils/hooks/useContext';
+import { useTalks } from '../../utils/hooks/usePortfolioContext';
 import { PortableText } from '@portabletext/react';
 import { urlForImage } from '../../lib/sanity.image';
 import { TalkCollectionType } from '../../utils/helpers/types';
@@ -8,11 +8,7 @@ import { TalkCollectionType } from '../../utils/helpers/types';
 export interface TalksProps {}
 
 const Talks: React.FC<TalksProps> = () => {
-  const { talks } = useContext(PortfolioContext) ?? [];
-
-  const { data } = talks ?? {};
-  const { heading, collection } = data ?? {};
-  const { title = [] } = heading ?? {};
+  const { title, collection } = useTalks();
 
   return (
     <>

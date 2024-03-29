@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { PortfolioContext } from '../../utils/hooks/useContext';
+import React from 'react';
+import { useFooter } from '../../utils/hooks/usePortfolioContext';
 import { PortableText } from '@portabletext/react';
 import { FooterNavigationCollectionType, FooterSocialType } from '../../utils/helpers/types';
 import { urlForImage } from '../../lib/sanity.image';
@@ -7,14 +7,10 @@ import { urlForImage } from '../../lib/sanity.image';
 export interface FooterProps {}
 
 const Footer: React.FC<FooterProps> = () => {
-  const { footer } = useContext(PortfolioContext) ?? [];
-  const { data } = footer ?? {};
-
-  const { heading, email = '', copyright = '', socials = [], collection = [] } = data ?? {};
-  const { title = [] } = heading ?? {};
+  const { email, copyright, socials, collection, title } = useFooter();
 
   return (
-    <footer className="px-4 pt-12 pb-24 md:px-8 md:px-0 bg-light">
+    <footer className="px-4 pt-12 pb-24 md:px-8 bg-light">
       <div className="flex flex-col space-y-16 max-w-4xl mx-auto justify-between items-start md:flex-row md:space-y-0">
         <div className="flex flex-col space-y-6">
           <div className="flex flex-col space-y-2 text-left p-0">

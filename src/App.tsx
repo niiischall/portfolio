@@ -12,7 +12,7 @@ import Contact from './sections/Contact';
 
 import Layout from './components/shared/Layout';
 import Talks from './sections/Talks';
-import { ContextWrapper } from './utils/hooks/useContext';
+import { ContextWrapper } from './utils/hooks/usePortfolioContext';
 
 const queryClient = new QueryClient({
   defaultOptions: {

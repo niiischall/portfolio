@@ -1,20 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { PortableText } from '@portabletext/react';
 
 import Building from '../../utils/svgs/Building';
 import Clock from '../../utils/svgs/Clock';
 import { urlForImage } from '../../lib/sanity.image';
-import { PortfolioContext } from '../../utils/hooks/useContext';
+import { useWork } from '../../utils/hooks/usePortfolioContext';
 import { WorkCollectionType } from '../../utils/helpers/types';
 
 export interface WorkProps {}
 
 const Work: React.FC<WorkProps> = () => {
-  const { work } = useContext(PortfolioContext) ?? [];
-  const { data } = work ?? {};
-
-  const { heading, collection = [] } = data ?? {};
-  const { title = [] } = heading ?? {};
+  const { title, collection } = useWork();
 
   const renderCollection = () => {
     return collection.map((item: WorkCollectionType) => {
