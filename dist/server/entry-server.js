@@ -1,9 +1,9 @@
 import { jsx, jsxs, Fragment } from "react/jsx-runtime";
-import React, { createContext, useContext, useState, useCallback } from "react";
-import ReactDOMServer from "react-dom/server";
+import { renderToString } from "react-dom/server";
 import { useQueries, QueryClient, QueryClientProvider } from "react-query";
 import { PortableText } from "@portabletext/react";
 import createImageUrlBuilder from "@sanity/image-url";
+import React, { createContext, useContext, useState, useCallback } from "react";
 import { createClient } from "@sanity/client";
 const imageBuilder = createImageUrlBuilder({
   projectId: "d3ylbkps",
@@ -672,31 +672,19 @@ const Footer = () => {
     }) })
   ] }) });
 };
-const Loader = () => {
-  return /* @__PURE__ */ jsx("div", { className: "min-h-screen min-w-screen ", children: /* @__PURE__ */ jsxs("div", { className: "flex space-x-2 justify-center items-center bg-light h-screen ", children: [
-    /* @__PURE__ */ jsx("span", { className: "sr-only", children: "Loading..." }),
-    /* @__PURE__ */ jsx("div", { className: "h-4 w-4 bg-secondary rounded-full animate-bounce [animation-delay:-0.3s]" }),
-    /* @__PURE__ */ jsx("div", { className: "h-4 w-4 bg-secondary rounded-full animate-bounce [animation-delay:-0.15s]" }),
-    /* @__PURE__ */ jsx("div", { className: "h-4 w-4 bg-secondary rounded-full animate-bounce" })
-  ] }) });
-};
 function Layout({ children }) {
   const { navigation, hero, about, work, experiments, writings, talks, contact, footer } = useContext(PortfolioContext) ?? [];
-  const { isLoading: isLoadingNavigation, isSuccess: isSuccessNavigation, isError: isErrorNavigation } = navigation;
-  const { isLoading: isLoadingHero, isSuccess: isSuccessLoading, isError: isErrorHero } = hero;
-  const { isLoading: isLoadingAbout, isSuccess: isSuccessAbout, isError: isErrorAbout } = about;
-  const { isLoading: isLoadingWork, isSuccess: isSuccessWork, isError: isErrorWork } = work;
-  const { isLoading: isLoadingExperiments, isSuccess: isSuccessExperiments, isError: isErrorExperiments } = experiments;
-  const { isLoading: isLoadingWritings, isSuccess: isSuccessWritings, isError: isErrorWritings } = writings;
-  const { isLoading: isLoadingTalks, isSuccess: isSuccessTalks, isError: isErrorTalks } = talks;
-  const { isLoading: isLoadingContact, isSuccess: isSuccessContact, isError: isErrorContact } = contact;
-  const { isLoading: isLoadingFooter, isSuccess: isSuccessFooter, isError: isErrorFooter } = footer;
-  const isLoading = isLoadingNavigation || isLoadingHero || isLoadingAbout || isLoadingWork || isLoadingExperiments || isLoadingWritings || isLoadingTalks || isLoadingContact || isLoadingFooter;
+  const { isSuccess: isSuccessNavigation } = navigation;
+  const { isSuccess: isSuccessLoading } = hero;
+  const { isSuccess: isSuccessAbout } = about;
+  const { isSuccess: isSuccessWork } = work;
+  const { isSuccess: isSuccessExperiments } = experiments;
+  const { isSuccess: isSuccessWritings } = writings;
+  const { isSuccess: isSuccessTalks } = talks;
+  const { isSuccess: isSuccessContact } = contact;
+  const { isSuccess: isSuccessFooter } = footer;
   const isSuccess = isSuccessNavigation && isSuccessLoading && isSuccessAbout && isSuccessWork && isSuccessExperiments && isSuccessWritings && isSuccessTalks && isSuccessContact && isSuccessFooter;
   let child = null;
-  if (isLoading) {
-    child = /* @__PURE__ */ jsx(React.Fragment, { children: /* @__PURE__ */ jsx(Loader, {}) });
-  }
   if (isSuccess) {
     child = /* @__PURE__ */ jsxs(React.Fragment, { children: [
       /* @__PURE__ */ jsx(Navigation, {}),
@@ -742,7 +730,8 @@ const queryClient = new QueryClient({
     }
   }
 });
-const App = () => {
+const App = ({ data }) => {
+  console.log("data: ", data);
   return /* @__PURE__ */ jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsx(ContextWrapper, { children: /* @__PURE__ */ jsxs(Layout, { children: [
     /* @__PURE__ */ jsx(Hero, {}),
     /* @__PURE__ */ jsx(About, {}),
@@ -753,12 +742,9 @@ const App = () => {
     /* @__PURE__ */ jsx(Contact, {})
   ] }) }) });
 };
-function render() {
-  const html = ReactDOMServer.renderToString(
-    /* @__PURE__ */ jsx(React.StrictMode, { children: /* @__PURE__ */ jsx(App, {}) })
-  );
-  return { html };
-}
+const render = (data) => {
+  return renderToString(/* @__PURE__ */ jsx(App, { data }));
+};
 export {
   render
 };

@@ -3,7 +3,6 @@ import React, { useContext } from 'react';
 import Navigation from '../../sections/Navigation';
 import Footer from '../../sections/Footer';
 import { PortfolioContext } from '../../utils/hooks/usePortfolioContext';
-import Loader from '../loader/Loader';
 
 export interface LayoutProps {
   children: React.ReactNode;
@@ -13,37 +12,15 @@ export default function Layout({ children }: LayoutProps) {
   const { navigation, hero, about, work, experiments, writings, talks, contact, footer } =
     useContext(PortfolioContext) ?? [];
 
-  const { isLoading: isLoadingNavigation, isSuccess: isSuccessNavigation, isError: isErrorNavigation } = navigation;
-  const { isLoading: isLoadingHero, isSuccess: isSuccessLoading, isError: isErrorHero } = hero;
-  const { isLoading: isLoadingAbout, isSuccess: isSuccessAbout, isError: isErrorAbout } = about;
-  const { isLoading: isLoadingWork, isSuccess: isSuccessWork, isError: isErrorWork } = work;
-  const { isLoading: isLoadingExperiments, isSuccess: isSuccessExperiments, isError: isErrorExperiments } = experiments;
-  const { isLoading: isLoadingWritings, isSuccess: isSuccessWritings, isError: isErrorWritings } = writings;
-  const { isLoading: isLoadingTalks, isSuccess: isSuccessTalks, isError: isErrorTalks } = talks;
-  const { isLoading: isLoadingContact, isSuccess: isSuccessContact, isError: isErrorContact } = contact;
-  const { isLoading: isLoadingFooter, isSuccess: isSuccessFooter, isError: isErrorFooter } = footer;
-
-  const isLoading =
-    isLoadingNavigation ||
-    isLoadingHero ||
-    isLoadingAbout ||
-    isLoadingWork ||
-    isLoadingExperiments ||
-    isLoadingWritings ||
-    isLoadingTalks ||
-    isLoadingContact ||
-    isLoadingFooter;
-
-  const isError =
-    isErrorNavigation ||
-    isErrorHero ||
-    isErrorAbout ||
-    isErrorWork ||
-    isErrorExperiments ||
-    isErrorWritings ||
-    isErrorTalks ||
-    isErrorContact ||
-    isErrorFooter;
+  const { isSuccess: isSuccessNavigation } = navigation;
+  const { isSuccess: isSuccessLoading } = hero;
+  const { isSuccess: isSuccessAbout } = about;
+  const { isSuccess: isSuccessWork } = work;
+  const { isSuccess: isSuccessExperiments } = experiments;
+  const { isSuccess: isSuccessWritings } = writings;
+  const { isSuccess: isSuccessTalks } = talks;
+  const { isSuccess: isSuccessContact } = contact;
+  const { isSuccess: isSuccessFooter } = footer;
 
   const isSuccess =
     isSuccessNavigation &&
@@ -57,14 +34,6 @@ export default function Layout({ children }: LayoutProps) {
     isSuccessFooter;
 
   let child: React.ReactNode = null;
-
-  if (isLoading) {
-    child = (
-      <React.Fragment>
-        <Loader />
-      </React.Fragment>
-    );
-  }
 
   if (isSuccess) {
     child = (
