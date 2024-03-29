@@ -731,7 +731,7 @@ const queryClient = new QueryClient({
   }
 });
 const App = ({ data }) => {
-  console.log("data: ", data);
+  console.log("data from server: ", data);
   return /* @__PURE__ */ jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsx(ContextWrapper, { children: /* @__PURE__ */ jsxs(Layout, { children: [
     /* @__PURE__ */ jsx(Hero, {}),
     /* @__PURE__ */ jsx(About, {}),

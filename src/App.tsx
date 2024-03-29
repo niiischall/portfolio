@@ -21,7 +21,7 @@ const queryClient = new QueryClient({
 });
 
 const App: React.FC<{ data: any }> = ({ data }) => {
-  console.log('data: ', data);
+  console.log('data from server: ', data);
   return (
     <QueryClientProvider client={queryClient}>
       <ContextWrapper>
