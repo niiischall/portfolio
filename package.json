@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "node server-dev.js",
     "lint": "eslint . --ext .ts,.tsx",
+    "build:function": "vite build --ssr function.js --outDir dist/function",
     "build:client": "vite build --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
-    "build": "pnpm run build:client && pnpm run build:server",
+    "build": "pnpm run build:client && pnpm run build:server && pnpm run build:function",
     "generate": "vite build --outDir dist/static && pnpm run build:server && node prerender",
     "serve": "node server-prod.js",
     "preview": "node server"

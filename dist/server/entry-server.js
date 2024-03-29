@@ -744,8 +744,8 @@ const queryClient = new QueryClient({
 const App = () => {
   return /* @__PURE__ */ jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsx(ContextWrapper, { children: /* @__PURE__ */ jsx(Home, {}) }) });
 };
-const render = (data) => {
-  return renderToString(/* @__PURE__ */ jsx(App, { data }));
+const render = () => {
+  return renderToString(/* @__PURE__ */ jsx(App, {}));
 };
 export {
   render
