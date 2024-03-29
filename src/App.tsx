@@ -1,16 +1,8 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import Hero from './sections/Hero';
-import About from './sections/About';
-import Work from './sections/Work';
-import Experiments from './sections/Experiments';
-import Writings from './sections/Writings';
-import Contact from './sections/Contact';
-
-import Layout from './components/shared/Layout';
-import Talks from './sections/Talks';
 import { ContextWrapper } from './utils/hooks/usePortfolioContext';
+import Home from './pages/Home';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -20,19 +12,11 @@ const queryClient = new QueryClient({
   },
 });
 
-const App: React.FC<{ data: any }> = ({ data }) => {
+const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ContextWrapper>
-        <Layout>
-          <Hero data={data} />
-          <About />
-          <Work />
-          <Experiments />
-          <Writings />
-          <Talks />
-          <Contact />
-        </Layout>
+        <Home />
       </ContextWrapper>
     </QueryClientProvider>
   );

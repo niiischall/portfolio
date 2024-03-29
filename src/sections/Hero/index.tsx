@@ -5,11 +5,9 @@ import { urlForImage } from '../../lib/sanity.image';
 import { useHero } from '../../utils/hooks/usePortfolioContext';
 import { HeroSocialType } from '../../utils/helpers/types';
 
-export interface HeroProps {
-  data: any;
-}
+export interface HeroProps {}
 
-const Hero: React.FC<HeroProps> = ({ data }) => {
+const Hero: React.FC<HeroProps> = () => {
   const { socials, cover, greetingText, buttonText, buttonSlug } = useHero();
 
   return (
@@ -34,7 +32,6 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
         <div className="order-first md:order-2 flex justify-start pl-12 md:pl-0 lg:pl-12">
           <div className="hidden md:flex">
             <img src={urlForImage(cover)?.height(300).width(300).url()} alt="Profile" />
-            <p>title: {data?.title}</p>
           </div>
           <div className="md:hidden">
             <img src={urlForImage(cover)?.height(200).width(200).url()} alt="Profile" />

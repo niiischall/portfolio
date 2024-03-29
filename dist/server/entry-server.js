@@ -1,21 +1,10 @@
 import { jsx, jsxs, Fragment } from "react/jsx-runtime";
 import { renderToString } from "react-dom/server";
 import { useQueries, QueryClient, QueryClientProvider } from "react-query";
-import { PortableText } from "@portabletext/react";
-import createImageUrlBuilder from "@sanity/image-url";
 import React, { createContext, useContext, useState, useCallback } from "react";
 import { createClient } from "@sanity/client";
-const imageBuilder = createImageUrlBuilder({
-  projectId: "d3ylbkps",
-  dataset: "production"
-});
-const urlForImage = (source) => {
-  var _a;
-  if (!((_a = source == null ? void 0 : source.asset) == null ? void 0 : _a._ref)) {
-    return void 0;
-  }
-  return imageBuilder == null ? void 0 : imageBuilder.image(source).auto("format").fit("max");
-};
+import { PortableText } from "@portabletext/react";
+import createImageUrlBuilder from "@sanity/image-url";
 const sanityClient = createClient({
   projectId: "d3ylbkps",
   dataset: "production",
@@ -391,7 +380,18 @@ const useFooter = () => {
     title
   };
 };
-const Hero = ({ data }) => {
+const imageBuilder = createImageUrlBuilder({
+  projectId: "d3ylbkps",
+  dataset: "production"
+});
+const urlForImage = (source) => {
+  var _a;
+  if (!((_a = source == null ? void 0 : source.asset) == null ? void 0 : _a._ref)) {
+    return void 0;
+  }
+  return imageBuilder == null ? void 0 : imageBuilder.image(source).auto("format").fit("max");
+};
+const Hero = () => {
   var _a, _b;
   const { socials, cover, greetingText, buttonText, buttonSlug } = useHero();
   return /* @__PURE__ */ jsx("section", { className: "bg-light relative mx-auto px-4 pt-6 pb-12 md:px-8 md:pt-12 md:pb-48 ", id: "home", children: /* @__PURE__ */ jsxs("div", { className: "max-w-4xl flex flex-col items-start justify-start md:flex-row md:justify-start md:items-center md:space-x-6 lg:space-x-12 md:mx-auto", children: [
@@ -411,13 +411,7 @@ const Hero = ({ data }) => {
       );
     }) }),
     /* @__PURE__ */ jsxs("div", { className: "order-first md:order-2 flex justify-start pl-12 md:pl-0 lg:pl-12", children: [
-      /* @__PURE__ */ jsxs("div", { className: "hidden md:flex", children: [
-        /* @__PURE__ */ jsx("img", { src: (_a = urlForImage(cover)) == null ? void 0 : _a.height(300).width(300).url(), alt: "Profile" }),
-        /* @__PURE__ */ jsxs("p", { children: [
-          "title: ",
-          data == null ? void 0 : data.title
-        ] })
-      ] }),
+      /* @__PURE__ */ jsx("div", { className: "hidden md:flex", children: /* @__PURE__ */ jsx("img", { src: (_a = urlForImage(cover)) == null ? void 0 : _a.height(300).width(300).url(), alt: "Profile" }) }),
       /* @__PURE__ */ jsx("div", { className: "md:hidden", children: /* @__PURE__ */ jsx("img", { src: (_b = urlForImage(cover)) == null ? void 0 : _b.height(200).width(200).url(), alt: "Profile" }) })
     ] }),
     /* @__PURE__ */ jsxs("div", { className: "max-w-lg md:max-w-md mt-16 md:mt-0 lg:max-w-lg", children: [
@@ -728,6 +722,17 @@ const Talks = () => {
     /* @__PURE__ */ jsx("div", { className: "divider" })
   ] });
 };
+const Home = () => {
+  return /* @__PURE__ */ jsxs(Layout, { children: [
+    /* @__PURE__ */ jsx(Hero, {}),
+    /* @__PURE__ */ jsx(About, {}),
+    /* @__PURE__ */ jsx(Work, {}),
+    /* @__PURE__ */ jsx(Experiments, {}),
+    /* @__PURE__ */ jsx(Writings, {}),
+    /* @__PURE__ */ jsx(Talks, {}),
+    /* @__PURE__ */ jsx(Contact, {})
+  ] });
+};
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -736,16 +741,8 @@ const queryClient = new QueryClient({
     }
   }
 });
-const App = ({ data }) => {
-  return /* @__PURE__ */ jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsx(ContextWrapper, { children: /* @__PURE__ */ jsxs(Layout, { children: [
-    /* @__PURE__ */ jsx(Hero, { data }),
-    /* @__PURE__ */ jsx(About, {}),
-    /* @__PURE__ */ jsx(Work, {}),
-    /* @__PURE__ */ jsx(Experiments, {}),
-    /* @__PURE__ */ jsx(Writings, {}),
-    /* @__PURE__ */ jsx(Talks, {}),
-    /* @__PURE__ */ jsx(Contact, {})
-  ] }) }) });
+const App = () => {
+  return /* @__PURE__ */ jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsx(ContextWrapper, { children: /* @__PURE__ */ jsx(Home, {}) }) });
 };
 const render = (data) => {
   return renderToString(/* @__PURE__ */ jsx(App, { data }));
