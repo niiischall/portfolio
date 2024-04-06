@@ -2,7 +2,14 @@ import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { ContextWrapper } from './utils/hooks/usePortfolioContext';
-import Home from './pages/Home';
+import Hero from '../src/sections/Hero';
+import About from '../src/sections/About';
+import Work from '../src/sections/Work';
+import Experiments from '../src/sections/Experiments';
+import Writings from '../src/sections/Writings';
+import Contact from '../src/sections/Contact';
+import Layout from '../src/components/shared/Layout';
+import Talks from '../src/sections/Talks';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -12,11 +19,21 @@ const queryClient = new QueryClient({
   },
 });
 
-const App: React.FC = () => {
+const App: React.FC<{ data: any }> = ({ data }) => {
+  console.log('this data is coming from server, no client-side api called.');
+  console.log(JSON.stringify(data, null, 2));
   return (
     <QueryClientProvider client={queryClient}>
       <ContextWrapper>
-        <Home />
+        <Layout>
+          <Hero />
+          <About />
+          <Work />
+          <Experiments />
+          <Writings />
+          <Talks />
+          <Contact />
+        </Layout>
       </ContextWrapper>
     </QueryClientProvider>
   );

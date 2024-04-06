@@ -5,9 +5,15 @@ import './index.css';
 
 const rootDiv = document.getElementById('app')!;
 
+let data;
+
+if (typeof window !== 'undefined') {
+  data = window?.__data__;
+}
+
 hydrateRoot(
   rootDiv,
   <React.StrictMode>
-    <App />
+    <App data={data} />
   </React.StrictMode>,
 );

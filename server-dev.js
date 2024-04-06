@@ -13,21 +13,22 @@ const vite = await createServer({
  
 app.use(vite.middlewares);
  
-app.use('*', async (req, res) => {
+app.use('*', async (req, res, next) => {
   const url = req.originalUrl;
- 
+
   try {
     const template = await vite.transformIndexHtml(url, fs.readFileSync('index.html', 'utf-8'));
     const { render } = await vite.ssrLoadModule('/src/entry-server.tsx');
 
-    const { getServerData } = await vite.ssrLoadModule('/function.js');
+    const { getServerData } = await vite.ssrLoadModule('/src/function.ts');
     const data = await getServerData();
     const script = `<script>window.__data__=${JSON.stringify(data)}</script>`;
  
     const html = template.replace(`<!--outlet-->`, `${render(data)} ${script}`);
     res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
   } catch (error) {
-    res.status(500).end(error.stack);
+    vite.ssrFixStacktrace(error)
+    next(error)
   }
 });
  

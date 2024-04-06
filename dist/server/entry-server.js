@@ -722,17 +722,6 @@ const Talks = () => {
     /* @__PURE__ */ jsx("div", { className: "divider" })
   ] });
 };
-const Home = () => {
-  return /* @__PURE__ */ jsxs(Layout, { children: [
-    /* @__PURE__ */ jsx(Hero, {}),
-    /* @__PURE__ */ jsx(About, {}),
-    /* @__PURE__ */ jsx(Work, {}),
-    /* @__PURE__ */ jsx(Experiments, {}),
-    /* @__PURE__ */ jsx(Writings, {}),
-    /* @__PURE__ */ jsx(Talks, {}),
-    /* @__PURE__ */ jsx(Contact, {})
-  ] });
-};
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -741,11 +730,21 @@ const queryClient = new QueryClient({
     }
   }
 });
-const App = () => {
-  return /* @__PURE__ */ jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsx(ContextWrapper, { children: /* @__PURE__ */ jsx(Home, {}) }) });
+const App = ({ data }) => {
+  console.log("this data is coming from server, no client-side api called.");
+  console.log(JSON.stringify(data, null, 2));
+  return /* @__PURE__ */ jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsx(ContextWrapper, { children: /* @__PURE__ */ jsxs(Layout, { children: [
+    /* @__PURE__ */ jsx(Hero, {}),
+    /* @__PURE__ */ jsx(About, {}),
+    /* @__PURE__ */ jsx(Work, {}),
+    /* @__PURE__ */ jsx(Experiments, {}),
+    /* @__PURE__ */ jsx(Writings, {}),
+    /* @__PURE__ */ jsx(Talks, {}),
+    /* @__PURE__ */ jsx(Contact, {})
+  ] }) }) });
 };
-const render = () => {
-  return renderToString(/* @__PURE__ */ jsx(App, {}));
+const render = (data) => {
+  return renderToString(/* @__PURE__ */ jsx(App, { data }));
 };
 export {
   render
