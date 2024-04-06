@@ -24,6 +24,6 @@ app.use('*', async (_, res) => {
   }
 });
  
-app.listen(5173, () => {
-  console.log('http://localhost:5173.');
+app.listen('https://portfolio-server.pages.dev/', () => {
+  console.log('https://portfolio-server.pages.dev.');
 });
