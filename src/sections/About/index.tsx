@@ -1,12 +1,26 @@
 import React from 'react';
 import { PortableText } from '@portabletext/react';
 
-import { useAbout } from '../../utils/hooks/usePortfolioContext';
+import type { TypedObject } from 'sanity';
 
-export interface AboutProps {}
+export interface AboutProps {
+  data: {
+    heading: {
+      title: TypedObject[];
+    };
+    overview: TypedObject[];
+    cv: {
+      link: string;
+      title: string;
+    };
+  };
+}
 
-const About: React.FC<AboutProps> = () => {
-  const { overview, headingTitle, cvLink, cvTitle } = useAbout();
+const About: React.FC<AboutProps> = ({ data }) => {
+  const { heading, overview = [], cv } = data ?? {};
+  const { title: headingTitle = [] } = heading ?? {};
+  const { link: cvLink = '', title: cvTitle = '' } = cv ?? {};
+
   const isCvAvailable = cvTitle && cvLink;
 
   return (

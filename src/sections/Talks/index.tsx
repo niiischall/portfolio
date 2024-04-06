@@ -1,14 +1,22 @@
 import React from 'react';
 
-import { useTalks } from '../../utils/hooks/usePortfolioContext';
 import { PortableText } from '@portabletext/react';
 import { urlForImage } from '../../lib/sanity.image';
 import { TalkCollectionType } from '../../utils/helpers/types';
+import type { TypedObject } from 'sanity';
 
-export interface TalksProps {}
+export interface TalksProps {
+  data: {
+    heading: {
+      title: TypedObject[];
+    };
+    collection: TalkCollectionType[];
+  };
+}
 
-const Talks: React.FC<TalksProps> = () => {
-  const { title, collection } = useTalks();
+const Talks: React.FC<TalksProps> = ({ data }) => {
+  const { heading, collection } = data ?? {};
+  const { title = [] } = heading ?? {};
 
   return (
     <>

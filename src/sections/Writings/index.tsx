@@ -2,13 +2,21 @@ import React from 'react';
 import { PortableText } from '@portabletext/react';
 
 import { urlForImage } from '../../lib/sanity.image';
-import { useWritings } from '../../utils/hooks/usePortfolioContext';
 import { WritingsCollectionType } from '../../utils/helpers/types';
+import type { TypedObject } from 'sanity';
 
-export interface WritingsProps {}
+export interface WritingsProps {
+  data: {
+    heading: {
+      title: TypedObject[];
+    };
+    collection: WritingsCollectionType[];
+  };
+}
 
-const Writings: React.FC<WritingsProps> = () => {
-  const { title, collection } = useWritings();
+const Writings: React.FC<WritingsProps> = ({ data }) => {
+  const { heading, collection = [] } = data ?? {};
+  const { title = [] } = heading ?? {};
 
   return (
     <>

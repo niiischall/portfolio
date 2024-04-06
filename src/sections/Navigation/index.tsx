@@ -1,15 +1,20 @@
-import React, { useCallback, useContext, useState } from 'react';
-
-import { PortfolioContext } from '../../utils/hooks/usePortfolioContext';
+import React, { useCallback, useState } from 'react';
 import { NavigationCollectionType } from '../../utils/helpers/types';
 
-export interface NavigationProps {}
+export interface NavigationProps {
+  data: {
+    heading: {
+      title: string;
+      slug: {
+        current: string;
+      };
+    };
+    collection: NavigationCollectionType[];
+  };
+}
 
-const Navigation: React.FC<NavigationProps> = () => {
-  const { navigation } = useContext(PortfolioContext) ?? [];
-  const { data } = navigation ?? {};
+const Navigation: React.FC<NavigationProps> = ({ data }) => {
   const { collection = [] } = data ?? {};
-
   const [menuShowcase, setMenuShowcase] = useState<boolean>(false);
 
   const toggleMobileMenuShow = useCallback(() => {

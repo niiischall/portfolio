@@ -1,13 +1,24 @@
 import React from 'react';
-import { useFooter } from '../../utils/hooks/usePortfolioContext';
 import { PortableText } from '@portabletext/react';
 import { FooterNavigationCollectionType, FooterSocialType } from '../../utils/helpers/types';
 import { urlForImage } from '../../lib/sanity.image';
+import type { TypedObject } from 'sanity';
 
-export interface FooterProps {}
+export interface FooterProps {
+  data: {
+    heading: {
+      title: TypedObject[];
+    };
+    email: string;
+    copyright: string;
+    socials: FooterSocialType[];
+    collection: FooterNavigationCollectionType[];
+  };
+}
 
-const Footer: React.FC<FooterProps> = () => {
-  const { email, copyright, socials, collection, title } = useFooter();
+const Footer: React.FC<FooterProps> = ({ data }) => {
+  const { email, copyright, socials, collection, heading } = data;
+  const { title = [] } = heading ?? {};
 
   return (
     <footer className="px-4 pt-12 pb-24 md:px-8 bg-light">

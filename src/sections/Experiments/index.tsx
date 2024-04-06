@@ -1,14 +1,22 @@
 import React from 'react';
 import { PortableText } from '@portabletext/react';
 
-import { useExperiments } from '../../utils/hooks/usePortfolioContext';
-import { ExperimentCollectionType } from '../../utils/helpers/types';
+import type { ExperimentCollectionType } from '../../utils/helpers/types';
 import { urlForImage } from '../../lib/sanity.image';
+import type { TypedObject } from 'sanity';
 
-export interface ExperimentsProps {}
+export interface ExperimentsProps {
+  data: {
+    heading: {
+      title: TypedObject[];
+    };
+    collection: ExperimentCollectionType[];
+  };
+}
 
-const Experiments: React.FC<ExperimentsProps> = () => {
-  const { title, collection } = useExperiments();
+const Experiments: React.FC<ExperimentsProps> = ({ data }) => {
+  const { heading, collection = [] } = data ?? {};
+  const { title = [] } = heading ?? {};
 
   return (
     <>

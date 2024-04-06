@@ -4,13 +4,21 @@ import { PortableText } from '@portabletext/react';
 import Building from '../../utils/svgs/Building';
 import Clock from '../../utils/svgs/Clock';
 import { urlForImage } from '../../lib/sanity.image';
-import { useWork } from '../../utils/hooks/usePortfolioContext';
 import { WorkCollectionType } from '../../utils/helpers/types';
+import type { TypedObject } from 'sanity';
 
-export interface WorkProps {}
+export interface WorkProps {
+  data: {
+    heading: {
+      title: TypedObject[];
+    };
+    collection: WorkCollectionType[];
+  };
+}
 
-const Work: React.FC<WorkProps> = () => {
-  const { title, collection } = useWork();
+const Work: React.FC<WorkProps> = ({ data }) => {
+  const { heading, collection = [] } = data ?? {};
+  const { title = [] } = heading ?? {};
 
   const renderCollection = () => {
     return collection.map((item: WorkCollectionType) => {

@@ -2,13 +2,36 @@ import React from 'react';
 import { PortableText } from '@portabletext/react';
 
 import { urlForImage } from '../../lib/sanity.image';
-import { useHero } from '../../utils/hooks/usePortfolioContext';
-import { HeroSocialType } from '../../utils/helpers/types';
+import type { HeroSocialType } from '../../utils/helpers/types';
+import type { TypedObject } from 'sanity';
 
-export interface HeroProps {}
+export interface HeroProps {
+  data: {
+    socials: HeroSocialType[];
+    greeting: {
+      link: {
+        text: string;
+        slug: {
+          current: string;
+        };
+      };
+      text: TypedObject[];
+    };
+    cover: {
+      asset: {
+        _type: string;
+        _ref: string;
+      };
+      _type: string;
+    };
+  };
+}
 
-const Hero: React.FC<HeroProps> = () => {
-  const { socials, cover, greetingText, buttonText, buttonSlug } = useHero();
+const Hero: React.FC<HeroProps> = ({ data }) => {
+  const { socials = [], greeting, cover = {} } = data ?? {};
+  const { link, text: greetingText = [] } = greeting ?? {};
+  const { text: buttonText = '', slug } = link ?? {};
+  const { current: buttonSlug = '' } = slug ?? {};
 
   return (
     <section className="bg-light relative mx-auto px-4 pt-6 pb-12 md:px-8 md:pt-12 md:pb-48 " id="home">

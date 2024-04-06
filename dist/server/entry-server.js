@@ -1,385 +1,8 @@
 import { jsx, jsxs, Fragment } from "react/jsx-runtime";
 import { renderToString } from "react-dom/server";
-import { useQueries, QueryClient, QueryClientProvider } from "react-query";
-import React, { createContext, useContext, useState, useCallback } from "react";
-import { createClient } from "@sanity/client";
 import { PortableText } from "@portabletext/react";
 import createImageUrlBuilder from "@sanity/image-url";
-const sanityClient = createClient({
-  projectId: "d3ylbkps",
-  dataset: "production",
-  apiVersion: "2023-10-01",
-  useCdn: false
-});
-const fetchData = async (endpoint) => {
-  const response = await sanityClient.fetch(endpoint).then((response2) => response2).catch((error) => console.log(error));
-  return response;
-};
-const useReactQueries = (inputKeyAndEndpoints) => {
-  const queries2 = inputKeyAndEndpoints.map((query) => {
-    const { key = "", endpoint = "" } = query;
-    return {
-      queryKey: key,
-      queryFn: () => fetchData(endpoint)
-    };
-  });
-  return useQueries(queries2);
-};
-const navigationQuery = `*[_type == "navigation"][0]{
-  heading,
-  collection[]{
-    _key,
-    title,
-    slug
-  }
-}`;
-const heroQuery = `*[_type == "hero"][0]{
-  socials[]{
-    _key,
-    cover,
-    url,
-    caption,
-    alt
-  },
-  greeting{
-    link,
-    text
-  },
-  cover{
-    asset
-  }
-}`;
-const aboutQuery = `*[_type == "about"][0]{
-  heading,
-  overview,
-  cv
-}`;
-const workQuery = `*[_type == "work"][0]{
-  heading,
-  collection[] {
-    _key,
-    title,
-    designation,
-    link,
-    duration,
-    description,
-    cover
-  }
-}`;
-const experimentsQuery = `*[_type == "experiments"][0]{
-  heading,
-  collection[]{
-    _key,
-    heading,
-    body,
-    image,
-    link,
-  }
-}`;
-const talksQuery = `*[_type == "talks"][0]{
-  heading,
-  collection[]{
-    _key,
-    heading,
-    body,
-    link,
-    cover
-  }
-}`;
-const writingsQuery = `*[_type == "writings"][0]{
-  heading,
-  collection[]{
-    _key,
-    image,
-    heading,
-    body,
-    link
-  }
-}`;
-const contactQuery = `*[_type == "contact"][0]{
-  heading,
-  text,
-  link,  
-}`;
-const footerQuery = `*[_type == "footer"][0]{
-  heading,
-  email,
-  copyright,
-  socials,
-  collection,
-}`;
-const queries = [
-  { key: "navigation", endpoint: navigationQuery },
-  { key: "hero", endpoint: heroQuery },
-  { key: "about", endpoint: aboutQuery },
-  { key: "work", endpoint: workQuery },
-  { key: "experiments", endpoint: experimentsQuery },
-  { key: "writings", endpoint: writingsQuery },
-  { key: "talks", endpoint: talksQuery },
-  { key: "contact", endpoint: contactQuery },
-  { key: "footer", endpoint: footerQuery }
-];
-const initialState = {
-  navigation: {
-    data: {
-      heading: {
-        title: "",
-        slug: {
-          current: ""
-        }
-      },
-      collection: []
-    },
-    isLoading: false,
-    isSuccess: false,
-    isError: false,
-    error: null
-  },
-  hero: {
-    data: {
-      socials: [],
-      greeting: {
-        link: {
-          text: "",
-          slug: {
-            current: ""
-          }
-        },
-        text: []
-      },
-      cover: {
-        asset: {
-          _type: "reference",
-          _ref: ""
-        },
-        _type: "image"
-      }
-    },
-    isLoading: false,
-    isSuccess: false,
-    isError: false,
-    error: null
-  },
-  about: {
-    data: {
-      heading: {
-        title: []
-      },
-      overview: [],
-      cv: {
-        link: "",
-        title: ""
-      }
-    },
-    isLoading: false,
-    isSuccess: false,
-    isError: false,
-    error: null
-  },
-  work: {
-    data: {
-      heading: {
-        title: []
-      },
-      collection: []
-    },
-    isLoading: false,
-    isSuccess: false,
-    isError: false,
-    error: null
-  },
-  experiments: {
-    data: {
-      heading: {
-        title: []
-      },
-      image: {},
-      collection: []
-    },
-    isLoading: false,
-    isSuccess: false,
-    isError: false,
-    error: null
-  },
-  writings: {
-    data: {
-      heading: {
-        title: []
-      },
-      collection: []
-    },
-    isLoading: false,
-    isSuccess: false,
-    isError: false,
-    error: null
-  },
-  talks: {
-    data: {
-      heading: {
-        title: []
-      },
-      collection: []
-    },
-    isLoading: false,
-    isSuccess: false,
-    isError: false,
-    error: null
-  },
-  contact: {
-    data: {
-      heading: {
-        title: []
-      },
-      text: [],
-      link: {
-        text: "",
-        href: ""
-      }
-    },
-    isLoading: false,
-    isSuccess: false,
-    isError: false,
-    error: null
-  },
-  footer: {
-    data: {
-      heading: {
-        title: []
-      },
-      email: "",
-      copyright: "",
-      socials: [],
-      collection: []
-    },
-    isLoading: false,
-    isSuccess: false,
-    isError: false,
-    error: null
-  }
-};
-const getPortfolioContext = (response) => {
-  const portfolioResponse = response.map((responseData) => {
-    const { data, isLoading, isSuccess, isError, error } = responseData ?? {};
-    return {
-      data,
-      isLoading,
-      isSuccess,
-      isError,
-      error
-    };
-  });
-  let portfolioData = {
-    ...initialState
-  };
-  queries.forEach((query, index) => {
-    const { key } = query;
-    portfolioData = {
-      ...portfolioData,
-      [key]: portfolioResponse[index]
-    };
-  });
-  return portfolioData;
-};
-const PortfolioContext = createContext(initialState);
-const ContextWrapper = ({ children }) => {
-  const response = useReactQueries(queries);
-  const data = getPortfolioContext(response);
-  return /* @__PURE__ */ jsx(PortfolioContext.Provider, { value: data, children });
-};
-const useHero = () => {
-  const { hero } = useContext(PortfolioContext) ?? [];
-  const { data } = hero ?? {};
-  const { socials = [], greeting, cover = {} } = data ?? {};
-  const { link, text: greetingText = [] } = greeting ?? {};
-  const { text: buttonText = "", slug } = link ?? {};
-  const { current: buttonSlug = "" } = slug ?? {};
-  return {
-    socials,
-    cover,
-    greetingText,
-    buttonText,
-    buttonSlug
-  };
-};
-const useAbout = () => {
-  const { about } = useContext(PortfolioContext) ?? [];
-  const { data } = about ?? {};
-  const { heading, overview = [], cv } = data ?? {};
-  const { title: headingTitle = [] } = heading ?? {};
-  const { link: cvLink = "", title: cvTitle = "" } = cv ?? {};
-  return {
-    overview,
-    headingTitle,
-    cvLink,
-    cvTitle
-  };
-};
-const useWork = () => {
-  const { work } = useContext(PortfolioContext) ?? [];
-  const { data } = work ?? {};
-  const { heading, collection = [] } = data ?? {};
-  const { title = [] } = heading ?? {};
-  return {
-    title,
-    collection
-  };
-};
-const useExperiments = () => {
-  const { experiments } = useContext(PortfolioContext) ?? [];
-  const { data } = experiments ?? {};
-  const { heading, collection = [] } = data ?? {};
-  const { title = [] } = heading ?? {};
-  return {
-    title,
-    collection
-  };
-};
-const useWritings = () => {
-  const { writings } = useContext(PortfolioContext) ?? [];
-  const { data } = writings ?? {};
-  const { heading, collection = [] } = data ?? {};
-  const { title = [] } = heading ?? {};
-  return {
-    title,
-    collection
-  };
-};
-const useTalks = () => {
-  const { talks } = useContext(PortfolioContext) ?? [];
-  const { data } = talks ?? {};
-  const { heading, collection } = data ?? {};
-  const { title = [] } = heading ?? {};
-  return {
-    title,
-    collection
-  };
-};
-const useContact = () => {
-  const { contact } = useContext(PortfolioContext) ?? [];
-  const { data } = contact ?? {};
-  const { heading, text = [], link } = data ?? {};
-  const { text: linkText, href: linkUrl } = link ?? {};
-  const { title = [] } = heading ?? {};
-  return {
-    title,
-    text,
-    linkText,
-    linkUrl
-  };
-};
-const useFooter = () => {
-  const { footer } = useContext(PortfolioContext) ?? [];
-  const { data } = footer ?? {};
-  const { heading, email = "", copyright = "", socials = [], collection = [] } = data ?? {};
-  const { title = [] } = heading ?? {};
-  return {
-    email,
-    copyright,
-    socials,
-    collection,
-    title
-  };
-};
+import React, { useState, useCallback } from "react";
 const imageBuilder = createImageUrlBuilder({
   projectId: "d3ylbkps",
   dataset: "production"
@@ -391,9 +14,12 @@ const urlForImage = (source) => {
   }
   return imageBuilder == null ? void 0 : imageBuilder.image(source).auto("format").fit("max");
 };
-const Hero = () => {
+const Hero = ({ data }) => {
   var _a, _b;
-  const { socials, cover, greetingText, buttonText, buttonSlug } = useHero();
+  const { socials = [], greeting, cover = {} } = data ?? {};
+  const { link, text: greetingText = [] } = greeting ?? {};
+  const { text: buttonText = "", slug } = link ?? {};
+  const { current: buttonSlug = "" } = slug ?? {};
   return /* @__PURE__ */ jsx("section", { className: "bg-light relative mx-auto px-4 pt-6 pb-12 md:px-8 md:pt-12 md:pb-48 ", id: "home", children: /* @__PURE__ */ jsxs("div", { className: "max-w-4xl flex flex-col items-start justify-start md:flex-row md:justify-start md:items-center md:space-x-6 lg:space-x-12 md:mx-auto", children: [
     /* @__PURE__ */ jsx("div", { className: "flex flex-col absolute top-15 left-4 md:relative", children: socials.map((social) => {
       var _a2;
@@ -420,8 +46,10 @@ const Hero = () => {
     ] })
   ] }) });
 };
-const About = () => {
-  const { overview, headingTitle, cvLink, cvTitle } = useAbout();
+const About = ({ data }) => {
+  const { heading, overview = [], cv } = data ?? {};
+  const { title: headingTitle = [] } = heading ?? {};
+  const { link: cvLink = "", title: cvTitle = "" } = cv ?? {};
   const isCvAvailable = cvTitle && cvLink;
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx("section", { className: "pt-12 px-4 pb-24 md:pb-36 md:px-8", id: "about", children: /* @__PURE__ */ jsxs("div", { className: "max-w-4xl flex flex-col md:flex-row justify-center items-start space-y-12 space-x-0 md:space-x-24 md:justify-start md:items-center md:mx-auto", children: [
@@ -484,8 +112,9 @@ const Clock = (props) => /* @__PURE__ */ jsxs(
     ]
   }
 );
-const Work = () => {
-  const { title, collection } = useWork();
+const Work = ({ data }) => {
+  const { heading, collection = [] } = data ?? {};
+  const { title = [] } = heading ?? {};
   const renderCollection = () => {
     return collection.map((item) => {
       var _a;
@@ -536,19 +165,20 @@ const Work = () => {
     /* @__PURE__ */ jsx("div", { className: "divider" })
   ] });
 };
-const Experiments = () => {
-  const { title, collection } = useExperiments();
+const Experiments = ({ data }) => {
+  const { heading, collection = [] } = data ?? {};
+  const { title = [] } = heading ?? {};
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx("section", { className: "pt-12 pb-24 px-4 md:px-8", id: "experiments", children: /* @__PURE__ */ jsxs("div", { className: "flex flex-col justify-center items-start space-y-24 max-w-4xl md:mx-auto", children: [
       /* @__PURE__ */ jsx("div", { className: "text-left md:text-center p-0", children: /* @__PURE__ */ jsx(PortableText, { value: title }) }),
       /* @__PURE__ */ jsx("div", { className: "flex flex-col space-y-24 md:space-y-0 md:space-x-16 md:flex-row justify-between", children: collection.map((item) => {
         var _a;
-        const { _key = "", heading = "", body = "", link, image = {} } = item ?? {};
+        const { _key = "", heading: heading2 = "", body = "", link, image = {} } = item ?? {};
         const { href = "" } = link ?? {};
         return /* @__PURE__ */ jsx("div", { className: "w-full md:w-1/3", children: /* @__PURE__ */ jsxs("a", { href, target: "_blank", className: "group", rel: "noopener noreferrer", children: [
-          /* @__PURE__ */ jsx("div", { className: "mb-6 h-[300px] w-auto max-h-[250px] overflow-hidden flex flex-col justify-center items-start md:items-center", children: /* @__PURE__ */ jsx("img", { src: (_a = urlForImage(image)) == null ? void 0 : _a.height(250).url(), alt: heading }) }),
+          /* @__PURE__ */ jsx("div", { className: "mb-6 h-[300px] w-auto max-h-[250px] overflow-hidden flex flex-col justify-center items-start md:items-center", children: /* @__PURE__ */ jsx("img", { src: (_a = urlForImage(image)) == null ? void 0 : _a.height(250).url(), alt: heading2 }) }),
           /* @__PURE__ */ jsxs("div", { children: [
-            /* @__PURE__ */ jsx("h3", { className: "text-2xl font-sans font-bold mb-4 group-hover:text-secondary", children: heading }),
+            /* @__PURE__ */ jsx("h3", { className: "text-2xl font-sans font-bold mb-4 group-hover:text-secondary", children: heading2 }),
             /* @__PURE__ */ jsx("p", { className: "text-md mb-4 group-hover:text-secondary", children: body })
           ] })
         ] }) }, _key);
@@ -557,17 +187,18 @@ const Experiments = () => {
     /* @__PURE__ */ jsx("div", { className: "divider" })
   ] });
 };
-const Writings = () => {
-  const { title, collection } = useWritings();
+const Writings = ({ data }) => {
+  const { heading, collection = [] } = data ?? {};
+  const { title = [] } = heading ?? {};
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx("section", { className: "px-4 pt-12 pb-24 md:px-8", id: "writings", children: /* @__PURE__ */ jsxs("div", { className: "max-w-4xl flex flex-col justify-center items-start space-x-0 space-y-12 md:space-x-48 md:flex-row md:justify-between md:space-y-0 md:mx-auto", children: [
       /* @__PURE__ */ jsx("div", { className: "text-left md:text-center p-0", children: /* @__PURE__ */ jsx(PortableText, { value: title }) }),
       /* @__PURE__ */ jsx("div", { className: "flex flex-col space-y-12 justify-between", children: collection.map((item) => {
         var _a;
-        const { _key = "", heading = "", body = "", link = "", image = {} } = item ?? {};
+        const { _key = "", heading: heading2 = "", body = "", link = "", image = {} } = item ?? {};
         return /* @__PURE__ */ jsx("div", { className: "max-w-lg", children: /* @__PURE__ */ jsxs("a", { target: "_blank", href: link, className: "group", rel: "noopener noreferrer", children: [
-          /* @__PURE__ */ jsx("div", { className: "mb-6 overflow-hidden rounded-md shadow-xl", children: /* @__PURE__ */ jsx("img", { src: (_a = urlForImage(image)) == null ? void 0 : _a.url(), alt: heading }) }),
-          /* @__PURE__ */ jsx("h3", { className: "text-xl font-sans font-bold mb-4 group-hover:text-secondary", children: heading }),
+          /* @__PURE__ */ jsx("div", { className: "mb-6 overflow-hidden rounded-md shadow-xl", children: /* @__PURE__ */ jsx("img", { src: (_a = urlForImage(image)) == null ? void 0 : _a.url(), alt: heading2 }) }),
+          /* @__PURE__ */ jsx("h3", { className: "text-xl font-sans font-bold mb-4 group-hover:text-secondary", children: heading2 }),
           /* @__PURE__ */ jsx("p", { className: "text-sm mb-4 group-hover:text-secondary", children: body })
         ] }) }, _key);
       }) })
@@ -575,8 +206,10 @@ const Writings = () => {
     /* @__PURE__ */ jsx("div", { className: "divider" })
   ] });
 };
-const Contact = () => {
-  const { title, text, linkText, linkUrl } = useContact();
+const Contact = ({ data }) => {
+  const { heading, text = [], link } = data ?? {};
+  const { text: linkText, href: linkUrl } = link ?? {};
+  const { title = [] } = heading ?? {};
   return /* @__PURE__ */ jsxs("section", { className: "px-4 pt-12 pb-24 md:px-8 flex flex-col justify-center items-start md:items-center", id: "contact", children: [
     /* @__PURE__ */ jsx("div", { className: "pb-4 md:pb-8 max-w-2xl md:text-center", children: /* @__PURE__ */ jsx(PortableText, { value: title }) }),
     /* @__PURE__ */ jsx("div", { className: "pb-4 w-full text-left max-w-2xl md:text-center", children: /* @__PURE__ */ jsx(PortableText, { value: text }) }),
@@ -586,9 +219,7 @@ const Contact = () => {
     ] })
   ] });
 };
-const Navigation = () => {
-  const { navigation } = useContext(PortfolioContext) ?? [];
-  const { data } = navigation ?? {};
+const Navigation = ({ data }) => {
   const { collection = [] } = data ?? {};
   const [menuShowcase, setMenuShowcase] = useState(false);
   const toggleMobileMenuShow = useCallback(() => {
@@ -653,8 +284,9 @@ const Navigation = () => {
     menuShowcase ? /* @__PURE__ */ jsx("div", { id: "menu-banner", className: "z-40 absolute top-0 left-0 space-y-4 bg-light w-full h-screen", children: /* @__PURE__ */ jsx("ul", { className: "flex flex-col w-full h-full space-y-8 justify-center items-center", children: renderMobileNavigationItems() }) }) : null
   ] });
 };
-const Footer = () => {
-  const { email, copyright, socials, collection, title } = useFooter();
+const Footer = ({ data }) => {
+  const { email, copyright, socials, collection, heading } = data;
+  const { title = [] } = heading ?? {};
   return /* @__PURE__ */ jsx("footer", { className: "px-4 pt-12 pb-24 md:px-8 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "flex flex-col space-y-16 max-w-4xl mx-auto justify-between items-start md:flex-row md:space-y-0", children: [
     /* @__PURE__ */ jsxs("div", { className: "flex flex-col space-y-6", children: [
       /* @__PURE__ */ jsxs("div", { className: "flex flex-col space-y-2 text-left p-0", children: [
@@ -672,36 +304,22 @@ const Footer = () => {
     }) })
   ] }) });
 };
-function Layout({ children }) {
-  const { navigation, hero, about, work, experiments, writings, talks, contact, footer } = useContext(PortfolioContext) ?? [];
-  const { isSuccess: isSuccessNavigation } = navigation;
-  const { isSuccess: isSuccessLoading } = hero;
-  const { isSuccess: isSuccessAbout } = about;
-  const { isSuccess: isSuccessWork } = work;
-  const { isSuccess: isSuccessExperiments } = experiments;
-  const { isSuccess: isSuccessWritings } = writings;
-  const { isSuccess: isSuccessTalks } = talks;
-  const { isSuccess: isSuccessContact } = contact;
-  const { isSuccess: isSuccessFooter } = footer;
-  const isSuccess = isSuccessNavigation && isSuccessLoading && isSuccessAbout && isSuccessWork && isSuccessExperiments && isSuccessWritings && isSuccessTalks && isSuccessContact && isSuccessFooter;
-  let child = null;
-  if (isSuccess) {
-    child = /* @__PURE__ */ jsxs(React.Fragment, { children: [
-      /* @__PURE__ */ jsx(Navigation, {}),
-      /* @__PURE__ */ jsx("div", { className: "flex-grow", children }),
-      /* @__PURE__ */ jsx(Footer, {})
-    ] });
-  }
-  return /* @__PURE__ */ jsx("div", { className: "flex min-h-screen flex-col text-black", children: child });
+function Layout({ navigation, children, footer }) {
+  return /* @__PURE__ */ jsxs(React.Fragment, { children: [
+    /* @__PURE__ */ jsx(Navigation, { data: navigation }),
+    /* @__PURE__ */ jsx("div", { className: "flex-grow", children }),
+    /* @__PURE__ */ jsx(Footer, { data: footer })
+  ] });
 }
-const Talks = () => {
-  const { title, collection } = useTalks();
+const Talks = ({ data }) => {
+  const { heading, collection } = data ?? {};
+  const { title = [] } = heading ?? {};
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx("section", { className: "px-4 pt-12 pb-24 md:px-8", id: "talks", children: /* @__PURE__ */ jsxs("div", { className: "flex flex-col justify-center items-start space-y-24 max-w-4xl mx-auto", children: [
       /* @__PURE__ */ jsx("div", { className: "text-left md:text-center p-0", children: /* @__PURE__ */ jsx(PortableText, { value: title }) }),
       /* @__PURE__ */ jsx("div", { className: "flex flex-col space-y-24 md:space-y-0 md:space-x-32 md:flex-row justify-center", children: collection.map((item) => {
         var _a;
-        const { _key = "", heading = "", body = "", link, cover = {} } = item ?? {};
+        const { _key = "", heading: heading2 = "", body = "", link, cover = {} } = item ?? {};
         const { url = "" } = link ?? {};
         return /* @__PURE__ */ jsx("div", { className: "w-full py-2", children: /* @__PURE__ */ jsxs("a", { href: url, target: "_blank", className: "group", rel: "noopener noreferrer", children: [
           /* @__PURE__ */ jsx("div", { className: "mb-12 w-auto overflow-hidden flex flex-col justify-start items-start md:items-center", children: /* @__PURE__ */ jsx(
@@ -709,11 +327,11 @@ const Talks = () => {
             {
               className: "rounded-md shadow-xl",
               src: (_a = urlForImage(cover)) == null ? void 0 : _a.height(350).width(450).url(),
-              alt: heading
+              alt: heading2
             }
           ) }),
           /* @__PURE__ */ jsxs("div", { children: [
-            /* @__PURE__ */ jsx("h3", { className: "text-2xl font-sans font-bold mb-4 group-hover:text-secondary", children: heading }),
+            /* @__PURE__ */ jsx("h3", { className: "text-2xl font-sans font-bold mb-4 group-hover:text-secondary", children: heading2 }),
             /* @__PURE__ */ jsx("p", { className: "text-md mb-4 group-hover:text-secondary", children: body })
           ] })
         ] }) }, _key);
@@ -722,26 +340,17 @@ const Talks = () => {
     /* @__PURE__ */ jsx("div", { className: "divider" })
   ] });
 };
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      cacheTime: 1e3 * 60 * 60 * 24
-      // 24 hours
-    }
-  }
-});
 const App = ({ data }) => {
-  console.log("this data is coming from server, no client-side api called.");
-  console.log(JSON.stringify(data, null, 2));
-  return /* @__PURE__ */ jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsx(ContextWrapper, { children: /* @__PURE__ */ jsxs(Layout, { children: [
-    /* @__PURE__ */ jsx(Hero, {}),
-    /* @__PURE__ */ jsx(About, {}),
-    /* @__PURE__ */ jsx(Work, {}),
-    /* @__PURE__ */ jsx(Experiments, {}),
-    /* @__PURE__ */ jsx(Writings, {}),
-    /* @__PURE__ */ jsx(Talks, {}),
-    /* @__PURE__ */ jsx(Contact, {})
-  ] }) }) });
+  const { navigation, hero, about, work, experiments, talks, writings, contact, footer } = data ?? {};
+  return /* @__PURE__ */ jsxs(Layout, { navigation, footer, children: [
+    /* @__PURE__ */ jsx(Hero, { data: hero }),
+    /* @__PURE__ */ jsx(About, { data: about }),
+    /* @__PURE__ */ jsx(Work, { data: work }),
+    /* @__PURE__ */ jsx(Experiments, { data: experiments }),
+    /* @__PURE__ */ jsx(Writings, { data: writings }),
+    /* @__PURE__ */ jsx(Talks, { data: talks }),
+    /* @__PURE__ */ jsx(Contact, { data: contact })
+  ] });
 };
 const render = (data) => {
   return renderToString(/* @__PURE__ */ jsx(App, { data }));
