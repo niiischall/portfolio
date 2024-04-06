@@ -24,6 +24,6 @@ app.use('*', async (_, res) => {
   }
 });
  
-app.listen('https://portfolio-server.pages.dev/', () => {
-  console.log('https://portfolio-server.pages.dev.');
+app.listen('https://portfolio-client-cfm.pages.dev/', () => {
+  console.log('https://portfolio-client-cfm.pages.dev/');
 });
