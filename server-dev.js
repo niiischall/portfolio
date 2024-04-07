@@ -31,6 +31,12 @@ app.use('*', async (req, res, next) => {
     next(error)
   }
 });
+
+app.use('/robots.txt', function (req, res) {
+  res.type('text/plain');
+  res.send("User-agent: *\nDisallow: /");
+});
+ 
  
 app.listen(4173, () => {
   console.log('http://localhost:4173.');

@@ -1,8 +1,73 @@
-import { jsx, jsxs, Fragment } from "react/jsx-runtime";
+import { jsxs, jsx, Fragment } from "react/jsx-runtime";
 import { renderToString } from "react-dom/server";
+import React, { useState, useCallback } from "react";
 import { PortableText } from "@portabletext/react";
 import createImageUrlBuilder from "@sanity/image-url";
-import React, { useState, useCallback } from "react";
+const Navigation = ({ data }) => {
+  const { collection = [] } = data ?? {};
+  const [menuShowcase, setMenuShowcase] = useState(false);
+  const toggleMobileMenuShow = useCallback(() => {
+    setMenuShowcase((prevMenuShowcase) => !prevMenuShowcase);
+  }, []);
+  const navigateToSection = useCallback(
+    (slug) => {
+      document.location.href = `${slug}`;
+      toggleMobileMenuShow();
+    },
+    [toggleMobileMenuShow]
+  );
+  const renderMobileNavigationItems = () => {
+    let renderedList = null;
+    if (collection.length > 0) {
+      renderedList = collection.map((navItem) => {
+        return /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(
+          "button",
+          {
+            className: "text-2xl font-sans font-bold px-4 text-primary hover:text-secondary duration-200",
+            onClick: () => navigateToSection(navItem == null ? void 0 : navItem.slug.current),
+            children: navItem.title
+          }
+        ) }, navItem._key);
+      });
+    }
+    return renderedList;
+  };
+  const renderNavigationItems = () => {
+    let renderedList = null;
+    if (collection.length > 0) {
+      renderedList = collection.map((navItem) => {
+        return /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx("div", { className: "flex flex-col items-center", children: /* @__PURE__ */ jsx(
+          "a",
+          {
+            className: "text-xl font-sans font-bold px-4 text-primary hover:text-secondary duration-200",
+            href: navItem == null ? void 0 : navItem.slug.current,
+            children: navItem.title
+          }
+        ) }) }, navItem._key);
+      });
+    }
+    return renderedList;
+  };
+  return /* @__PURE__ */ jsxs("header", { className: "relative flex justify-end items-center p-0 px-4 py-8 md:px-8 md:py-12", children: [
+    /* @__PURE__ */ jsxs("nav", { className: "flex justify-end items-center max-w-4xl md:mx-auto", children: [
+      /* @__PURE__ */ jsx("ul", { className: "space-x-2 hidden md:flex", children: renderNavigationItems() }),
+      /* @__PURE__ */ jsx("div", { className: "md:hidden", children: /* @__PURE__ */ jsxs(
+        "button",
+        {
+          id: "menu-btn",
+          className: `hamburger z-50 block md:hidden focus:outline-none ${menuShowcase ? "open" : ""}`,
+          onClick: toggleMobileMenuShow,
+          children: [
+            /* @__PURE__ */ jsx("span", { className: "hamburger-top" }),
+            /* @__PURE__ */ jsx("span", { className: "hamburger-middle" }),
+            /* @__PURE__ */ jsx("span", { className: "hamburger-bottom" })
+          ]
+        }
+      ) })
+    ] }),
+    menuShowcase ? /* @__PURE__ */ jsx("div", { id: "menu-banner", className: "z-40 absolute top-0 left-0 space-y-4 bg-light w-full h-screen", children: /* @__PURE__ */ jsx("ul", { className: "flex flex-col w-full h-full space-y-8 justify-center items-center", children: renderMobileNavigationItems() }) }) : null
+  ] });
+};
 const imageBuilder = createImageUrlBuilder({
   projectId: "d3ylbkps",
   dataset: "production"
@@ -15,7 +80,7 @@ const urlForImage = (source) => {
   return imageBuilder == null ? void 0 : imageBuilder.image(source).auto("format").fit("max");
 };
 const Hero = ({ data }) => {
-  var _a, _b;
+  var _a;
   const { socials = [], greeting, cover = {} } = data ?? {};
   const { link, text: greetingText = [] } = greeting ?? {};
   const { text: buttonText = "", slug } = link ?? {};
@@ -37,8 +102,8 @@ const Hero = ({ data }) => {
       );
     }) }),
     /* @__PURE__ */ jsxs("div", { className: "order-first md:order-2 flex justify-start pl-12 md:pl-0 lg:pl-12", children: [
-      /* @__PURE__ */ jsx("div", { className: "hidden md:flex", children: /* @__PURE__ */ jsx("img", { src: (_a = urlForImage(cover)) == null ? void 0 : _a.height(300).width(300).url(), alt: "Profile" }) }),
-      /* @__PURE__ */ jsx("div", { className: "md:hidden", children: /* @__PURE__ */ jsx("img", { src: (_b = urlForImage(cover)) == null ? void 0 : _b.height(200).width(200).url(), alt: "Profile" }) })
+      /* @__PURE__ */ jsx("div", { className: "hidden md:flex w-[300px] h-[300px]", children: /* @__PURE__ */ jsx("img", { src: urlForImage(cover), alt: "Profile" }) }),
+      /* @__PURE__ */ jsx("div", { className: "md:hidden", children: /* @__PURE__ */ jsx("img", { src: (_a = urlForImage(cover)) == null ? void 0 : _a.height(200).width(200).url(), alt: "Profile" }) })
     ] }),
     /* @__PURE__ */ jsxs("div", { className: "max-w-lg md:max-w-md mt-16 md:mt-0 lg:max-w-lg", children: [
       /* @__PURE__ */ jsx(PortableText, { value: greetingText }),
@@ -219,97 +284,8 @@ const Contact = ({ data }) => {
     ] })
   ] });
 };
-const Navigation = ({ data }) => {
-  const { collection = [] } = data ?? {};
-  const [menuShowcase, setMenuShowcase] = useState(false);
-  const toggleMobileMenuShow = useCallback(() => {
-    setMenuShowcase((prevMenuShowcase) => !prevMenuShowcase);
-  }, []);
-  const navigateToSection = useCallback(
-    (slug) => {
-      document.location.href = `${slug}`;
-      toggleMobileMenuShow();
-    },
-    [toggleMobileMenuShow]
-  );
-  const renderMobileNavigationItems = () => {
-    let renderedList = null;
-    if (collection.length > 0) {
-      renderedList = collection.map((navItem) => {
-        return /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(
-          "button",
-          {
-            className: "text-2xl font-sans font-bold px-4 text-primary hover:text-secondary duration-200",
-            onClick: () => navigateToSection(navItem == null ? void 0 : navItem.slug.current),
-            children: navItem.title
-          }
-        ) }, navItem._key);
-      });
-    }
-    return renderedList;
-  };
-  const renderNavigationItems = () => {
-    let renderedList = null;
-    if (collection.length > 0) {
-      renderedList = collection.map((navItem) => {
-        return /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx("div", { className: "flex flex-col items-center", children: /* @__PURE__ */ jsx(
-          "a",
-          {
-            className: "text-xl font-sans font-bold px-4 text-primary hover:text-secondary duration-200",
-            href: navItem == null ? void 0 : navItem.slug.current,
-            children: navItem.title
-          }
-        ) }) }, navItem._key);
-      });
-    }
-    return renderedList;
-  };
-  return /* @__PURE__ */ jsxs("header", { className: "relative flex justify-end items-center p-0 px-4 py-8 md:px-8 md:py-12", children: [
-    /* @__PURE__ */ jsxs("nav", { className: "flex justify-end items-center max-w-4xl md:mx-auto", children: [
-      /* @__PURE__ */ jsx("ul", { className: "space-x-2 hidden md:flex", children: renderNavigationItems() }),
-      /* @__PURE__ */ jsx("div", { className: "md:hidden", children: /* @__PURE__ */ jsxs(
-        "button",
-        {
-          id: "menu-btn",
-          className: `hamburger z-50 block md:hidden focus:outline-none ${menuShowcase ? "open" : ""}`,
-          onClick: toggleMobileMenuShow,
-          children: [
-            /* @__PURE__ */ jsx("span", { className: "hamburger-top" }),
-            /* @__PURE__ */ jsx("span", { className: "hamburger-middle" }),
-            /* @__PURE__ */ jsx("span", { className: "hamburger-bottom" })
-          ]
-        }
-      ) })
-    ] }),
-    menuShowcase ? /* @__PURE__ */ jsx("div", { id: "menu-banner", className: "z-40 absolute top-0 left-0 space-y-4 bg-light w-full h-screen", children: /* @__PURE__ */ jsx("ul", { className: "flex flex-col w-full h-full space-y-8 justify-center items-center", children: renderMobileNavigationItems() }) }) : null
-  ] });
-};
-const Footer = ({ data }) => {
-  const { email, copyright, socials, collection, heading } = data;
-  const { title = [] } = heading ?? {};
-  return /* @__PURE__ */ jsx("footer", { className: "px-4 pt-12 pb-24 md:px-8 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "flex flex-col space-y-16 max-w-4xl mx-auto justify-between items-start md:flex-row md:space-y-0", children: [
-    /* @__PURE__ */ jsxs("div", { className: "flex flex-col space-y-6", children: [
-      /* @__PURE__ */ jsxs("div", { className: "flex flex-col space-y-2 text-left p-0", children: [
-        /* @__PURE__ */ jsx("a", { href: "/#", className: "text-2xl font-sans font-bold text-secondary", children: /* @__PURE__ */ jsx(PortableText, { value: title }) }),
-        /* @__PURE__ */ jsx("p", { className: "text-sm font-poppins text-primary", children: email }),
-        /* @__PURE__ */ jsx("p", { className: "text-sm font-poppins text-primary", children: copyright })
-      ] }),
-      /* @__PURE__ */ jsx("div", { className: "flex space-x-3 mt-4", children: socials.map((social) => {
-        var _a;
-        return /* @__PURE__ */ jsx("a", { href: social.url, target: "_blank", title: social.caption, rel: "noopener noreferrer", children: /* @__PURE__ */ jsx("img", { src: (_a = urlForImage(social.cover)) == null ? void 0 : _a.width(24).url(), alt: social.alt }) }, social._key);
-      }) })
-    ] }),
-    /* @__PURE__ */ jsx("div", { className: "flex flex-col justify-between space-y-4 text-left md:text-right", children: collection.map((navItem) => {
-      return /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("a", { className: "text-lg font-bold font-sans text-primary", href: navItem == null ? void 0 : navItem.slug.current, children: navItem.title }) }, navItem._key);
-    }) })
-  ] }) });
-};
-function Layout({ navigation, children, footer }) {
-  return /* @__PURE__ */ jsxs(React.Fragment, { children: [
-    /* @__PURE__ */ jsx(Navigation, { data: navigation }),
-    /* @__PURE__ */ jsx("div", { className: "flex-grow", children }),
-    /* @__PURE__ */ jsx(Footer, { data: footer })
-  ] });
+function Layout({ children }) {
+  return /* @__PURE__ */ jsx(React.Fragment, { children: /* @__PURE__ */ jsx("div", { className: "flex-grow", children }) });
 }
 const Talks = ({ data }) => {
   const { heading, collection } = data ?? {};
@@ -340,16 +316,38 @@ const Talks = ({ data }) => {
     /* @__PURE__ */ jsx("div", { className: "divider" })
   ] });
 };
+const Footer = ({ data }) => {
+  const { email, copyright, socials, collection, heading } = data;
+  const { title = [] } = heading ?? {};
+  return /* @__PURE__ */ jsx("footer", { className: "px-4 pt-12 pb-24 md:px-8 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "flex flex-col space-y-16 max-w-4xl mx-auto justify-between items-start md:flex-row md:space-y-0", children: [
+    /* @__PURE__ */ jsxs("div", { className: "flex flex-col space-y-6", children: [
+      /* @__PURE__ */ jsxs("div", { className: "flex flex-col space-y-2 text-left p-0", children: [
+        /* @__PURE__ */ jsx("a", { href: "/#", className: "text-2xl font-sans font-bold text-secondary", children: /* @__PURE__ */ jsx(PortableText, { value: title }) }),
+        /* @__PURE__ */ jsx("p", { className: "text-sm font-poppins text-primary", children: email }),
+        /* @__PURE__ */ jsx("p", { className: "text-sm font-poppins text-primary", children: copyright })
+      ] }),
+      /* @__PURE__ */ jsx("div", { className: "flex space-x-3 mt-4", children: socials.map((social) => {
+        var _a;
+        return /* @__PURE__ */ jsx("a", { href: social.url, target: "_blank", title: social.caption, rel: "noopener noreferrer", children: /* @__PURE__ */ jsx("img", { src: (_a = urlForImage(social.cover)) == null ? void 0 : _a.width(24).url(), alt: social.alt }) }, social._key);
+      }) })
+    ] }),
+    /* @__PURE__ */ jsx("div", { className: "flex flex-col justify-between space-y-4 text-left md:text-right", children: collection.map((navItem) => {
+      return /* @__PURE__ */ jsx("div", { children: /* @__PURE__ */ jsx("a", { className: "text-lg font-bold font-sans text-primary", href: navItem == null ? void 0 : navItem.slug.current, children: navItem.title }) }, navItem._key);
+    }) })
+  ] }) });
+};
 const App = ({ data }) => {
   const { navigation, hero, about, work, experiments, talks, writings, contact, footer } = data ?? {};
-  return /* @__PURE__ */ jsxs(Layout, { navigation, footer, children: [
+  return /* @__PURE__ */ jsxs(Layout, { children: [
+    /* @__PURE__ */ jsx(Navigation, { data: navigation }),
     /* @__PURE__ */ jsx(Hero, { data: hero }),
     /* @__PURE__ */ jsx(About, { data: about }),
     /* @__PURE__ */ jsx(Work, { data: work }),
     /* @__PURE__ */ jsx(Experiments, { data: experiments }),
     /* @__PURE__ */ jsx(Writings, { data: writings }),
     /* @__PURE__ */ jsx(Talks, { data: talks }),
-    /* @__PURE__ */ jsx(Contact, { data: contact })
+    /* @__PURE__ */ jsx(Contact, { data: contact }),
+    /* @__PURE__ */ jsx(Footer, { data: footer })
   ] });
 };
 const render = (data) => {

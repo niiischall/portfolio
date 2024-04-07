@@ -23,6 +23,11 @@ app.use('*', async (_, res) => {
     res.status(500).end();
   }
 });
+
+app.use('/robots.txt', function (req, res) {
+  res.type('text/plain');
+  res.send("User-agent: *\nDisallow: /");
+});
  
 app.listen(5173, () => {
   console.log('http://localhost:5173.');
