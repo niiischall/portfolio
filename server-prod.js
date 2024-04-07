@@ -24,6 +24,6 @@ app.use('*', async (_, res) => {
   }
 });
  
-app.listen('https://portfolio-client-b378.onrender.com', () => {
-  console.log('https://portfolio-client-b378.onrender.com');
+app.listen(5173, () => {
+  console.log('http://localhost:5173.');
 });
