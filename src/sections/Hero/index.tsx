@@ -53,8 +53,8 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
           })}
         </div>
         <div className="order-first md:order-2 flex justify-start pl-12 md:pl-0 lg:pl-12">
-          <div className="hidden md:flex">
-            <img src={urlForImage(cover)?.height(300).width(300).url()} alt="Profile" />
+          <div className="hidden md:flex w-[300px] h-[300px]">
+            <img src={urlForImage(cover)} alt="Profile" />
           </div>
           <div className="md:hidden">
             <img src={urlForImage(cover)?.height(200).width(200).url()} alt="Profile" />
