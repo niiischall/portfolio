@@ -29,6 +29,6 @@ app.use('/robots.txt', function (req, res) {
   res.send("User-agent: *\nDisallow: /");
 });
  
-app.listen(5173, () => {  
-  console.log(`App listening on port: ${5173}`);
+app.listen(4173, () => {  
+  console.log(`App listening on port: ${4173}`);
 });
