@@ -3,8 +3,6 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import express from 'express';
 
-const port = process.env.PORT || 5173;
- 
 const app = express();
  
 app.use(express.static(path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'dist/client'), { index: false }));
@@ -31,6 +29,6 @@ app.use('/robots.txt', function (req, res) {
   res.send("User-agent: *\nDisallow: /");
 });
  
-app.listen(port, () => {  
-  console.log(`App listening on port: ${port}`);
+app.listen(5173, () => {  
+  console.log(`App listening on port: ${5173}`);
 });
