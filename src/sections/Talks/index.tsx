@@ -26,7 +26,7 @@ const Talks: React.FC<TalksProps> = ({ data }) => {
             <PortableText value={title} />
           </div>
           <div className="flex flex-col space-y-24 md:space-y-0 md:space-x-32 md:flex-row justify-center">
-            {collection.map((item: TalkCollectionType) => {
+            {collection?.map((item: TalkCollectionType) => {
               const { _key = '', heading = '', body = '', link, cover = {} } = item ?? {};
               const { url = '' } = link ?? {};
               return (

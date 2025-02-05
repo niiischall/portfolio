@@ -17,7 +17,7 @@ export interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ data }) => {
-  const { email, copyright, socials, collection, heading } = data;
+  const { email = '', copyright, socials, collection, heading } = data ?? {};
   const { title = [] } = heading ?? {};
 
   return (
@@ -32,7 +32,7 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
             <p className="text-sm font-poppins text-primary">{copyright}</p>
           </div>
           <div className="flex space-x-3 mt-4">
-            {socials.map((social: FooterSocialType) => {
+            {socials?.map((social: FooterSocialType) => {
               return (
                 <a key={social._key} href={social.url} target="_blank" title={social.caption} rel="noopener noreferrer">
                   <img src={urlForImage(social.cover)?.width(24).url()} alt={social.alt} />
@@ -42,7 +42,7 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
           </div>
         </div>
         <div className="flex flex-col justify-between space-y-4 text-left md:text-right">
-          {collection.map((navItem: FooterNavigationCollectionType) => {
+          {collection?.map((navItem: FooterNavigationCollectionType) => {
             return (
               <div key={navItem._key}>
                 <a className="text-lg font-bold font-sans text-primary" href={navItem?.slug.current}>
