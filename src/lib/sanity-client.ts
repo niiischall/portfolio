@@ -5,5 +5,5 @@ export default createClient({
   dataset: import.meta.env.VITE_DATASET,
   apiVersion: import.meta.env.VITE_API_VERSION,
   token: import.meta.env.VITE_API_TOKEN,
-  useCdn: false,
+  useCdn: true,
 });
