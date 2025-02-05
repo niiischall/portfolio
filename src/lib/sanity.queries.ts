@@ -89,3 +89,15 @@ export const footerQuery = `*[_type == "footer"][0]{
   socials,
   collection,
 }`;
+
+export const combinedQuery = `{
+  "navigation": ${navigationQuery},
+  "hero": ${heroQuery},
+  "about": ${aboutQuery},
+  "work": ${workQuery},
+  "experiments": ${experimentsQuery},
+  "writings": ${writingsQuery},
+  "talks": ${talksQuery},
+  "contact": ${contactQuery},
+  "footer": ${footerQuery}
+}`;
