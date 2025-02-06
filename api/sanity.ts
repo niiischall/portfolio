@@ -2,6 +2,7 @@ import fetch from 'node-fetch';
 
 export const proxyHandler = async (req, res) => {
   try {
+    console.log('url: ', `https://${process.env.VITE_PROJECT_ID}.api.sanity.io/${process.env.VITE_API_VERSION}/data/${process.env.VITE_DATASET}?query=${req.query.query}`);
     const response = await fetch(`https://${process.env.VITE_PROJECT_ID}.api.sanity.io/${process.env.VITE_API_VERSION}/data/${process.env.VITE_DATASET}?query=${req.query.query}`, {
       method: 'GET',
       headers: {
