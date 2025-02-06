@@ -1,17 +1,13 @@
-import { createClient } from "@sanity/client";
 import { useQuery } from "@tanstack/react-query";
 import { combinedQuery } from "./sanity.queries";
 
-const sanityClient = createClient({
-  projectId: import.meta.env.VITE_PROJECT_ID, 
-  dataset: import.meta.env.VITE_DATASET,
-  apiVersion: import.meta.env.VITE_API_VERSION,
-  token: import.meta.env.VITE_API_TOKEN,
-  useCdn: true,
-});
-
 const fetchSanityData = async () => {
-  return await sanityClient.fetch(combinedQuery);
+  const response = await fetch(`/api/sanity?query=${combinedQuery}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch posts");
+  }
+  const data = await response.json();
+  return data?.result;
 };
 
 export const useSanityData = () => {

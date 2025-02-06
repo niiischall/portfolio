@@ -90,14 +90,14 @@ export const footerQuery = `*[_type == "footer"][0]{
   collection,
 }`;
 
-export const combinedQuery = `{
-  "navigation": ${navigationQuery},
-  "hero": ${heroQuery},
-  "about": ${aboutQuery},
-  "work": ${workQuery},
-  "experiments": ${experimentsQuery},
-  "writings": ${writingsQuery},
-  "talks": ${talksQuery},
-  "contact": ${contactQuery},
-  "footer": ${footerQuery}
-}`;
+export const combinedQuery = encodeURIComponent(`{
+    "navigation": ${navigationQuery},
+    "hero": ${heroQuery},
+    "about": ${aboutQuery},
+    "work": ${workQuery},
+    "experiments": ${experimentsQuery},
+    "writings": ${writingsQuery},
+    "talks": ${talksQuery},
+    "contact": ${contactQuery},
+    "footer": ${footerQuery}
+  }`);
