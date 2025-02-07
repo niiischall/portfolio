@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import Navigation from '../sections/Navigation';
 import Hero from '../sections/Hero';
@@ -11,6 +12,7 @@ import Talks from '../sections/Talks';
 import Footer from '../sections/Footer';
 
 import { useSanityData } from '../lib/sanity-client';
+import PostHogPageViewTracker from '../utils/helpers/tracker';
 
 export const Layout = () => {
   const { data, isLoading, isError } = useSanityData();
@@ -20,7 +22,8 @@ export const Layout = () => {
   }
 
   return (
-    <React.Fragment>
+    <Router>
+      <PostHogPageViewTracker />
       <div className="flex-grow">
         <Navigation data={data?.navigation} />
         <Hero data={data?.hero} />
@@ -32,7 +35,7 @@ export const Layout = () => {
         <Contact data={data?.contact} />
         <Footer data={data?.footer} />
       </div>
-    </React.Fragment>
+    </Router>
   );
 };
 

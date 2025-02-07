@@ -16,9 +16,11 @@
     "@tanstack/react-query": "^5.66.0",
     "dotenv": "^16.4.7",
     "node-fetch": "^3.3.2",
+    "posthog-js": "^1.215.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-query": "^3.39.3",
+    "react-router-dom": "^7.1.5",
     "sanity": "^3.18.1"
   },
   "devDependencies": {

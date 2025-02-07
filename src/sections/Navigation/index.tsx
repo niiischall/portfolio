@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { NavigationCollectionType } from '../../utils/helpers/types';
+import Button from '../../components/Button';
 
 export interface NavigationProps {
   data: {
@@ -35,12 +36,13 @@ const Navigation: React.FC<NavigationProps> = ({ data }) => {
       renderedList = collection.map((navItem: NavigationCollectionType) => {
         return (
           <li key={navItem._key}>
-            <button
-              className="text-2xl font-sans font-bold px-4 text-primary hover:text-secondary duration-200"
+            <Button
+              styles="text-2xl font-sans font-bold px-4 text-primary hover:text-secondary duration-200"
               onClick={() => navigateToSection(navItem?.slug.current)}
+              analyticsLabel={`navigation-${navItem?.slug.current}`}
             >
               {navItem.title}
-            </button>
+            </Button>
           </li>
         );
       });
@@ -55,12 +57,15 @@ const Navigation: React.FC<NavigationProps> = ({ data }) => {
         return (
           <li key={navItem._key}>
             <div className="flex flex-col items-center">
-              <a
-                className="text-xl font-sans font-bold px-4 text-primary hover:text-secondary duration-200"
-                href={navItem?.slug.current}
+              <Button
+                styles="text-xl font-sans font-bold px-4 text-primary hover:text-secondary duration-200"
+                onClick={() => {
+                  document.location.href = navItem?.slug.current;
+                }}
+                analyticsLabel={`navigation-${navItem?.slug.current}`}
               >
                 {navItem.title}
-              </a>
+              </Button>
             </div>
           </li>
         );
@@ -74,15 +79,15 @@ const Navigation: React.FC<NavigationProps> = ({ data }) => {
       <nav className="flex justify-end items-center max-w-4xl md:mx-auto">
         <ul className="space-x-2 hidden md:flex">{renderNavigationItems()}</ul>
         <div className="md:hidden">
-          <button
-            id="menu-btn"
-            className={`hamburger z-50 block md:hidden focus:outline-none ${menuShowcase ? 'open' : ''}`}
+          <Button
+            styles={`hamburger z-50 block md:hidden focus:outline-none ${menuShowcase ? 'open' : ''}`}
             onClick={toggleMobileMenuShow}
+            analyticsLabel="navigation-mobile"
           >
             <span className="hamburger-top"></span>
             <span className="hamburger-middle"></span>
             <span className="hamburger-bottom"></span>
-          </button>
+          </Button>
         </div>
       </nav>
       {menuShowcase ? (
