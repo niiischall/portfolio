@@ -4,6 +4,7 @@ import { PortableText } from '@portabletext/react';
 import { urlForImage } from '../../lib/sanity.image';
 import type { HeroSocialType } from '../../utils/helpers/types';
 import type { TypedObject } from 'sanity';
+import Button from '../../components/Button';
 
 export interface HeroProps {
   data: {
@@ -39,16 +40,16 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
         <div className="flex flex-col absolute top-15 left-4 md:relative">
           {socials.map((social: HeroSocialType) => {
             return (
-              <a
+              <Button
                 key={social._key}
-                href={social.url}
-                target="_blank"
-                className="mb-6 md:w-12"
-                title={social.caption}
-                rel="noopener noreferrer"
+                styles="mb-6 md:w-12"
+                onClick={() => {
+                  window.open(social.url, '_blank');
+                }}
+                analyticsLabel={`social-${social.url}`}
               >
                 <img src={urlForImage(social.cover)?.width(24).url()} alt={social.alt} />
-              </a>
+              </Button>
             );
           })}
         </div>
@@ -63,9 +64,15 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
         <div className="max-w-lg md:max-w-md mt-16 md:mt-0 lg:max-w-lg">
           <PortableText value={greetingText} />
           {buttonText ? (
-            <a id="home-contact" href={buttonSlug} className="btn mt-8">
+            <Button
+              styles="btn mt-8"
+              onClick={() => {
+                document.location.href = buttonSlug;
+              }}
+              analyticsLabel={`navigation-${buttonSlug}`}
+            >
               {buttonText}
-            </a>
+            </Button>
           ) : null}
         </div>
       </div>
