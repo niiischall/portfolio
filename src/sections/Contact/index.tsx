@@ -2,7 +2,6 @@ import React from 'react';
 import { PortableText } from '@portabletext/react';
 
 import type { TypedObject } from 'sanity';
-import Button from '../../components/Button';
 
 export interface ContactProps {
   data: {
@@ -18,8 +17,7 @@ export interface ContactProps {
 }
 
 const Contact: React.FC<ContactProps> = ({ data }) => {
-  const { heading, text = [], link } = data ?? {};
-  const { text: linkText, href: linkUrl } = link ?? {};
+  const { heading, text = [] } = data ?? {};
   const { title = [] } = heading ?? {};
 
   return (
@@ -30,15 +28,6 @@ const Contact: React.FC<ContactProps> = ({ data }) => {
       <div className="pb-4 w-full text-left max-w-2xl md:text-center">
         <PortableText value={text} />
       </div>
-      <Button
-        onClick={() => {
-          window.open(linkUrl, '_blank');
-        }}
-        styles="btn"
-        analyticsLabel={`contact-${title}`}
-      >
-        {linkText} &rarr;
-      </Button>
     </section>
   );
 };

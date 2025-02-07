@@ -41,8 +41,8 @@ const Writings: React.FC<WritingsProps> = ({ data }) => {
                     <div className="mb-6 overflow-hidden rounded-md shadow-xl">
                       <img src={urlForImage(image)?.url()} alt={heading} />
                     </div>
-                    <h3 className="text-xl font-sans font-bold mb-4 group-hover:text-secondary">{heading}</h3>
-                    <p className="text-sm mb-4 group-hover:text-secondary">{body}</p>
+                    <h3 className="text-xl font-sans font-bold mb-4 group-hover:text-secondary text-left">{heading}</h3>
+                    <p className="text-sm mb-4 group-hover:text-secondary text-left">{body}</p>
                   </Button>
                 </div>
               );

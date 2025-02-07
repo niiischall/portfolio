@@ -43,8 +43,10 @@ const Experiments: React.FC<ExperimentsProps> = ({ data }) => {
                       <img src={urlForImage(image)?.height(250).url()} alt={heading} />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-sans font-bold mb-4 group-hover:text-secondary">{heading}</h3>
-                      <p className="text-md mb-4 group-hover:text-secondary">{body}</p>
+                      <h3 className="text-2xl font-sans font-bold mb-4 group-hover:text-secondary text-left">
+                        {heading}
+                      </h3>
+                      <p className="text-md mb-4 group-hover:text-secondary text-left">{body}</p>
                     </div>
                   </Button>
                 </div>
