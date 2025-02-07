@@ -6,6 +6,7 @@ import Clock from '../../utils/svgs/Clock';
 import { urlForImage } from '../../lib/sanity.image';
 import { WorkCollectionType } from '../../utils/helpers/types';
 import type { TypedObject } from 'sanity';
+import Button from '../../components/Button';
 
 export interface WorkProps {
   data: {
@@ -41,9 +42,15 @@ const Work: React.FC<WorkProps> = ({ data }) => {
               <h3 className="font-sans font-bold">{designation}</h3>
               <div className="flex items-center space-x-1">
                 <Building />
-                <a href={orgLink} className="text-secondary font-bold" target="_blank" rel="noopener noreferrer">
+                <Button
+                  onClick={() => {
+                    window.open(orgLink, '_blank');
+                  }}
+                  styles="text-secondary font-bold"
+                  analyticsLabel={`navigation-${orgName}`}
+                >
                   {orgName}
-                </a>
+                </Button>
               </div>
               <div className="flex items-center space-x-1">
                 <Clock />

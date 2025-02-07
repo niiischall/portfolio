@@ -2,6 +2,7 @@ import React from 'react';
 import { PortableText } from '@portabletext/react';
 
 import type { TypedObject } from 'sanity';
+import Button from '../../components/Button';
 
 export interface AboutProps {
   data: {
@@ -35,15 +36,15 @@ const About: React.FC<AboutProps> = ({ data }) => {
               <PortableText value={overview} />
               {isCvAvailable ? (
                 <div className="mt-8 justify-center items-left md:items-center">
-                  <a
-                    id="about-cv-download-clicked"
-                    href={cvLink}
-                    target="_blank"
-                    className="btn"
-                    rel="noopener noreferrer"
+                  <Button
+                    onClick={() => {
+                      window.open(cvLink, '_blank');
+                    }}
+                    styles="btn"
+                    analyticsLabel={`navigation-${cvTitle}`}
                   >
                     {cvTitle}
-                  </a>
+                  </Button>
                 </div>
               ) : null}
             </div>
