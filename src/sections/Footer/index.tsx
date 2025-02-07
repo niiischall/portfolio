@@ -3,6 +3,7 @@ import { PortableText } from '@portabletext/react';
 import { FooterNavigationCollectionType, FooterSocialType } from '../../utils/helpers/types';
 import { urlForImage } from '../../lib/sanity.image';
 import type { TypedObject } from 'sanity';
+import Button from '../../components/Button';
 
 export interface FooterProps {
   data: {
@@ -25,18 +26,28 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
       <div className="flex flex-col space-y-16 max-w-4xl mx-auto justify-between items-start md:flex-row md:space-y-0">
         <div className="flex flex-col space-y-6">
           <div className="flex flex-col space-y-2 text-left p-0">
-            <a href="/#" className="text-2xl font-sans font-bold text-secondary">
+            <Button
+              onClick={() => {
+                document.location.href = '/#';
+              }}
+              styles="text-2xl font-sans font-bold text-secondary text-left"
+              analyticsLabel={`footer-${title}`}
+            >
               <PortableText value={title} />
-            </a>
+            </Button>
             <p className="text-sm font-poppins text-primary">{email}</p>
             <p className="text-sm font-poppins text-primary">{copyright}</p>
           </div>
           <div className="flex space-x-3 mt-4">
             {socials?.map((social: FooterSocialType) => {
               return (
-                <a key={social._key} href={social.url} target="_blank" title={social.caption} rel="noopener noreferrer">
+                <Button
+                  key={social._key}
+                  onClick={() => window.open(social.url, '_blank')}
+                  analyticsLabel={`footer-${social.caption}`}
+                >
                   <img src={urlForImage(social.cover)?.width(24).url()} alt={social.alt} />
-                </a>
+                </Button>
               );
             })}
           </div>
@@ -45,9 +56,13 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
           {collection?.map((navItem: FooterNavigationCollectionType) => {
             return (
               <div key={navItem._key}>
-                <a className="text-lg font-bold font-sans text-primary" href={navItem?.slug.current}>
+                <Button
+                  styles="text-lg font-bold font-sans text-primary"
+                  onClick={() => (document.location.href = navItem?.slug.current)}
+                  analyticsLabel={`footer-${navItem.title}`}
+                >
                   {navItem.title}
-                </a>
+                </Button>
               </div>
             );
           })}

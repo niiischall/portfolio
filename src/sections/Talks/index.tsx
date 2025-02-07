@@ -4,6 +4,7 @@ import { PortableText } from '@portabletext/react';
 import { urlForImage } from '../../lib/sanity.image';
 import { TalkCollectionType } from '../../utils/helpers/types';
 import type { TypedObject } from 'sanity';
+import Button from '../../components/Button';
 
 export interface TalksProps {
   data: {
@@ -31,7 +32,7 @@ const Talks: React.FC<TalksProps> = ({ data }) => {
               const { url = '' } = link ?? {};
               return (
                 <div key={_key} className="w-full py-2">
-                  <a href={url} target="_blank" className="group" rel="noopener noreferrer">
+                  <Button onClick={() => window.open(url, '_blank')} styles="group" analyticsLabel={`talks-${heading}`}>
                     <div className="mb-12 w-auto overflow-hidden flex flex-col justify-start items-start md:items-center">
                       <img
                         className="rounded-md shadow-xl"
@@ -43,7 +44,7 @@ const Talks: React.FC<TalksProps> = ({ data }) => {
                       <h3 className="text-2xl font-sans font-bold mb-4 group-hover:text-secondary">{heading}</h3>
                       <p className="text-md mb-4 group-hover:text-secondary">{body}</p>
                     </div>
-                  </a>
+                  </Button>
                 </div>
               );
             })}

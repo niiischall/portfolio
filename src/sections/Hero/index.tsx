@@ -46,7 +46,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
                 onClick={() => {
                   window.open(social.url, '_blank');
                 }}
-                analyticsLabel={`social-${social.url}`}
+                analyticsLabel={`hero-social--${social.url}`}
               >
                 <img src={urlForImage(social.cover)?.width(24).url()} alt={social.alt} />
               </Button>
@@ -69,7 +69,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
               onClick={() => {
                 document.location.href = buttonSlug;
               }}
-              analyticsLabel={`navigation-${buttonSlug}`}
+              analyticsLabel={`hero-${buttonSlug}`}
             >
               {buttonText}
             </Button>

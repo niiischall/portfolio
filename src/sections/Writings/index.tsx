@@ -4,6 +4,7 @@ import { PortableText } from '@portabletext/react';
 import { urlForImage } from '../../lib/sanity.image';
 import { WritingsCollectionType } from '../../utils/helpers/types';
 import type { TypedObject } from 'sanity';
+import Button from '../../components/Button';
 
 export interface WritingsProps {
   data: {
@@ -30,13 +31,19 @@ const Writings: React.FC<WritingsProps> = ({ data }) => {
               const { _key = '', heading = '', body = '', link = '', image = {} } = item ?? {};
               return (
                 <div key={_key} className="max-w-lg">
-                  <a target="_blank" href={link} className="group" rel="noopener noreferrer">
+                  <Button
+                    styles="group"
+                    onClick={() => {
+                      window.open(link, '_blank');
+                    }}
+                    analyticsLabel={`writings-${heading}`}
+                  >
                     <div className="mb-6 overflow-hidden rounded-md shadow-xl">
                       <img src={urlForImage(image)?.url()} alt={heading} />
                     </div>
                     <h3 className="text-xl font-sans font-bold mb-4 group-hover:text-secondary">{heading}</h3>
                     <p className="text-sm mb-4 group-hover:text-secondary">{body}</p>
-                  </a>
+                  </Button>
                 </div>
               );
             })}

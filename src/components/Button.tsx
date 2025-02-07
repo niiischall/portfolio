@@ -5,9 +5,9 @@ import React from 'react';
 export interface ButtonProps {
   children: React.ReactNode;
   onClick: () => void;
-  styles: string;
   analyticsLabel: string;
   analyticsData?: object;
+  styles?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({ onClick, styles, analyticsLabel, analyticsData, children }) => {

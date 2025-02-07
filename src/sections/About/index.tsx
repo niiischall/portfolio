@@ -41,7 +41,7 @@ const About: React.FC<AboutProps> = ({ data }) => {
                       window.open(cvLink, '_blank');
                     }}
                     styles="btn"
-                    analyticsLabel={`navigation-${cvTitle}`}
+                    analyticsLabel={`about-${cvTitle}`}
                   >
                     {cvTitle}
                   </Button>
