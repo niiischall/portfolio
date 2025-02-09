@@ -19,7 +19,7 @@ export const Layout = () => {
   }
 
   return (
-    <div className="flex-grow flex flex-col min-h-[100vh]">
+    <>
       <Navigation data={data?.navigation} hero={data?.hero} />
       <Routes>
         <Route path="/" Component={() => <Hero data={data?.hero} />} />
@@ -30,7 +30,7 @@ export const Layout = () => {
         <Route path="/talks" Component={() => <Talks data={data?.talks} />} />
         <Route path="/contact" Component={() => <Contact data={data?.contact} />} />
       </Routes>
-    </div>
+    </>
   );
 };
 
