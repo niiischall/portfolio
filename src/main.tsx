@@ -1,6 +1,7 @@
 /* eslint-disable import/no-named-as-default */
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { BrowserRouter as Router } from 'react-router-dom';
 import posthog from 'posthog-js';
 import { PostHogProvider } from 'posthog-js/react';
 
@@ -16,8 +17,10 @@ const rootElement = document.getElementById('root') ?? document.createElement('d
 
 createRoot(rootElement).render(
   <StrictMode>
-    <PostHogProvider client={posthog}>
-      <App />
-    </PostHogProvider>
+    <Router>
+      <PostHogProvider client={posthog}>
+        <App />
+      </PostHogProvider>
+    </Router>
   </StrictMode>,
 );
