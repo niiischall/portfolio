@@ -1,6 +1,10 @@
 import React, { useCallback, useState } from 'react';
-import { NavigationCollectionType } from '../../utils/helpers/types';
+import type { TypedObject } from 'sanity';
+
+import { HeroSocialType, NavigationCollectionType } from '../../utils/helpers/types';
 import Button from '../../components/Button';
+import { urlForImage } from '../../lib/sanity.image';
+import { Link } from 'react-router-dom';
 
 export interface NavigationProps {
   data: {
@@ -12,10 +16,30 @@ export interface NavigationProps {
     };
     collection: NavigationCollectionType[];
   };
+  hero: {
+    socials: HeroSocialType[];
+    greeting: {
+      link: {
+        text: string;
+        slug: {
+          current: string;
+        };
+      };
+      text: TypedObject[];
+    };
+    cover: {
+      asset: {
+        _type: string;
+        _ref: string;
+      };
+      _type: string;
+    };
+  };
 }
 
-const Navigation: React.FC<NavigationProps> = ({ data }) => {
+const Navigation: React.FC<NavigationProps> = ({ data, hero }) => {
   const { collection = [] } = data ?? {};
+  const { cover = {} } = hero ?? {};
   const [menuShowcase, setMenuShowcase] = useState<boolean>(false);
 
   const toggleMobileMenuShow = useCallback(() => {
@@ -75,10 +99,20 @@ const Navigation: React.FC<NavigationProps> = ({ data }) => {
   };
 
   return (
-    <header className="relative flex justify-end items-center p-0 px-4 py-8 md:px-8 md:py-12">
-      <nav className="flex justify-end items-center max-w-4xl md:mx-auto">
+    <header className="relative flex justify-between items-center p-0 px-4 py-8 md:px-8 md:py-12">
+      <nav className="flex items-center w-full justify-evenly">
+        <div className="hidden md:flex w-[40px] h-[40px]">
+          <Link to="/">
+            <img src={urlForImage(cover)} alt="Profile" />
+          </Link>
+        </div>
         <ul className="space-x-2 hidden md:flex">{renderNavigationItems()}</ul>
-        <div className="md:hidden">
+        <div className="flex items-center w-full justify-between md:hidden">
+          <div className="flex w-[40px] h-[40px]">
+            <Link to="/">
+              <img src={urlForImage(cover)} alt="Profile" />
+            </Link>
+          </div>
           <Button
             styles={`hamburger z-50 block md:hidden focus:outline-none ${menuShowcase ? 'open' : ''}`}
             onClick={toggleMobileMenuShow}

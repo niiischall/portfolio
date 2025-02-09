@@ -67,20 +67,17 @@ const Work: React.FC<WorkProps> = ({ data }) => {
   };
 
   return (
-    <>
-      <section
-        id="work"
-        className="px-4 pt-12 pb-24 px-relative flex flex-col justify-center items-start space-y-8 md:px-8 md:items-center"
-      >
-        <div className="text-left p-0">
-          <PortableText value={title} />
-        </div>
-        <div className="max-w-4xl md:mx-auto">
-          <div className="w-full pt-10 px-0 relative overflow-hidden">{renderCollection()}</div>
-        </div>
-      </section>
-      <div className="divider" />
-    </>
+    <section
+      id="work"
+      className="px-4 pt-12 pb-24 px-relative flex flex-col justify-center items-start space-y-8 md:px-8 md:items-center"
+    >
+      <div className="text-left p-0">
+        <PortableText value={title} />
+      </div>
+      <div className="max-w-4xl md:mx-auto">
+        <div className="w-full pt-10 px-0 relative overflow-hidden">{renderCollection()}</div>
+      </div>
+    </section>
   );
 };
 

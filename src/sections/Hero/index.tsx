@@ -35,14 +35,17 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
   const { current: buttonSlug = '' } = slug ?? {};
 
   return (
-    <section className="bg-light relative mx-auto px-4 pt-6 pb-12 md:px-8 md:pt-12 md:pb-48 " id="home">
+    <section
+      className="bg-light relative w-full md:mx-auto px-4 pt-6 pb-12 flex-1 md:px-8 md:pt-12 md:pb-48 "
+      id="home"
+    >
       <div className="max-w-4xl flex flex-col items-start justify-start md:flex-row md:justify-start md:items-center md:space-x-6 lg:space-x-12 md:mx-auto">
         <div className="flex flex-col absolute top-15 left-4 md:relative">
           {socials.map((social: HeroSocialType) => {
             return (
               <Button
                 key={social._key}
-                styles="mb-6 md:w-12"
+                styles="mb-6 w-[40px] h-[40px] flex justify-center md:w-12"
                 onClick={() => {
                   window.open(social.url, '_blank');
                 }}
