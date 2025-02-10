@@ -21,7 +21,7 @@ const Writings: React.FC<WritingsProps> = ({ data }) => {
 
   return (
     <section className="px-4 pt-12 pb-24 md:px-8" id="writings">
-      <div className="max-w-4xl flex flex-col justify-center items-start space-x-0 space-y-12 md:space-x-48 md:flex-row md:justify-between md:space-y-0 md:mx-auto">
+      <div className="max-w-4xl flex flex-col justify-center items-start space-x-0 space-y-12 md:justify-between md:mx-auto">
         <div className="text-left md:text-center p-0">
           <PortableText value={title} />
         </div>

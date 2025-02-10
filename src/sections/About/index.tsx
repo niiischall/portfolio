@@ -26,7 +26,7 @@ const About: React.FC<AboutProps> = ({ data }) => {
 
   return (
     <section className="pt-12 px-4 pb-24 md:pb-36 md:px-8" id="about">
-      <div className="max-w-4xl flex flex-col md:flex-row justify-center items-start space-y-12 space-x-0 md:space-x-24 md:justify-start md:items-center md:mx-auto">
+      <div className="max-w-4xl flex flex-col justify-center items-start space-y-12 space-x-0 md:mx-auto">
         <div className="text-3xl px-0 text-left md:text-center">
           <PortableText value={headingTitle} />
         </div>

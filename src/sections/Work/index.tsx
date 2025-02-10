@@ -69,7 +69,7 @@ const Work: React.FC<WorkProps> = ({ data }) => {
   return (
     <section
       id="work"
-      className="px-4 pt-12 pb-24 px-relative flex flex-col justify-center items-start space-y-8 md:px-8 md:items-center"
+      className="px-4 pt-12 pb-24 px-relative flex flex-col justify-center items-start space-y-8 md:px-8 md:items-left md:mx-auto"
     >
       <div className="text-left p-0">
         <PortableText value={title} />

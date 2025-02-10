@@ -25,14 +25,14 @@ const Talks: React.FC<TalksProps> = ({ data }) => {
         <div className="text-left md:text-center p-0">
           <PortableText value={title} />
         </div>
-        <div className="flex flex-col space-y-24 md:space-y-0 md:space-x-32 md:flex-row justify-center">
+        <div className="flex flex-col space-y-24 justify-center">
           {collection?.map((item: TalkCollectionType) => {
             const { _key = '', heading = '', body = '', link, cover = {} } = item ?? {};
             const { url = '' } = link ?? {};
             return (
               <div key={_key} className="w-full py-2">
                 <Button onClick={() => window.open(url, '_blank')} styles="group" analyticsLabel={`talks-${heading}`}>
-                  <div className="mb-12 w-auto overflow-hidden flex flex-col justify-start items-start md:items-center">
+                  <div className="mb-12 w-auto overflow-hidden flex flex-col justify-start items-start">
                     <img
                       className="rounded-md shadow-xl"
                       src={urlForImage(cover)?.height(350).width(450).url()}
@@ -43,7 +43,7 @@ const Talks: React.FC<TalksProps> = ({ data }) => {
                     <h3 className="text-2xl font-sans font-bold mb-4 group-hover:text-secondary text-left">
                       {heading}
                     </h3>
-                    <p className="text-md mb-4 group-hover:text-secondary text-left">{body}</p>
+                    <p className="text-md mb-4 group-hover:text-secondary text-left max-w-2xl">{body}</p>
                   </div>
                 </Button>
               </div>

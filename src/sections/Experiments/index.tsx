@@ -25,7 +25,7 @@ const Experiments: React.FC<ExperimentsProps> = ({ data }) => {
         <div className="text-left md:text-center p-0">
           <PortableText value={title} />
         </div>
-        <div className="flex flex-col space-y-24 md:space-y-0 md:space-x-16 md:flex-row justify-between">
+        <div className="flex flex-col space-y-24 justify-between">
           {collection.map((item: ExperimentCollectionType) => {
             const { _key = '', heading = '', body = '', link, image = {} } = item ?? {};
             const { href = '' } = link ?? {};
@@ -38,7 +38,7 @@ const Experiments: React.FC<ExperimentsProps> = ({ data }) => {
                   styles="group"
                   analyticsLabel={`navigation-experiments-${heading}`}
                 >
-                  <div className="mb-6 h-[300px] w-auto max-h-[250px] overflow-hidden flex flex-col justify-center items-start md:items-center">
+                  <div className="mb-6 h-[300px] w-auto max-h-[250px] overflow-hidden flex flex-col justify-center items-start">
                     <img src={urlForImage(image)?.height(250).url()} alt={heading} />
                   </div>
                   <div>
