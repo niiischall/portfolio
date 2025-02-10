@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import type { TypedObject } from 'sanity';
+import { useLocation, Link } from 'react-router-dom';
 
 import { HeroSocialType, NavigationCollectionType } from '../../utils/helpers/types';
 import Button from '../../components/Button';
 import { urlForImage } from '../../lib/sanity.image';
-import { Link } from 'react-router-dom';
 
 export interface NavigationProps {
   data: {
@@ -42,6 +42,9 @@ const Navigation: React.FC<NavigationProps> = ({ data, hero }) => {
   const { cover = {} } = hero ?? {};
   const [menuShowcase, setMenuShowcase] = useState<boolean>(false);
 
+  const location = useLocation();
+  const currentHashRoute = location.pathname.replace(/^\/+/, '#');
+
   const toggleMobileMenuShow = useCallback(() => {
     setMenuShowcase((prevMenuShowcase) => !prevMenuShowcase);
   }, []);
@@ -54,14 +57,17 @@ const Navigation: React.FC<NavigationProps> = ({ data, hero }) => {
     [toggleMobileMenuShow],
   );
 
-  const renderMobileNavigationItems = () => {
+  const renderMobileNavigationItems = useCallback(() => {
     let renderedList = null;
     if (collection.length > 0) {
       renderedList = collection.map((navItem: NavigationCollectionType) => {
+        const isCurrentLocation = currentHashRoute === navItem.slug.current;
         return (
           <li key={navItem._key}>
             <Button
-              styles="text-2xl font-sans font-bold px-4 text-primary hover:text-secondary duration-200"
+              styles={`text-2xl font-sans font-bold px-4 text-primary hover:text-secondary duration-200 ${
+                isCurrentLocation ? 'text-secondary' : 'text-primary'
+              }`}
               onClick={() => navigateToSection(navItem?.slug.current)}
               analyticsLabel={`navigation-${navItem?.slug.current}`}
             >
@@ -72,17 +78,20 @@ const Navigation: React.FC<NavigationProps> = ({ data, hero }) => {
       });
     }
     return renderedList;
-  };
+  }, [currentHashRoute, collection, navigateToSection]);
 
-  const renderNavigationItems = () => {
+  const renderNavigationItems = useCallback(() => {
     let renderedList = null;
     if (collection.length > 0) {
       renderedList = collection.map((navItem: NavigationCollectionType) => {
+        const isCurrentLocation = currentHashRoute === navItem.slug.current;
         return (
           <li key={navItem._key}>
             <div className="flex flex-col items-center">
               <Button
-                styles="text-xl font-sans font-bold px-4 text-primary hover:text-secondary duration-200"
+                styles={`text-xl font-sans font-bold px-4 duration-200 text-primary hover:text-secondary ${
+                  isCurrentLocation ? 'text-secondary' : 'text-primary'
+                }`}
                 onClick={() => {
                   document.location.href = navItem?.slug.current;
                 }}
@@ -96,7 +105,7 @@ const Navigation: React.FC<NavigationProps> = ({ data, hero }) => {
       });
     }
     return renderedList;
-  };
+  }, [currentHashRoute, collection]);
 
   return (
     <header className="relative flex justify-between items-center p-0 px-4 py-8 md:px-8 md:py-12">
