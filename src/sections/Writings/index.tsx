@@ -5,6 +5,7 @@ import { urlForImage } from '../../lib/sanity.image';
 import { WritingsCollectionType } from '../../utils/helpers/types';
 import type { TypedObject } from 'sanity';
 import Button from '../../components/Button';
+import Click from '../../utils/svgs/Click';
 
 export interface WritingsProps {
   data: {
@@ -39,6 +40,9 @@ const Writings: React.FC<WritingsProps> = ({ data }) => {
                 >
                   <div className="mb-6 shadow-box">
                     <img src={urlForImage(image)?.url()} alt={heading} />
+                  </div>
+                  <div className="px-4 flex justify-end">
+                    <Click style={{ width: '18px', height: '18px' }} />
                   </div>
                   <div className="px-4 py-2">
                     <h3 className="text-xl font-sans font-bold mb-4 group-hover:text-secondary text-left">{heading}</h3>

@@ -19,13 +19,13 @@
     @apply px-[6%] pt-[8%] bg-light md:px-[10%] md:py-[2%];
   }
   h1 {
-    @apply text-6xl font-ovo;
+    @apply text-6xl font-ovo font-bold;
   }
   h2 {
-    @apply text-4xl font-ovo;
+    @apply text-4xl font-ovo font-bold;
   }
   h3 {
-    @apply text-xl font-ovo;
+    @apply text-xl font-ovo font-bold;
   }
   p {
     @apply text-base font-ovo;

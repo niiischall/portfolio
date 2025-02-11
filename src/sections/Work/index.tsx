@@ -7,6 +7,7 @@ import { urlForImage } from '../../lib/sanity.image';
 import { WorkCollectionType } from '../../utils/helpers/types';
 import type { TypedObject } from 'sanity';
 import Button from '../../components/Button';
+import Click from '../../utils/svgs/Click';
 
 export interface WorkProps {
   data: {
@@ -49,7 +50,10 @@ const Work: React.FC<WorkProps> = ({ data }) => {
                   styles="text-secondary font-bold"
                   analyticsLabel={`navigation-${orgName}`}
                 >
-                  {orgName}
+                  <div className="flex gap-2">
+                    {orgName}
+                    <Click style={{ width: '16px', height: '16px' }} />
+                  </div>
                 </Button>
               </div>
               <div className="flex items-center space-x-1">

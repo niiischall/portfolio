@@ -5,6 +5,7 @@ import { urlForImage } from '../../lib/sanity.image';
 import type { HeroSocialType } from '../../utils/helpers/types';
 import type { TypedObject } from 'sanity';
 import Button from '../../components/Button';
+import Click from '../../utils/svgs/Click';
 
 export interface HeroProps {
   data: {
@@ -74,7 +75,10 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
               }}
               analyticsLabel={`hero-${buttonSlug}`}
             >
-              {buttonText}
+              <div className="flex gap-1">
+                {buttonText}
+                <Click style={{ width: '16px', height: '16px' }} />
+              </div>
             </Button>
           ) : null}
         </div>

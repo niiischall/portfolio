@@ -5,6 +5,7 @@ import type { ExperimentCollectionType } from '../../utils/helpers/types';
 import { urlForImage } from '../../lib/sanity.image';
 import type { TypedObject } from 'sanity';
 import Button from '../../components/Button';
+import Click from '../../utils/svgs/Click';
 
 export interface ExperimentsProps {
   data: {
@@ -42,9 +43,12 @@ const Experiments: React.FC<ExperimentsProps> = ({ data }) => {
                     <img src={urlForImage(image)?.height(250).url()} alt={heading} />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-sans font-bold mb-4 group-hover:text-secondary text-left">
-                      {heading}
-                    </h3>
+                    <div className="flex gap-2">
+                      <h3 className="text-2xl font-sans font-bold mb-4 group-hover:text-secondary text-left">
+                        {heading}
+                      </h3>
+                      <Click style={{ width: '18px', height: '18px' }} />
+                    </div>
                     <p className="text-md mb-4 group-hover:text-secondary text-left">{body}</p>
                   </div>
                 </Button>
