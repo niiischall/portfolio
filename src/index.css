@@ -4,33 +4,9 @@
 
 @layer base {
   @font-face {
-    font-family: Josefin Sans;
-    font-weight: 300;
-    src: url('./fonts/JosefinSans-Light.ttf');
-    font-display: swap;
-  }
-  @font-face {
-    font-family: Josefin Sans;
+    font-family: Ovo;
     font-weight: 400;
-    src: url('./fonts/JosefinSans-Regular.ttf');
-    font-display: swap;
-  }
-  @font-face {
-    font-family: Poppins;
-    font-weight: 200;
-    src: url('./fonts/Poppins-ExtraLight.ttf');
-    font-display: swap;
-  }
-  @font-face {
-    font-family: Poppins;
-    font-weight: 400;
-    src: url('./fonts/Poppins-Regular.ttf');
-    font-display: swap;
-  }
-  @font-face {
-    font-family: Poppins;
-    font-weight: 600;
-    src: url('./fonts/Poppins-SemiBold.ttf');
+    src: url('./fonts/Ovo-Regular.ttf');
     font-display: swap;
   }
 }
@@ -43,19 +19,19 @@
     @apply px-[6%] pt-[8%] bg-light md:px-[10%] md:py-[2%];
   }
   h1 {
-    @apply text-6xl font-poppins;
+    @apply text-6xl font-ovo;
   }
   h2 {
-    @apply text-4xl font-poppins;
+    @apply text-4xl font-ovo;
   }
   h3 {
-    @apply text-xl font-poppins;
+    @apply text-xl font-ovo;
   }
   p {
-    @apply text-base font-poppins;
+    @apply text-base font-ovo;
   }
   span {
-    @apply text-base font-poppins;
+    @apply text-base font-ovo;
   }
   .btn {
     @apply inline-block relative shadow-btn mt-4 cursor-pointer text-base border-[3px] px-2 py-2 border-solid font-sans text-primary uppercase tracking-wide hover:text-primary hover:bg-secondary;

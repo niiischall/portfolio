@@ -29,7 +29,7 @@ const Writings: React.FC<WritingsProps> = ({ data }) => {
           {collection.map((item: WritingsCollectionType) => {
             const { _key = '', heading = '', body = '', link = '', image = {} } = item ?? {};
             return (
-              <div key={_key} className="max-w-lg">
+              <div key={_key} className="max-w-lg shadow-box overflow-hidden rounded-lg">
                 <Button
                   styles="group"
                   onClick={() => {
@@ -37,11 +37,13 @@ const Writings: React.FC<WritingsProps> = ({ data }) => {
                   }}
                   analyticsLabel={`writings-${heading}`}
                 >
-                  <div className="mb-6 overflow-hidden rounded-md shadow-xl">
+                  <div className="mb-6 shadow-box">
                     <img src={urlForImage(image)?.url()} alt={heading} />
                   </div>
-                  <h3 className="text-xl font-sans font-bold mb-4 group-hover:text-secondary text-left">{heading}</h3>
-                  <p className="text-sm mb-4 group-hover:text-secondary text-left">{body}</p>
+                  <div className="px-4 py-2">
+                    <h3 className="text-xl font-sans font-bold mb-4 group-hover:text-secondary text-left">{heading}</h3>
+                    <p className="text-sm mb-4 group-hover:text-secondary text-left">{body}</p>
+                  </div>
                 </Button>
               </div>
             );

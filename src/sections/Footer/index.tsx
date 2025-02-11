@@ -35,8 +35,8 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
             >
               <PortableText value={title} />
             </Button>
-            <p className="text-sm font-poppins text-primary">{email}</p>
-            <p className="text-sm font-poppins text-primary">{copyright}</p>
+            <p className="text-sm font-ovo text-primary">{email}</p>
+            <p className="text-sm font-ovo text-primary">{copyright}</p>
           </div>
           <div className="flex space-x-3 mt-4">
             {socials?.map((social: FooterSocialType) => {

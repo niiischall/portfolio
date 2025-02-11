@@ -45,7 +45,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
             return (
               <Button
                 key={social._key}
-                styles="mb-6 w-[40px] h-[40px] flex justify-center md:w-12"
+                styles="mb-6 w-[40px] flex justify-center md:w-12"
                 onClick={() => {
                   window.open(social.url, '_blank');
                 }}
@@ -68,7 +68,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
           <PortableText value={greetingText} />
           {buttonText ? (
             <Button
-              styles="btn mt-8"
+              styles="btn mt-8 lowercase"
               onClick={() => {
                 document.location.href = buttonSlug;
               }}

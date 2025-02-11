@@ -18,14 +18,14 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Josefin Sans'],
-        poppins: ['Poppins'],
+        ovo: ['Ovo'],
       },
       letterSpacing: {
         widest: '0.3em',
       },
       boxShadow: {
-        btn: ' 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;',
+        btn: '1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;',
+        box: 'rgba(15, 15, 15, 0.1) 0px 0px 0px 1px, rgba(15, 15, 15, 0.1) 0px 2px 4px',
       },
     },
   },
